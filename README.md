@@ -4,14 +4,14 @@
 
 <!-- 🎒 Complete to include all the information requested. -->
 
-Team name:
+Team name: *Team Girlboss*
 
 Team members:
 
-- Tommy Trojan <tommy@usc.edu>
--
--
--
+- Erin Szeto <erinszet@usc.edu>
+- Erica Xia <ericaxia@usc.edu>
+- Madeleine Thompson <mjt43250@usc.edu>
+- Sarah Pursley <spursley@usc.edu>
 
 ## Artifacts
 
