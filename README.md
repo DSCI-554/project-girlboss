@@ -34,7 +34,7 @@ Team members:
 
 ## Proposal presentation
 
-[Tommy Trojan](mailto:tommy@usc.edu)
+All
 
 -
 -
@@ -42,7 +42,7 @@ Team members:
 
 ## Final presentation
 
-[Tommy Trojan](mailto:tommy@usc.edu)
+
 
 -
 -
@@ -50,7 +50,7 @@ Team members:
 
 ## Paper
 
-[Tommy Trojan](mailto:tommy@usc.edu)
+All
 
 -
 -
@@ -58,7 +58,7 @@ Team members:
 
 ## Demo
 
-[Tommy Trojan](mailto:tommy@usc.edu)
+If it's a video, Erin will work on the Youtube
 
 -
 -
@@ -72,12 +72,12 @@ Team members:
 
 | Requirement                            | Label        | Done |
 | -------------------------------------- | ------------ | ---- |
-| responsive d3 chart                    | responsive   |      |
-| interactive d3 chart                   | interactive  |      |
-| d3 chart with an animated transition   | animated     |      |
-| d3 layout                              | layout       |      |
-| d3 map                                 | map          |      |
-| Mapbox map                             | mapbox       |      |
+| responsive d3 chart                    | responsive   |  Madi (responsive line chart - men vs. women in labor force)    |
+| interactive d3 chart                   | interactive  |  Erin (chloropleth)    |
+| d3 chart with an animated transition   | animated     |  Sarah (radial bar chart?)    |
+| d3 layout                              | layout       |  Erica (circle packing?)    |
+| d3 map                                 | map          |  Erin (chloropleth)    |
+| Mapbox map                             | mapbox       |  Madi (proportional symbol map?)   |
 
 ## Table of visualizations used by page
 
