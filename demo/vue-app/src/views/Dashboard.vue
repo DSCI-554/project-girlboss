@@ -1,7 +1,5 @@
 <template>
   <div class="dashboard">
-    Welcome to the Dashboard
-
     <div class="container-fluid">
       <div class="row">
         <nav
@@ -153,7 +151,7 @@
           </svg>
           <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
 
-          <h2>Section title</h2>
+          <h2 style="text-align:left">Section Title</h2>
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
