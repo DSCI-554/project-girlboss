@@ -2,7 +2,7 @@
   <div class="dashboard">
     <div class="container-fluid">
       <div class="row">
-        <nav
+<nav
           id="sidebarMenu"
           class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
         >
@@ -11,88 +11,29 @@
               <li class="nav-item">
                 <a class="nav-link active" href="#">
                   <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
+                  World Map
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="file"></span>
-                  Orders
+                  Time Series Chart
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="shopping-cart"></span>
-                  Products
+                  Dot Plot
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <span data-feather="users"></span>
-                  Customers
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="bar-chart-2"></span>
-                  Reports
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="layers"></span>
-                  Integrations
+                  Bar Chart
                 </a>
               </li>
             </ul>
 
-            <h6
-              class="
-                sidebar-heading
-                d-flex
-                justify-content-between
-                align-items-center
-                px-3
-                mt-4
-                mb-1
-                text-muted
-              "
-            >
-              <span>Saved reports</span>
-              <a
-                class="d-flex align-items-center text-muted"
-                href="#"
-                aria-label="Add a new report"
-              >
-                <span data-feather="plus-circle"></span>
-              </a>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Current month
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Last quarter
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Social engagement
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Year-end sale
-                </a>
-              </li>
-            </ul>
           </div>
         </nav>
 
@@ -109,7 +50,8 @@
               border-bottom
             "
           >
-            <h1 class="h2">Dashboard</h1>
+            <!-- <h1 class="h2">Dashboard</h1>-->
+             <h2>Visualizing the Gender Gap in Education and the Workforce</h2> 
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <button type="button" class="btn btn-sm btn-outline-secondary">
@@ -128,6 +70,15 @@
               </button>
             </div>
           </div>
+
+          <!-- World Map (Choropleth, Bubble Map) -->
+
+        <!-- Timeseries (Multiseries Line Chart) -->
+        <TimeSeriesChart />
+
+        <!-- Dot Plots -->
+
+        <!-- Bar Chart or Radial Bar Chart -->
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -296,12 +247,12 @@
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
+import TimeSeriesChart from '../components/TimeSeriesChart'
 
-// export default {
-//   name: 'Home',
-//   components: {
-//     HelloWorld
-//   }
-// }
+export default {
+  name: 'dashboard',
+  components: {
+    TimeSeriesChart
+  }
+}
 </script>
