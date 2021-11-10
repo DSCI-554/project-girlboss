@@ -151,7 +151,7 @@
           </svg>
           <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
 
-          <h2 style="text-align:left">Section Title</h2>
+          <!-- <h2 style="text-align:left">Section Title</h2>
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
@@ -278,7 +278,7 @@
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> -->
         </main>
       </div>
     </div>
