@@ -71,16 +71,13 @@
             </div>
           </div>
 
-          <!-- World Map (Choropleth, Bubble Map) -->
-
         <!-- Timeseries (Multiseries Line Chart) -->
         <TimeSeriesChart />
 
-        <!-- Dot Plots -->
+        <!-- Donut chart -->
+        <PieChart />
 
-        <!-- Bar Chart or Radial Bar Chart -->
-
-          <svg
+          <!-- <svg
             xmlns="http://www.w3.org/2000/svg"
             width="900"
             height="380"
@@ -99,7 +96,7 @@
             >
               Chart
             </text>
-          </svg>
+          </svg> -->
           <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
 
           <!-- <h2 style="text-align:left">Section Title</h2>
@@ -248,11 +245,13 @@
 <script>
 // @ is an alias to /src
 import TimeSeriesChart from '../components/TimeSeriesChart'
+import PieChart from '../components/PieChart'
 
 export default {
   name: 'dashboard',
   components: {
-    TimeSeriesChart
+    TimeSeriesChart,
+    PieChart
   }
 }
 </script>

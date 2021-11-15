@@ -1,9 +1,8 @@
 <template>
   <div>
     <h1>Time Series Chart</h1>
+    <!-- USE ref=, not id= -->
     <div ref="tschart"></div>
-    <!-- USE ref=, NOT id= -->
-    <!-- <p>Time series chart goes here</p> -->
   </div>
 </template>
 
@@ -11,13 +10,13 @@
 import * as d3 from "d3";
 export default {
   name: "TimeSeriesChart",
-  // ADD D3 CODE HERE, use refs instead of id
+  // ADD D3 CODE HERE, use refs instead of id, for example:
   // var svg = d3
   // .select(this.$refs.tschart)
   methods: {
     lineChart(data) {
-      console.log("call line chart");
-      console.log(data);
+      // console.log("call line chart");
+      // console.log(data);
       // Ex from: https://www.d3-graph-gallery.com/graph/line_basic.html
 
       var margin = { top: 10, right: 30, bottom: 30, left: 60 },
@@ -32,8 +31,6 @@ export default {
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-      // Add X axis --> it is a date format
       var x = d3
         .scaleTime()
         .domain(
@@ -46,8 +43,6 @@ export default {
         .append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x));
-
-      // Add Y axis
       var y = d3
         .scaleLinear()
         .domain([
@@ -77,12 +72,10 @@ export default {
               return y(d.value);
             })
         );
-
-      // })
     },
   },
   mounted: function () {
-    console.log("mounted");
+    console.log("mounted Time Series Chart component");
     d3.csv(
       "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
       (d) => {
