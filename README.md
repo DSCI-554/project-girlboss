@@ -40,9 +40,10 @@ All
 -
 -
 
+## Implementation
+- Erin - interactive d3 choropleth map using OECD gender wage gap, employment, and GDP data
+
 ## Final presentation
-
-
 
 -
 -
