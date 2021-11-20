@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Test</title>
+
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="node_modules/highlightjs/styles/github.css">
+	<script src="node_modules/highlightjs/highlight.pack.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js"></script>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+</head>
+
+<body>
+    <style>
+        .mapbox_container {
+            position: relative;
+            height: 500px !important;
+            width: 800px !important;
+            display: inline-block;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+	<h1>Mapbox Map</h1>
+    
+    <div class="mapbox_container">
+        <div id="map"></div>
+    </div>
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibXRob21wc29uNjQiLCJhIjoiY2t2MDBubjN1N2hxdTJwbW4ydmpwZjJrOSJ9.9vnWqmcjY-SJjCX8PneymQ';
+        const map = new mapboxgl.Map({
+            container: 'map', // container ID
+            style: 'mapbox://styles/mapbox/light-v10', // style URL
+            center: [-98, 38.88], // starting position [lng, lat]
+            zoom: 3 // starting zoom
+        });
+    </script>
+
+</body>
+</html>
