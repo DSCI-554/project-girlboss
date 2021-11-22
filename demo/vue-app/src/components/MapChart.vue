@@ -29,6 +29,7 @@
 <script>
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
+import { sliderHorizontal } from "d3-simple-slider";
 export default {
   name: "MapChart",
   // ADD D3 CODE HERE, use refs instead of id, for example:
@@ -159,8 +160,7 @@ export default {
         .attr("stroke-linejoin", "round")
         .attr("d", path);
 
-      var sliderTime = d3
-        .sliderHorizontal()
+      var sliderTime = sliderHorizontal()
         .min(d3.min(dataTime))
         .max(d3.max(dataTime))
         .width(925)
