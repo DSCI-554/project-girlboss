@@ -4,7 +4,7 @@
     <!-- USE ref=, not id= -->
     <!-- <div ref="chart"></div> -->
     <div class="col-sm-2"><p style="text-align:center" id="value-time"></p></div>
-    <b-form-select id="#select" v-model="selected" :options="options"></b-form-select>
+    <b-form-select id="#select" v-model="selected" :options="options" @change="onChange($event)"></b-form-select>
     <!-- <select v-model="selected" id="selectButton"> -->
       <!-- <option value="Gender wage gap at median">Gender wage gap at median</option>
       <option value="Gender wage gap at 9th decile (top)">Gender wage gap at 9th decile (top)</option>
@@ -46,7 +46,27 @@ export default {
   },
   methods: {
     onChange() {
-      console.log(this.selected);
+      var sliderValue = '2019';
+      var select = this.selected;
+      var update_data = this.data.filter(function(row){
+          var time = row['Time'];
+          var indicator = row['Indicator'];
+          return time === sliderValue &&  indicator === select;
+      });
+
+      update_data = new Map(update_data.map((d) => [d.id, +d.Value]));
+
+      d3.selectAll('.country')
+          .data(topojson.feature(this.world, this.world.objects.countries).features)
+          .attr("fill", d => ((typeof(update_data.get(d.id)) == "undefined") ? '#ccc' : this.color(update_data.get(d.id))))
+          .text(d => `Country: ${d.properties.name} OECD Gender Wage Gap: ${update_data.get(d.id)}`);
+
+      var display_data = this.data.filter(function(row) {
+          var indicator = row['Indicator'];
+          return indicator === select;
+      });
+
+      this.display_data = display_data;
     },
     mapChart() {
       var margin = { top: 10, right: 30, bottom: 30, left: 60 },
@@ -54,7 +74,9 @@ export default {
         height = 610 - margin.top - margin.bottom;
 
       var world = this.values[0];
+      this.world = world;
       var data = this.values[1];
+      this.data = data;
 
       var max = d3.max(this.combineWageGapData(data), function(d) { return Math.round(+d.Value,2); });
       var min = d3.min(this.combineWageGapData(data), function(d) { return Math.round(+d.Value,2); });
@@ -74,11 +96,13 @@ export default {
 
       var json = topojson.feature(world, world.objects.countries);
       var color = d3.scaleQuantize([min, max], d3.schemeYlOrRd[8]);
+      this.color = color;
 
       var dataTime = [2000,2005,2010,2015,2016,2017,2018,2019].map(function(d) {
         return new Date(d,10,3);
       });
       var sliderValue = d3.timeFormat('%Y')(dataTime[0]);
+      this.sliderValue = sliderValue;
 
       var svg = d3.select('#chart')
         .attr("width", width + margin.left + margin.right)
@@ -145,6 +169,7 @@ export default {
             d3.select('p#value-time').text("OECD Gender Wage Gap on Year "+d3.timeFormat('%Y')(val));
             this.updateTimeframe(display_data, d3.timeFormat('%Y')(val), world, color);
             sliderValue = d3.timeFormat('%Y')(val);
+            this.sliderValue = sliderValue;
       });
 
       sliderTime.tickValues(dataTime)
@@ -183,6 +208,7 @@ export default {
       d3.select("#select").on("change", function() {
               // recover the option that has been chosen
               var selectedOption = d3.select(this).property("value");
+              this.selectedOption = selectedOption;
               // run the updateChart function with this selected option
               display_data = this.updateMapData(selectedOption, sliderValue, data, world, color);
       });
