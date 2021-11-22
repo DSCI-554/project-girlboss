@@ -75,7 +75,9 @@
         <TimeSeriesChart />
 
         <!-- Donut chart -->
-        <PieChart />
+        <!-- <PieChart /> -->
+
+        <MapChart />
         
         </main>
       </div>
@@ -84,24 +86,26 @@
 </template>
 
 <style>
-.col,
+/* .col,
 .col-4,
 .col-8 {
   background-color: #ccc;
   border: 0.5px solid black;
-}
+} */
 </style>
 
 <script>
 // @ is an alias to /src
 import TimeSeriesChart from '../components/TimeSeriesChart'
-import PieChart from '../components/PieChart'
+// import PieChart from '../components/PieChart'
+import MapChart from '../components/MapChart'
 
 export default {
   name: 'dashboard',
   components: {
     TimeSeriesChart,
-    PieChart
+    // PieChart,
+    MapChart
   }
 }
 </script>
