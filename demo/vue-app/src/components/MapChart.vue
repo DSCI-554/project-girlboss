@@ -1,17 +1,42 @@
 <template>
   <div>
-    <h1>Gender Wage Gap Around the World</h1>
     <!-- USE ref=, not id= -->
     <!-- <div ref="chart"></div> -->
-    <div class="col-sm-2"><p style="text-align:center" id="value-time"></p></div>
-    <b-form-select id="#select" v-model="selected" :options="options" @change="onChange($event)"></b-form-select>
+    <b-container>
+      <b-row>
+        <b-col>
+          <h1>Gender Wage Gap Around the World</h1>
+        </b-col>
+      </b-row>
+    </b-container>
+    <b-container>
+      <b-row align-h="around">
+        <b-col><b-form-select id="#select" v-model="selected" :options="options" @change="onChange($event)"></b-form-select></b-col>
+        <b-col><p style="text-align:right" id="value-time"></p></b-col>
+      </b-row>
+    </b-container>
+    <!-- <div class="col-sm-2"><p style="text-align:center" id="value-time"></p></div>
+    <b-form-select id="#select" v-model="selected" :options="options" @change="onChange($event)"></b-form-select> -->
     <!-- <select v-model="selected" id="selectButton"> -->
       <!-- <option value="Gender wage gap at median">Gender wage gap at median</option>
       <option value="Gender wage gap at 9th decile (top)">Gender wage gap at 9th decile (top)</option>
       <option value="Gender wage gap at 1st decile (bottom)">Gender wage gap at 1st decile (bottom)</option> -->
     <!-- </select> -->
     <div id="div_template"></div>
-    <div class="container">
+    <b-container>
+      <b-row>
+        <b-col>
+          <svg id="chart" style="background-color: white"></svg>
+          <div class="row align-items-center">
+              <div class="col-sm"><div id="slider-time"></div></div>
+          </div>
+        </b-col>
+        <b-col>
+          <div class="tooltip" style="opacity: 0; text-align:left;"></div>
+        </b-col>
+      </b-row>
+    </b-container>
+    <!-- <div class="container">
         <div class="col">
             <svg id="chart" style="background-color: white"></svg>
             <div class="row align-items-center">
@@ -20,9 +45,9 @@
         </div>
         <div class="col">
             <div class="tooltip" style="opacity: 0; text-align:left;"></div>
-            <!-- <span id="info"></span> -->
+            <span id="info"></span>
         </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -70,9 +95,11 @@ export default {
       this.display_data = display_data;
     },
     mapChart() {
-      var margin = { top: 10, right: 30, bottom: 30, left: 60 },
-        width = 975 - margin.left - margin.right,
-        height = 610 - margin.top - margin.bottom;
+      // var margin = { top: 10, right: 30, bottom: 30, left: 60 },
+      //   width = 975 - margin.left - margin.right,
+      //   height = 610 - margin.top - margin.bottom;
+      var width = 975;
+      var height = 610;
 
       var world = this.values[0];
       this.world = world;
@@ -106,8 +133,10 @@ export default {
       this.sliderValue = sliderValue;
 
       var svg = d3.select('#chart')
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom);
+        .attr("width", width)
+        .attr("height", height);
+        // .attr("width", width + margin.left + margin.right)
+        // .attr("height", height + margin.top + margin.bottom);
 
       var projection = d3.geoEquirectangular()
         .fitSize([width, height], json);
@@ -466,14 +495,6 @@ export default {
     }
   },
   mounted: function () {
-    let recaptchaScript = document.createElement('script');
-    recaptchaScript.setAttribute('src', 'https://unpkg.com/d3-simple-slider');
-    document.head.appendChild(recaptchaScript);
-
-    // recaptchaScript = document.createElement('script');
-    // recaptchaScript.setAttribute('src', '../../node_modules/topojson/dist/topojson.min.js');
-    // document.head.appendChild(recaptchaScript);
-
     console.log("mounted Map Chart component");
 
     var promises = [];
@@ -532,7 +553,7 @@ div.tooltip {
     height: 100px;					
     padding: 2px;				
     font: 12px sans-serif;		
-    background: lightsteelblue;	
+    /* background: lightsteelblue; */
     border: 0px;		
     border-radius: 8px;			
     pointer-events: none;			
