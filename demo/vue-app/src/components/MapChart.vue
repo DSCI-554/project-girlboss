@@ -4,11 +4,16 @@
     <!-- USE ref=, not id= -->
     <!-- <div ref="chart"></div> -->
     <div class="col-sm-2"><p style="text-align:center" id="value-time"></p></div>
-    <select id="selectButton"></select>
+    <b-form-select id="#select" v-model="selected" :options="options"></b-form-select>
+    <!-- <select v-model="selected" id="selectButton"> -->
+      <!-- <option value="Gender wage gap at median">Gender wage gap at median</option>
+      <option value="Gender wage gap at 9th decile (top)">Gender wage gap at 9th decile (top)</option>
+      <option value="Gender wage gap at 1st decile (bottom)">Gender wage gap at 1st decile (bottom)</option> -->
+    <!-- </select> -->
     <div id="div_template"></div>
     <div class="container">
         <div class="col">
-            <svg id="chart2" width="975" height="610"></svg>
+            <svg id="chart" style="background-color: white"></svg>
             <div class="row align-items-center">
                 <div class="col-sm"><div id="slider-time"></div></div>
             </div>
@@ -23,13 +28,27 @@
 
 <script>
 import * as d3 from "d3";
+import * as topojson from "topojson-client";
 export default {
   name: "MapChart",
   // ADD D3 CODE HERE, use refs instead of id, for example:
   // var svg = d3
   // .select(this.$refs.tschart)
+  data () {
+    return {
+      selected: 'Gender wage gap at median',
+      options: [
+        { value: 'Gender wage gap at median', text: 'Gender wage gap at median' },
+        { value: 'Gender wage gap at 9th decile (top)', text: 'Gender wage gap at 9th decile (top)' },
+        { value: 'Gender wage gap at 1st decile (bottom)', text: 'Gender wage gap at 1st decile (bottom)'}
+      ]
+    }
+  },
   methods: {
-    mapChart(values) {
+    onChange() {
+      console.log(this.selected);
+    },
+    mapChart() {
       var margin = { top: 10, right: 30, bottom: 30, left: 60 },
         width = 975 - margin.left - margin.right,
         height = 610 - margin.top - margin.bottom;
@@ -68,14 +87,17 @@ export default {
       var projection = d3.geoEquirectangular()
         .fitSize([width, height], json);
 
-      path = d3.geoPath()
+      var path = d3.geoPath()
         .projection(projection);
 
       svg.append("g")
-        .attr("transform", "translate(700,20)")
+        .attr("transform", "translate(600,20)")
         .append(() => this.legend({ color, title: 'OECD Gender Wage Gap', width: 260 }));
+      console.log('svg');
 
       var div = d3.select(".tooltip");
+      var country;
+      var country_id;
 
       svg.append("g")
         .selectAll("path")
@@ -84,7 +106,7 @@ export default {
         .attr("fill", d => ((typeof(default_data.get(d.id)) == "undefined") ? '#ccc' : color(default_data.get(d.id))))
         .attr("d", path)
         .attr("class", 'country')
-        .on("mouseover", function(d) {
+        .on("mouseover", function() {
             svg.select('.selected')
                 .classed('selected', false);
             d3.select(this)
@@ -96,7 +118,7 @@ export default {
             country_id = this.__data__.id;
             div.html(obtainStats(sliderValue, country_id, country, data));
             })					
-        .on("mouseout", function(d) {
+        .on("mouseout", function() {
             // svg.select('.selected')
             //     .classed('selected', false);
             d3.select(this)
@@ -144,19 +166,45 @@ export default {
       var allGroup = ['Gender wage gap at median', 'Gender wage gap at 9th decile (top)', 'Gender wage gap at 1st decile (bottom)'];
         // add the options to the button
       d3.select("#selectButton")
-          .selectAll('myOptions')
+          .selectAll('option')
           .data(allGroup)
           .enter()
           .append('option')
           .text(function (d) { return d; }) // text showed in the menu
           .attr("value", function (d) { return d; }); // corresponding value returned by the button
 
-      d3.select("#selectButton").on("change", function(d) {
+      // d3.select("#selectButton").on("change", function() {
+      //         // recover the option that has been chosen
+      //         var selectedOption = d3.select(this).property("value");
+      //         // run the updateChart function with this selected option
+      //         display_data = this.updateMapData(selectedOption, sliderValue, data, world, color);
+      // });
+
+      d3.select("#select").on("change", function() {
               // recover the option that has been chosen
               var selectedOption = d3.select(this).property("value");
               // run the updateChart function with this selected option
               display_data = this.updateMapData(selectedOption, sliderValue, data, world, color);
       });
+
+      function obtainStats(sliderValue, country_id, country, data) {
+        var update_data = data.filter(function(row){
+            var time = row['Time'];
+            var id = row['id'];
+            var indicator = row['Indicator'];
+            return time === sliderValue & id === country_id & indicator !== 'Gender wage gap at median' & indicator !== 'Gender wage gap at 9th decile (top)' & indicator !== 'Gender wage gap at 1st decile (bottom)';
+        });
+
+        var tooltip = `<b>Country</b>: ${country}`;
+
+        update_data.forEach(function(row) {
+            var indicator = row['Indicator'];
+            var value = row['Value'];
+            tooltip = tooltip + `<br/><b>${indicator}</b>: ${value}`
+        });
+
+        return tooltip;
+      }
     },
     combineWageGapData(data) {
       var wagegap_data = data.filter(function(row){
@@ -178,7 +226,7 @@ export default {
       update_data.forEach(function(row) {
           var indicator = row['Indicator'];
           var value = row['Value'];
-          tooltip = tooltip + `<br\><b>${indicator}</b>: ${value}`
+          tooltip = tooltip + `<br/><b>${indicator}</b>: ${value}`
       });
 
       return tooltip;
@@ -253,7 +301,7 @@ export default {
                 .attr("width", width - marginLeft - marginRight)
                 .attr("height", height - marginTop - marginBottom)
                 .attr("preserveAspectRatio", "none")
-                .attr("xlink:href", ramp(color.interpolator()).toDataURL());
+                .attr("xlink:href", this.ramp(color.interpolator()).toDataURL());
 
             //scaleSequentialQuantile doesn’t implement ticks or tickFormat.
             if (x.ticks) {
@@ -378,23 +426,40 @@ export default {
             })
         );
     },
+    ramp(color, n = 256) {
+      const canvas = document.getElementById("canvas");
+      //const canvas = DOM.canvas(n, 1);
+      const context = canvas.getContext("2d");
+      // d3.select(canvas).attr("width", n)
+      // .attr("height", 1);
+      for (let i = 0; i < n; ++i) {
+          context.fillStyle = color(i / (n - 1));
+          context.fillRect(i, 0, 1, 1);
+      }
+      return canvas;
+    }
   },
   mounted: function () {
     let recaptchaScript = document.createElement('script');
     recaptchaScript.setAttribute('src', 'https://unpkg.com/d3-simple-slider');
     document.head.appendChild(recaptchaScript);
 
+    // recaptchaScript = document.createElement('script');
+    // recaptchaScript.setAttribute('src', '../../node_modules/topojson/dist/topojson.min.js');
+    // document.head.appendChild(recaptchaScript);
+
     console.log("mounted Map Chart component");
 
     var promises = [];
-    var world_file = 'data/countries-110m.json';
-    var data_file = 'data/oecd_data.csv';
+    var world_file = 'gendergap/countries-110m.json';
+    var data_file = 'gendergap/oecd_data.csv';
 
     promises.push(d3.json(world_file));
     promises.push(d3.csv(data_file));
 
-    Promise.all(promises).then(function (values) {
-      this.mapChart(values);
+    Promise.all(promises).then( data => {
+      this.values = data;
+      this.mapChart();
     });
     // d3.csv(
     //   "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
