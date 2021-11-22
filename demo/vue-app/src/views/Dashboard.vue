@@ -11,7 +11,7 @@
               <li class="nav-item">
                 <a class="nav-link active" href="#">
                   <span data-feather="home"></span>
-                  World Map
+                  Gender Wage Gap Around the World
                 </a>
               </li>
               <li class="nav-item">
@@ -51,8 +51,8 @@
             "
           >
             <!-- <h1 class="h2">Dashboard</h1>-->
-             <h2>Visualizing the Gender Gap in Education and the Workforce</h2> 
-            <div class="btn-toolbar mb-2 mb-md-0">
+            <h4>Visualizing the Gender Gap in Employment and Education</h4> 
+            <!-- <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <button type="button" class="btn btn-sm btn-outline-secondary">
                   Share
@@ -68,11 +68,11 @@
                 <span data-feather="calendar"></span>
                 This week
               </button>
-            </div>
+            </div> -->
           </div>
 
         <!-- Timeseries (Multiseries Line Chart) -->
-        <TimeSeriesChart />
+        <!-- <TimeSeriesChart /> -->
 
         <!-- Donut chart -->
         <!-- <PieChart /> -->
@@ -96,14 +96,14 @@
 
 <script>
 // @ is an alias to /src
-import TimeSeriesChart from '../components/TimeSeriesChart'
+// import TimeSeriesChart from '../components/TimeSeriesChart'
 // import PieChart from '../components/PieChart'
 import MapChart from '../components/MapChart'
 
 export default {
   name: 'dashboard',
   components: {
-    TimeSeriesChart,
+    // TimeSeriesChart,
     // PieChart,
     MapChart
   }
