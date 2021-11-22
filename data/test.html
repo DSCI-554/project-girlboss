@@ -78,7 +78,7 @@
             padding: 10px;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
             line-height: 18px;
-            height: 150px;
+            height: 100px;
             margin-bottom: 40px;
             width: 150px;
         }
@@ -112,14 +112,12 @@
         map.on('load', () => {
             // the rest of the code will go in here
             const layers = [
-                '0-30,000',
-                '30,000-35,000',
-                '35,000-40,000',
-                '40,000-45,000',
-                '45,000-50,000',
-                '50,000-55,000',
-                '55,000-60,000',
-                '60,000+'
+                '$0-$35,000',
+                '$35,000-$40,000',
+                '$40,000-$45,000',
+                '$45,000-$50,000',
+                '$50,000-$55,000',
+                '$55,000+'
             ];
             const colors = [
                 '#fae0e4',
@@ -127,9 +125,7 @@
                 '#ff99ac',
                 '#ff7096',
                 '#ff5c8a',
-                '#ff477e',
-                '#ff0a54',
-                '#800026'
+                '#ff0a54'
             ];
 
             // create legend
@@ -141,6 +137,7 @@
                 const key = document.createElement('span');
                 key.className = 'legend-key';
                 key.style.backgroundColor = color;
+                key.style.opacity = 0.4;
 
                 const value = document.createElement('span');
                 value.innerHTML = `${layer}`;
