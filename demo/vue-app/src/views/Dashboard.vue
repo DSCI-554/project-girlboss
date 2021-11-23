@@ -10,25 +10,26 @@
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link active" href="#">
-                  <span data-feather="home"></span>
                   Gender Wage Gap Around the World
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <span data-feather="file"></span>
                   Time Series Chart
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <span data-feather="shopping-cart"></span>
-                  Dot Plot
+                  Circle Packing Chart
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <span data-feather="users"></span>
+                  Mapbox Map
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
                   Bar Chart
                 </a>
               </li>
@@ -71,13 +72,11 @@
             </div> -->
           </div>
 
-        <!-- Timeseries (Multiseries Line Chart) -->
-        <!-- <TimeSeriesChart /> -->
-
-        <!-- Donut chart -->
-        <!-- <PieChart /> -->
-
         <MapChart />
+
+        <br>
+        <!-- Timeseries (Multiseries Line Chart) -->
+        <TimeSeriesChart />
         
         </main>
       </div>
@@ -96,15 +95,13 @@
 
 <script>
 // @ is an alias to /src
-// import TimeSeriesChart from '../components/TimeSeriesChart'
-// import PieChart from '../components/PieChart'
+import TimeSeriesChart from '../components/TimeSeriesChart'
 import MapChart from '../components/MapChart'
 
 export default {
   name: 'dashboard',
   components: {
-    // TimeSeriesChart,
-    // PieChart,
+    TimeSeriesChart,
     MapChart
   }
 }
