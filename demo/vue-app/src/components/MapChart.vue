@@ -72,13 +72,14 @@ export default {
   },
   methods: {
     onChange() {
-      var sliderValue = '2019';
+      var sliderValue = this.sliderValue;
       var select = this.selected;
       var update_data = this.data.filter(function(row){
           var time = row['Time'];
           var indicator = row['Indicator'];
           return time === sliderValue &&  indicator === select;
       });
+      console.log(update_data);
 
       update_data = new Map(update_data.map((d) => [d.id, +d.Value]));
 
