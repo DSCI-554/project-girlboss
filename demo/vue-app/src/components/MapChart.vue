@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!-- USE ref=, not id= -->
-    <!-- <div ref="chart"></div> -->
     <b-container>
       <b-row>
         <b-col>
@@ -14,14 +12,12 @@
         <b-col><b-form-select id="#select" v-model="selected" :options="options" @change="onChange($event)"></b-form-select></b-col>
         <b-col><p style="text-align:right" id="value-time"></p></b-col>
       </b-row>
+      <b-row>
+        <b-col align-self="end">
+          <div class="tooltip" style="opacity: 0; text-align:left;"></div>
+        </b-col>
+      </b-row>
     </b-container>
-    <!-- <div class="col-sm-2"><p style="text-align:center" id="value-time"></p></div>
-    <b-form-select id="#select" v-model="selected" :options="options" @change="onChange($event)"></b-form-select> -->
-    <!-- <select v-model="selected" id="selectButton"> -->
-      <!-- <option value="Gender wage gap at median">Gender wage gap at median</option>
-      <option value="Gender wage gap at 9th decile (top)">Gender wage gap at 9th decile (top)</option>
-      <option value="Gender wage gap at 1st decile (bottom)">Gender wage gap at 1st decile (bottom)</option> -->
-    <!-- </select> -->
     <div id="div_template"></div>
     <b-container>
       <b-row>
@@ -31,23 +27,8 @@
               <div class="col-sm"><div id="slider-time"></div></div>
           </div>
         </b-col>
-        <b-col>
-          <div class="tooltip" style="opacity: 0; text-align:left;"></div>
-        </b-col>
       </b-row>
     </b-container>
-    <!-- <div class="container">
-        <div class="col">
-            <svg id="chart" style="background-color: white"></svg>
-            <div class="row align-items-center">
-                <div class="col-sm"><div id="slider-time"></div></div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="tooltip" style="opacity: 0; text-align:left;"></div>
-            <span id="info"></span>
-        </div>
-    </div> -->
   </div>
 </template>
 
@@ -146,7 +127,7 @@ export default {
         .projection(projection);
 
       svg.append("g")
-        .attr("transform", "translate(600,20)")
+        .attr("transform", "translate(25,20)")
         .append(() => this.legend({ color, title: 'OECD Gender Wage Gap', width: 260 }));
       console.log('svg');
 
