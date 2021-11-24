@@ -77,10 +77,10 @@ If it's a video, Erin will work on the Youtube
 
 | Requirement                            | Label        | Done |
 | -------------------------------------- | ------------ | ---- |
-| responsive d3 chart                    | responsive   |  Erica (line/ bar chart)  |
+| responsive d3 chart                    | responsive   |  Erica (line chart)  |
 | interactive d3 chart                   | interactive  |  Erin (chloropleth)    |
-| d3 chart with an animated transition   | animated     |  Sarah (radial bar chart?)    |
-| d3 layout                              | layout       |  Erica (circle packing?)    |
+| d3 chart with an animated transition   | animated     |  Sarah (radial bar chart?), Erica (line chart)    |
+| d3 layout                              | layout       |  Erica (circle packing chart)    |
 | d3 map                                 | map          |  Erin (chloropleth)    |
 | Mapbox map                             | mapbox       |  Madi (proportional symbol map?)   |
 
