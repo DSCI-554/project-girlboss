@@ -15,7 +15,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/monthlywages">
-                  Monthly Wages Time Series Chart
+                  Monthly Wages by Gender Over Time
                 </a>
               </li>
               <li class="nav-item">
