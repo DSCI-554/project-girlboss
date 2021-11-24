@@ -8,13 +8,15 @@
         >
           <div class="sidebar-sticky pt-3">
             <ul class="nav flex-column">
+              <b>Employment</b>
+              <hr>
               <li class="nav-item">
-                <a class="nav-link active" href="/">
+                <a class="nav-link" href="/">
                   Gender Wage Gap Around the World
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/monthlywages">
+                <a class="nav-link active" href="/monthlywages">
                   Monthly Wages by Gender Over Time
                 </a>
               </li>
@@ -28,6 +30,9 @@
                   Mapbox Map
                 </a>
               </li>
+              <br>
+              <b>Education</b>
+              <hr>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   Bar Chart
@@ -63,6 +68,14 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+.nav-link.active,
+.nav-link:hover,
+.nav-link:focus{
+    color: #111;
+}
+</style>
 
 <script>
 // @ is an alias to /src
