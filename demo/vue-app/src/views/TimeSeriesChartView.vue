@@ -54,8 +54,6 @@
             <h4>Visualizing the Gender Gap in Employment and Education</h4> 
           </div>
 
-        <MapChart />
-
         <br>
         <!-- Timeseries (Multiseries Line Chart) -->
         <TimeSeriesChart />
