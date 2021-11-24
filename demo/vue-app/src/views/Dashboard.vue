@@ -11,7 +11,7 @@
               <b>Employment</b>
               <hr>
               <li class="nav-item">
-                <a class="nav-link active" href="/">
+                <a class="nav-link active" href="/wagegap">
                   Gender Wage Gap Around the World
                 </a>
               </li>
