@@ -9,13 +9,13 @@
           <div class="sidebar-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="/">
                   Gender Wage Gap Around the World
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Time Series Chart
+                <a class="nav-link" href="/monthlywages">
+                  Monthly Wages Time Series Chart
                 </a>
               </li>
               <li class="nav-item">
@@ -34,7 +34,6 @@
                 </a>
               </li>
             </ul>
-
           </div>
         </nav>
 
@@ -73,10 +72,6 @@
           </div>
 
         <MapChart />
-
-        <br>
-        <!-- Timeseries (Multiseries Line Chart) -->
-        <TimeSeriesChart />
         
         </main>
       </div>
@@ -95,13 +90,11 @@
 
 <script>
 // @ is an alias to /src
-import TimeSeriesChart from '../components/TimeSeriesChart'
 import MapChart from '../components/MapChart'
 
 export default {
   name: 'dashboard',
   components: {
-    TimeSeriesChart,
     MapChart
   }
 }
