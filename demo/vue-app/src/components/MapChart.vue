@@ -146,6 +146,7 @@ export default {
             svg.select('.selected')
                 .classed('selected', false);
             d3.select(this)
+                //.style("fill", "blue")
                 .classed('selected', true);		
             div.transition()		
                 .duration(200)		
@@ -447,7 +448,7 @@ a {
 .col {
 flex: 1; }
 
-.selected {
+svg >>> .selected {
 fill: rgb(0, 132, 255);
 }
 
@@ -458,7 +459,7 @@ div.tooltip {
     height: 100px;					
     padding: 2px;				
     font: 12px sans-serif;		
-    /* background: lightsteelblue; */
+    background: rgb(204, 224, 250, 0.4);
     border: 0px;		
     border-radius: 8px;			
     pointer-events: none;			
