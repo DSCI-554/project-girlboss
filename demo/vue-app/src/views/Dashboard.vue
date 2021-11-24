@@ -8,6 +8,8 @@
         >
           <div class="sidebar-sticky pt-3">
             <ul class="nav flex-column">
+              <b>Employment</b>
+              <hr>
               <li class="nav-item">
                 <a class="nav-link active" href="/">
                   Gender Wage Gap Around the World
@@ -15,7 +17,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/monthlywages">
-                  Monthly Wages Time Series Chart
+                  Monthly Wages by Gender Over Time
                 </a>
               </li>
               <li class="nav-item">
@@ -28,6 +30,9 @@
                   Mapbox Map
                 </a>
               </li>
+              <br>
+              <b>Education</b>
+              <hr>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   Bar Chart
@@ -86,6 +91,20 @@
   background-color: #ccc;
   border: 0.5px solid black;
 } */
+.nav-link.active,
+.nav-link:hover,
+.nav-link:focus{
+    color: #111;
+}
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
 </style>
 
 <script>
