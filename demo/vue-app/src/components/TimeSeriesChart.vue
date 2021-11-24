@@ -1,6 +1,21 @@
 <template>
-  <div>
+  <div id="tsdiv">
     <h1 align="left">Monthly Wages by Gender Over Time (in local currency)</h1>
+    <b-row align-h="start">
+      <b-col align-self="start" cols="8">
+      <p align="left">
+        Gender equality is crucial to economic growth and sustainable
+        development, including equality in the workplace to work and provision
+        of fair pay. Women still face significant barriers to work and access to
+        decision-making roles and jobs all across the world. The goal of
+        non-discrimination and equal treatment in the workplace is to ensure all
+        workers are paid equally for labor of equal value, regardless of gender.
+        The extent to which this is true over time and by country can be
+        evalulated using disaggregated wage data.
+      </p>
+      </b-col>
+    </b-row>
+
     <b-container>
       <b-row align-h="start">
         <b-col align-self="start" cols="1"
@@ -139,7 +154,8 @@ export default {
         .attr("x", 0)
         .attr("y", 5)
         .attr("dy", ".71em")
-        .style("text-anchor", "end");
+        .style("text-anchor", "end")
+        .text("Wages");
 
       // Select all of the grouped elements and update the data
       const selectCountryGroups = this.svg
@@ -312,52 +328,52 @@ export default {
       initialGraph("Australia");
     }, //linechart
 
-    updateGraph(legis) {
-      console.log("run updateGraph");
-      const selectCountry = this.nest.filter(([key]) => key == legis); // this is the ARRAY
+    // updateGraph(legis) {
+    //   console.log("run updateGraph");
+    //   const selectCountry = this.nest.filter(([key]) => key == legis); // this is the ARRAY
 
-      // RESCALE Y AXIS for new country
-      function getMax(maleArr) {
-        let max = 0;
-        for (let i = 0; i < maleArr.length; i++) {
-          if (max == 0 || parseInt(maleArr[i].wvalue) > parseInt(max))
-            max = maleArr[i].wvalue;
-        }
-        return max;
-      }
-      let newMax = d3.map(selectCountry, (d) => getMax(d[1][1][1]))[0];
-      this.y.domain([0, newMax]);
-      let yAxis = d3.axisLeft().scale(this.y);
-      // REMOVE old Y-Axis
-      d3.select("#yAxis").remove();
-      // create NEW Y-axis
-      this.svg
-        .append("g")
-        .attr("class", "axis")
-        .attr("id", "yAxis")
-        .call(yAxis)
-        .attr("font-size", "12px")
-        .append("text") // y-axis Label
-        .attr("id", "yAxisLabel")
-        .attr("fill", "black")
-        .attr("transform", "rotate(-90)")
-        .attr("x", 0)
-        .attr("y", 5)
-        .attr("dy", ".71em")
-        .style("text-anchor", "end");
-
-      // Select all of the grouped elements and update the data
-      const selectCountryGroups = this.svg
-        .selectAll(".countryGroups")
-        .data(selectCountry);
-      // Select all the lines and transition to new positions
-      selectCountryGroups
-        .selectAll("path.line")
-        .data(([, values]) => values)
-        .transition()
-        .duration(600)
-        .attr("d", (d) => this.valueLine(Array.from(d.values())[1]));
-    }, // updateGraph
+    //   // RESCALE Y AXIS for new country
+    //   function getMax(maleArr) {
+    //     let max = 0;
+    //     for (let i = 0; i < maleArr.length; i++) {
+    //       if (max == 0 || parseInt(maleArr[i].wvalue) > parseInt(max))
+    //         max = maleArr[i].wvalue;
+    //     }
+    //     return max;
+    //   }
+    //   let newMax = d3.map(selectCountry, (d) => getMax(d[1][1][1]))[0];
+    //   this.y.domain([0, newMax]);
+    //   let yAxis = d3.axisLeft().scale(this.y);
+    //   // REMOVE old Y-Axis
+    //   d3.select("#yAxis").remove();
+    //   // create NEW Y-axis
+    //   this.svg
+    //     .append("g")
+    //     .attr("class", "axis")
+    //     .attr("id", "yAxis")
+    //     .call(yAxis)
+    //     .attr("font-size", "12px")
+    //     .append("text") // y-axis Label
+    //     .attr("id", "yAxisLabel")
+    //     .attr("fill", "black")
+    //     .attr("transform", "rotate(-90)")
+    //     .attr("x", 0)
+    //     .attr("y", 5)
+    //     .attr("dy", ".71em")
+    //     .style("text-anchor", "end")
+    //     .text("Wages");
+    //   // Select all of the grouped elements and update the data
+    //   const selectCountryGroups = this.svg
+    //     .selectAll(".countryGroups")
+    //     .data(selectCountry);
+    //   // Select all the lines and transition to new positions
+    //   selectCountryGroups
+    //     .selectAll("path.line")
+    //     .data(([, values]) => values)
+    //     .transition()
+    //     .duration(600)
+    //     .attr("d", (d) => this.valueLine(Array.from(d.values())[1]));
+    // }, // updateGraph
   }, // methods
   mounted: function () {
     // console.log("mounted Time Series Chart component");
@@ -396,8 +412,12 @@ option:hover {
   cursor: pointer;
 }
 
-svg .tick > text {
-  font-size: 30px;
-  fill: green;
+#tsdiv {
+  padding-left: 10%;
+}
+
+.ptext {
+  padding: 10px;
+  margin: 100px;
 }
 </style>
