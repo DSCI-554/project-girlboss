@@ -191,8 +191,9 @@ export default {
         var update_data = data.filter(function(row){
             var time = row['Time'];
             var id = row['id'];
-            var indicator = row['Indicator'];
-            return time === sliderValue & id === country_id & indicator !== 'Gender wage gap at median' & indicator !== 'Gender wage gap at 9th decile (top)' & indicator !== 'Gender wage gap at 1st decile (bottom)';
+            //var indicator = row['Indicator'];
+            return time === sliderValue & id === country_id
+            //return time === sliderValue & id === country_id & indicator !== 'Gender wage gap at median' & indicator !== 'Gender wage gap at 9th decile (top)' & indicator !== 'Gender wage gap at 1st decile (bottom)';
         });
 
         var tooltip = `<b>Country</b>: ${country}`;
@@ -371,11 +372,11 @@ fill: rgb(0, 132, 255);
 div.tooltip {	
     position: absolute;			
     text-align: center;			
-    width: 250px;					
-    height: 100px;					
+    width: 275px;					
+    height: 125px;					
     padding: 2px;				
     font: 12px sans-serif;		
-    background: rgb(204, 224, 250, 0.4);
+    background: rgb(204, 224, 250, 0.5);
     border: 0px;		
     border-radius: 8px;			
     pointer-events: none;			
