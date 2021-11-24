@@ -74,7 +74,7 @@ export default {
     },
     mapChart() {
       var width = 975;
-      var height = 610;
+      var height = 575;
 
       var world = this.values[0];
       this.world = world;
@@ -117,7 +117,8 @@ export default {
         .projection(projection);
 
       svg.append("g")
-        .attr("transform", "translate(25,20)")
+        .attr("transform", "translate(25,530)")
+        // .attr("transform", "translate(25,20)")
         .append(() => this.legend({ color, title: 'OECD Gender Wage Gap', width: 260 }));
 
       var div = d3.select(".tooltip");
