@@ -10,8 +10,7 @@
         decision-making roles and jobs all across the world. The goal of
         non-discrimination and equal treatment in the workplace is to ensure all
         workers are paid equally for labor of equal value, regardless of gender.
-        The extent to which this is true over time and by country can be
-        evalulated using disaggregated wage data.
+        The extent to which this is true can be measured and evalulated using wage data disaggregated over time and by country.
       </p>
       </b-col>
     </b-row>
@@ -174,7 +173,7 @@ export default {
       console.log("call line chart");
       // console.log(data);
 
-      const margin = { top: 10, right: 0, bottom: 0, left: 40 };
+      const margin = { top: 10, right: 0, bottom: 0, left: 56 };
       const h = 500 - margin.top - margin.bottom; // height
       const w = 900 - margin.left - margin.right; // width
       const valueLine = d3
