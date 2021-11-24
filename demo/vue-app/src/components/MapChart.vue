@@ -9,7 +9,7 @@
     </b-container>
     <b-container>
       <b-row align-h="around">
-        <b-col><b-form-select id="#select" v-model="selected" :options="options" @change="onChange($event)"></b-form-select></b-col>
+        <b-col><b-form-select id="#select" v-model="selected" :options="options" @change="onChange()"></b-form-select></b-col>
         <b-col><p style="text-align:right" id="value-time"></p></b-col>
       </b-row>
       <b-row>
@@ -38,9 +38,6 @@ import * as topojson from "topojson-client";
 import { sliderHorizontal } from "d3-simple-slider";
 export default {
   name: "MapChart",
-  // ADD D3 CODE HERE, use refs instead of id, for example:
-  // var svg = d3
-  // .select(this.$refs.tschart)
   data () {
     return {
       selected: 'Gender wage gap at median',
@@ -60,7 +57,6 @@ export default {
           var indicator = row['Indicator'];
           return time === sliderValue &&  indicator === select;
       });
-      console.log(update_data);
 
       update_data = new Map(update_data.map((d) => [d.id, +d.Value]));
 
@@ -77,9 +73,6 @@ export default {
       this.display_data = display_data;
     },
     mapChart() {
-      // var margin = { top: 10, right: 30, bottom: 30, left: 60 },
-      //   width = 975 - margin.left - margin.right,
-      //   height = 610 - margin.top - margin.bottom;
       var width = 975;
       var height = 610;
 
@@ -97,7 +90,6 @@ export default {
         return time === 2019 && indicator === 'Gender wage gap at median';
       });
       default_data = new Map(default_data.map((d) => [d.id, +d.Value]));
-      //default_data.title = "Gender Wage Gap (2019)";
 
       this.display_data = data.filter(function(row){
         var indicator = row['Indicator'];
@@ -117,8 +109,6 @@ export default {
       var svg = d3.select('#chart')
         .attr("width", width)
         .attr("height", height);
-        // .attr("width", width + margin.left + margin.right)
-        // .attr("height", height + margin.top + margin.bottom);
 
       var projection = d3.geoEquirectangular()
         .fitSize([width, height], json);
@@ -129,7 +119,6 @@ export default {
       svg.append("g")
         .attr("transform", "translate(25,20)")
         .append(() => this.legend({ color, title: 'OECD Gender Wage Gap', width: 260 }));
-      console.log('svg');
 
       var div = d3.select(".tooltip");
       var country;
@@ -146,7 +135,6 @@ export default {
             svg.select('.selected')
                 .classed('selected', false);
             d3.select(this)
-                //.style("fill", "blue")
                 .classed('selected', true);		
             div.transition()		
                 .duration(200)		
@@ -156,8 +144,6 @@ export default {
             div.html(obtainStats(sliderValue, country_id, country, data));
             })					
         .on("mouseout", function() {
-            // svg.select('.selected')
-            //     .classed('selected', false);
             d3.select(this)
                 .classed('selected', false);			
             div.transition()		
@@ -200,31 +186,6 @@ export default {
 
       d3.select('p#value-time').text("OECD Gender Wage Gap on Year "+d3.timeFormat('%Y')(sliderTime.value()));
 
-      // var allGroup = ['Gender wage gap at median', 'Gender wage gap at 9th decile (top)', 'Gender wage gap at 1st decile (bottom)'];
-      //   // add the options to the button
-      // d3.select("#selectButton")
-      //     .selectAll('option')
-      //     .data(allGroup)
-      //     .enter()
-      //     .append('option')
-      //     .text(function (d) { return d; }) // text showed in the menu
-      //     .attr("value", function (d) { return d; }); // corresponding value returned by the button
-
-      // d3.select("#selectButton").on("change", function() {
-      //         // recover the option that has been chosen
-      //         var selectedOption = d3.select(this).property("value");
-      //         // run the updateChart function with this selected option
-      //         display_data = this.updateMapData(selectedOption, sliderValue, data, world, color);
-      // });
-
-      // d3.select("#select").on("change", function() {
-      //         // recover the option that has been chosen
-      //         var selectedOption = d3.select(this).property("value");
-      //         this.selectedOption = selectedOption;
-      //         // run the updateChart function with this selected option
-      //         display_data = this.updateMapData(selectedOption, sliderValue, data, world, color);
-      // });
-
       function obtainStats(sliderValue, country_id, country, data) {
         var update_data = data.filter(function(row){
             var time = row['Time'];
@@ -250,27 +211,6 @@ export default {
         return indicator === 'Gender wage gap at median' || indicator === 'Gender wage gap at 1st decile (bottom)' || indicator === 'Gender wage gap at 9th decile (top)';
       });
       return wagegap_data;
-    },
-    updateMapData(selectedOption, sliderValue, data, world, color) {
-      var update_data = data.filter(function(row){
-          var time = row['Time'];
-          var indicator = row['Indicator'];
-          return time === sliderValue &&  indicator === selectedOption;
-      });
-
-      update_data = new Map(update_data.map((d) => [d.id, +d.Value]));
-
-      d3.selectAll('.country')
-          .data(topojson.feature(world, world.objects.countries).features)
-          .attr("fill", d => ((typeof(update_data.get(d.id)) == "undefined") ? '#ccc' : color(update_data.get(d.id))))
-          .text(d => `Country: ${d.properties.name} OECD Gender Wage Gap: ${update_data.get(d.id)}`);
-
-      var display_data = data.filter(function(row) {
-          var indicator = row['Indicator'];
-          return indicator === selectedOption;
-      });
-
-      return display_data;
     },
     updateTimeframe(data, sliderValue, world, color) {
       var update_data = data.filter(function(row){
@@ -389,10 +329,7 @@ export default {
     },
     ramp(color, n = 256) {
       const canvas = document.getElementById("canvas");
-      //const canvas = DOM.canvas(n, 1);
       const context = canvas.getContext("2d");
-      // d3.select(canvas).attr("width", n)
-      // .attr("height", 1);
       for (let i = 0; i < n; ++i) {
           context.fillStyle = color(i / (n - 1));
           context.fillRect(i, 0, 1, 1);
@@ -414,34 +351,12 @@ export default {
       this.values = data;
       this.mapChart();
     });
-    // d3.csv(
-    //   "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/3_TwoNumOrdered_comma.csv",
-    //   (d) => {
-    //     return { date: d3.timeParse("%Y-%m-%d")(d.date), value: d.value };
-    //   }
-    // ).then((data) => {
-    //   this.lineChart(data);
-    // });
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/* h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-} */
 .container {
     display: flex; }
 
