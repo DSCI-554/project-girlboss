@@ -3,7 +3,7 @@
     <h1 align="left">Monthly Wages by Gender Over Time (in local currency)</h1>
     <b-container>
       <b-row align-h="start">
-        <b-col align-self="start" cols=1
+        <b-col align-self="start" cols="1"
           ><b-form-select
             id="#select"
             v-model="selected"
@@ -15,7 +15,6 @@
       </b-row>
     </b-container>
     <div ref="tschart" align="center"></div>
-
   </div>
 </template>
 
@@ -111,9 +110,7 @@ export default {
       console.log("call onChange");
       let selectedCountry = this.selected;
       // console.log(selectedCountry)
-
       const selectCountry = this.nest.filter(([key]) => key == selectedCountry); // this is the ARRAY
-
       // RESCALE Y AXIS for new country
       function getMax(maleArr) {
         let max = 0;
@@ -134,6 +131,7 @@ export default {
         .attr("class", "axis")
         .attr("id", "yAxis")
         .call(yAxis)
+        .attr("font-size", "12px")
         .append("text") // y-axis Label
         .attr("id", "yAxisLabel")
         .attr("fill", "black")
@@ -245,14 +243,16 @@ export default {
           .axisBottom()
           .scale(x)
           .ticks(10)
-          .tickFormat(d3.format("d"));
-        let yAxis = d3.axisLeft().scale(y);
+          .tickFormat(d3.format("d"))
+          .tickSize(7);
+        let yAxis = d3.axisLeft().scale(y).tickSize(7);
         svg
           .append("g")
           .attr("class", "axis")
           .attr("id", "xAxis")
           .attr("transform", "translate(0," + h + ")")
           .call(xAxis)
+          .attr("font-size", "12px")
           .append("text") // X-axis Label
           .attr("id", "xAxisLabel")
           .attr("fill", "black")
@@ -260,13 +260,14 @@ export default {
           .attr("x", w)
           .attr("dy", ".71em")
           .style("text-anchor", "end")
-          .text("");
+          .text("Years");
         // Y-axis
         svg
           .append("g")
           .attr("class", "axis")
           .attr("id", "yAxis")
           .call(yAxis)
+          .attr("font-size", "12px")
           .append("text") // y-axis Label
           .attr("id", "yAxisLabel")
           .attr("fill", "black")
@@ -274,7 +275,8 @@ export default {
           .attr("x", 0)
           .attr("y", 5)
           .attr("dy", ".71em")
-          .style("text-anchor", "end");
+          .style("text-anchor", "end")
+          .text("Wages");
 
         const selectCountry = nest.filter(([key]) => key == legis);
         const selectCountryGroups = svg
@@ -298,7 +300,7 @@ export default {
           .attr("stroke", function (d) {
             return color(d[0]);
           })
-          .attr("stroke-width", 2.0);
+          .attr("stroke-width", 2.5);
 
         initialPath
           .attr("d", (d) => valueLine(Array.from(d.values())[1]))
@@ -334,6 +336,7 @@ export default {
         .attr("class", "axis")
         .attr("id", "yAxis")
         .call(yAxis)
+        .attr("font-size", "12px")
         .append("text") // y-axis Label
         .attr("id", "yAxisLabel")
         .attr("fill", "black")
@@ -389,5 +392,12 @@ a {
   margin: 10%;
   cursor: pointer;
 }
-option:hover { cursor: pointer; }
+option:hover {
+  cursor: pointer;
+}
+
+svg .tick > text {
+  font-size: 30px;
+  fill: green;
+}
 </style>
