@@ -16,12 +16,12 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" align="left" href="/monthlywages">
+                <a class="nav-link" align="left" href="/monthlywages">
                   Monthly Wages by Gender Over Time
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/employmentbysector">
+                <a class="nav-link active" align="left" href="/employmentbysector">
                   Employment by Sector
                 </a>
               </li>
@@ -61,7 +61,7 @@
 
         <br>
         <!-- Timeseries (Multiseries Line Chart) -->
-        <TimeSeriesChart />
+        <CirclePackingChart />
         
         </main>
       </div>
@@ -79,12 +79,12 @@
 
 <script>
 // @ is an alias to /src
-import TimeSeriesChart from '../components/TimeSeriesChart'
+import CirclePackingChart from '../components/CirclePackingChart'
 
 export default {
   name: 'dashboard',
   components: {
-    TimeSeriesChart
+    CirclePackingChart
   }
 }
 </script>

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 //import Home from '../views/Home.vue'
 import Dashboard from '../views/Dashboard.vue'
 import TimeSeriesChartView from '../views/TimeSeriesChartView.vue'
+import CirclePackingChartView from '../views/CirclePackingChartView.vue'
 
 Vue.use(VueRouter)
 
@@ -34,7 +35,12 @@ const routes = [
     path: '/monthlywages',
     name: 'Monthly Wages',
     component: TimeSeriesChartView
-  }
+  },
+  {
+    path: '/employmentbysector',
+    name: 'Employment by Sector and Country',
+    component: CirclePackingChartView
+  },
 ]
 
 const router = new VueRouter({

@@ -21,8 +21,8 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="#">
-                  Circle Packing Chart
+                <a class="nav-link" align="left" href="/employmentbysector">
+                  Employment by Sector
                 </a>
               </li>
               <li class="nav-item">
