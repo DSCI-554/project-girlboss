@@ -11,8 +11,8 @@
       <b-row>
       <b-col cols="9">
       <p style="text-align: left; font-size: 85%">
-        The gender wage gap is defined as the difference between earnings of men and women relative to earnings of men (%) and is a global problem.
-        Data from the Organisation for Economic Co-operation and Development (OECD) from 2000 to 2019 is displayed in the choropleth map below.
+        The gender wage gap is a global problem that is defined as the difference between earnings of men and women relative to earnings of men (%).
+        Data from the Organisation for Economic Co-operation and Development (OECD) from 2000 to 2019 is displayed in the map below.
         Although the gender pay gap has been closing in recent years, it is still prominent in median and top earners in developed countries like the United States, Japan, and South Korea.</p>
       </b-col>
       </b-row>
@@ -175,7 +175,7 @@ export default {
         .width(925)
         .displayValue(false)
         .on('onchange', val => {
-            d3.select('p#value-time').text("OECD Gender Wage Gap on Year "+d3.timeFormat('%Y')(val));
+            d3.select('p#value-time').text("OECD Gender Wage Gap in Year "+d3.timeFormat('%Y')(val));
             this.updateTimeframe(this.display_data, d3.timeFormat('%Y')(val), world, color);
             sliderValue = d3.timeFormat('%Y')(val);
             this.sliderValue = sliderValue;
@@ -195,7 +195,7 @@ export default {
 
       gTime.call(sliderTime);
 
-      d3.select('p#value-time').text("OECD Gender Wage Gap on Year "+d3.timeFormat('%Y')(sliderTime.value()));
+      d3.select('p#value-time').text("OECD Gender Wage Gap in Year "+d3.timeFormat('%Y')(sliderTime.value()));
 
       function obtainStats(sliderValue, country_id, country, data) {
         var update_data = data.filter(function(row){
