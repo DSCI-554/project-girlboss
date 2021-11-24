@@ -1,20 +1,21 @@
 <template>
   <div>
     <h1 align="left">Monthly Wages by Gender Over Time (in local currency)</h1>
-    <!-- USE ref=, not id= -->
-    <div ref="tschart" align="center"></div>
     <b-container>
-      <b-row align-h="around">
-        <b-col
+      <b-row align-h="start">
+        <b-col align-self="start" cols=1
           ><b-form-select
             id="#select"
             v-model="selected"
             :options="options"
             @change="onChange($event)"
+            class="dropdown"
           ></b-form-select
         ></b-col>
       </b-row>
     </b-container>
+    <div ref="tschart" align="center"></div>
+
   </div>
 </template>
 
@@ -25,13 +26,86 @@ export default {
   data() {
     return {
       selected: "Australia",
-      options: [
-        { value: "Australia", text: "Australia" },
-        { value: "Canada", text: "Canada" },
-      ],
     };
   }, //data
-
+  computed: {
+    options: () => [
+      "Australia",
+      "Austria",
+      "Azerbaijan",
+      // "Belarus",
+      "Belgium",
+      "Brazil",
+      "Bulgaria",
+      "Cambodia",
+      "Canada",
+      "Colombia",
+      "Costa Rica",
+      "Croatia",
+      "Cyprus",
+      "Czech Republic",
+      // "Congo, Dem. Rep.",
+      // "Denmark",
+      "Ecuador",
+      "Egypt, Arab Rep.",
+      "El Salvador",
+      "Estonia",
+      "Finland",
+      "France",
+      "Georgia",
+      "Germany",
+      // "Ghana",
+      // "Guatemala",
+      "Guyana",
+      "Honduras",
+      "Iceland",
+      "Iraq",
+      "Ireland",
+      "Israel",
+      "Japan",
+      "Jordan",
+      "Kazakhstan",
+      "Latvia",
+      "Lebanon",
+      "Lithuania",
+      "Luxembourg",
+      "Mexico",
+      "Mongolia",
+      "Myanmar",
+      "Nepal",
+      "Netherlands",
+      "New Zealand",
+      "Norway",
+      "Oman",
+      "Pakistan",
+      "Panama",
+      "Paraguay",
+      "Peru",
+      "Philippines",
+      "Poland",
+      "Portugal",
+      "Qatar",
+      "Korea, Rep.",
+      "Romania",
+      "Singapore",
+      "Slovak Republic",
+      "Spain",
+      "Sri Lanka",
+      "Eswatini",
+      "Sweden",
+      "Switzerland",
+      "Syrian Arab Republic",
+      "Thailand",
+      "Timor-Leste",
+      "Turkey",
+      "Ukraine",
+      "United Kingdom",
+      "Uruguay",
+      "Venezuela, RB",
+      "Vietnam",
+      "United States",
+    ],
+  },
   methods: {
     onChange() {
       console.log("call onChange");
@@ -80,7 +154,6 @@ export default {
         .transition()
         .duration(600)
         .attr("d", (d) => this.valueLine(Array.from(d.values())[1]));
-      
     }, // onChange
 
     lineChart(data) {
@@ -109,7 +182,7 @@ export default {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .attr("class", "svg");
-      this.svg = svg
+      this.svg = svg;
 
       // Add a color legend
       svg
@@ -144,7 +217,7 @@ export default {
         (d) => d.state,
         (d) => d.lvalue
       );
-      this.nest = nest
+      this.nest = nest;
 
       // Create a dropdown menu
       const countryMenu = d3.select("#countryDropdown");
@@ -160,10 +233,10 @@ export default {
 
       // Scales
       const x = d3.scaleLinear().domain([1995, 2011]).range([0, w]);
-      this.x = x
+      this.x = x;
 
       const y = d3.scaleLinear().domain([0, 6000]).range([h, 0]);
-      this.y = y
+      this.y = y;
 
       // Init graph
       const initialGraph = function (legis) {
@@ -238,7 +311,7 @@ export default {
     }, //linechart
 
     updateGraph(legis) {
-      console.log("run updateGraph")
+      console.log("run updateGraph");
       const selectCountry = this.nest.filter(([key]) => key == legis); // this is the ARRAY
 
       // RESCALE Y AXIS for new country
@@ -282,12 +355,12 @@ export default {
         .duration(600)
         .attr("d", (d) => this.valueLine(Array.from(d.values())[1]));
     }, // updateGraph
-  },
+  }, // methods
   mounted: function () {
     // console.log("mounted Time Series Chart component");
     d3.csv("wages/wages.csv").then((data) => {
-      // console.log(data)
       this.lineChart(data);
+      this.data = data;
     });
   },
 };
@@ -309,4 +382,12 @@ li {
 a {
   color: #42b983;
 }
+/* stylize the menu */
+.dropdown {
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10%;
+  cursor: pointer;
+}
+option:hover { cursor: pointer; }
 </style>
