@@ -118,7 +118,7 @@ export default {
       default_data = new Map(default_data.map((d) => [d.id, +d.Value]));
       //default_data.title = "Gender Wage Gap (2019)";
 
-      var display_data = data.filter(function(row){
+      this.display_data = data.filter(function(row){
         var indicator = row['Indicator'];
         return indicator === 'Gender wage gap at median';
       });
@@ -197,7 +197,7 @@ export default {
         .displayValue(false)
         .on('onchange', val => {
             d3.select('p#value-time').text("OECD Gender Wage Gap on Year "+d3.timeFormat('%Y')(val));
-            this.updateTimeframe(display_data, d3.timeFormat('%Y')(val), world, color);
+            this.updateTimeframe(this.display_data, d3.timeFormat('%Y')(val), world, color);
             sliderValue = d3.timeFormat('%Y')(val);
             this.sliderValue = sliderValue;
       });
@@ -218,15 +218,15 @@ export default {
 
       d3.select('p#value-time').text("OECD Gender Wage Gap on Year "+d3.timeFormat('%Y')(sliderTime.value()));
 
-      var allGroup = ['Gender wage gap at median', 'Gender wage gap at 9th decile (top)', 'Gender wage gap at 1st decile (bottom)'];
-        // add the options to the button
-      d3.select("#selectButton")
-          .selectAll('option')
-          .data(allGroup)
-          .enter()
-          .append('option')
-          .text(function (d) { return d; }) // text showed in the menu
-          .attr("value", function (d) { return d; }); // corresponding value returned by the button
+      // var allGroup = ['Gender wage gap at median', 'Gender wage gap at 9th decile (top)', 'Gender wage gap at 1st decile (bottom)'];
+      //   // add the options to the button
+      // d3.select("#selectButton")
+      //     .selectAll('option')
+      //     .data(allGroup)
+      //     .enter()
+      //     .append('option')
+      //     .text(function (d) { return d; }) // text showed in the menu
+      //     .attr("value", function (d) { return d; }); // corresponding value returned by the button
 
       // d3.select("#selectButton").on("change", function() {
       //         // recover the option that has been chosen
@@ -235,13 +235,13 @@ export default {
       //         display_data = this.updateMapData(selectedOption, sliderValue, data, world, color);
       // });
 
-      d3.select("#select").on("change", function() {
-              // recover the option that has been chosen
-              var selectedOption = d3.select(this).property("value");
-              this.selectedOption = selectedOption;
-              // run the updateChart function with this selected option
-              display_data = this.updateMapData(selectedOption, sliderValue, data, world, color);
-      });
+      // d3.select("#select").on("change", function() {
+      //         // recover the option that has been chosen
+      //         var selectedOption = d3.select(this).property("value");
+      //         this.selectedOption = selectedOption;
+      //         // run the updateChart function with this selected option
+      //         display_data = this.updateMapData(selectedOption, sliderValue, data, world, color);
+      // });
 
       function obtainStats(sliderValue, country_id, country, data) {
         var update_data = data.filter(function(row){
@@ -422,65 +422,6 @@ export default {
                 .text(title));
 
         return svg.node();
-    },
-    lineChart(data) {
-      // console.log("call line chart");
-      // console.log(data);
-      // Ex from: https://www.d3-graph-gallery.com/graph/line_basic.html
-
-      var margin = { top: 10, right: 30, bottom: 30, left: 60 },
-        width = 975 - margin.left - margin.right,
-        height = 610 - margin.top - margin.bottom;
-
-      // append the svg object to the body of the page
-      var svg = d3
-        .select(this.$refs.tschart)
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-      var x = d3
-        .scaleTime()
-        .domain(
-          d3.extent(data, function (d) {
-            return d.date;
-          })
-        )
-        .range([0, width]);
-      svg
-        .append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
-      var y = d3
-        .scaleLinear()
-        .domain([
-          0,
-          d3.max(data, function (d) {
-            return +d.value;
-          }),
-        ])
-        .range([height, 0]);
-      svg.append("g").call(d3.axisLeft(y));
-
-      // Add the line
-      svg
-        .append("path")
-        .datum(data)
-        .attr("fill", "none")
-        .attr("stroke", "steelblue")
-        .attr("stroke-width", 1.5)
-        .attr(
-          "d",
-          d3
-            .line()
-            .x(function (d) {
-              return x(d.date);
-            })
-            .y(function (d) {
-              return y(d.value);
-            })
-        );
     },
     ramp(color, n = 256) {
       const canvas = document.getElementById("canvas");
