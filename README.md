@@ -42,6 +42,9 @@ All
 
 ## Implementation
 - Erin - interactive d3 choropleth map using OECD gender wage gap, employment, and GDP data
+- Erica - interactive responsive time series line chart using monthly wage data
+- Erica - zoomable circle packing chart using employment data
+- 
 
 ## Final presentation
 
