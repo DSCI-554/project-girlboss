@@ -1,8 +1,20 @@
 <template>
   <div>
-    <h1>Time Series Chart</h1>
+    <h1 align="left">Monthly Wages by Gender Over Time (in local currency)</h1>
     <!-- USE ref=, not id= -->
     <div ref="tschart" align="center"></div>
+    <b-container>
+      <b-row align-h="around">
+        <b-col
+          ><b-form-select
+            id="#select"
+            v-model="selected"
+            :options="options"
+            @change="onChange($event)"
+          ></b-form-select
+        ></b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -10,12 +22,69 @@
 import * as d3 from "d3";
 export default {
   name: "TimeSeriesChart",
-  // ADD D3 CODE HERE, use refs instead of id, for example:
-  // var svg = d3
-  // .select(this.$refs.tschart)
+  data() {
+    return {
+      selected: "Australia",
+      options: [
+        { value: "Australia", text: "Australia" },
+        { value: "Canada", text: "Canada" },
+      ],
+    };
+  }, //data
+
   methods: {
+    onChange() {
+      console.log("call onChange");
+      let selectedCountry = this.selected;
+      // console.log(selectedCountry)
+
+      const selectCountry = this.nest.filter(([key]) => key == selectedCountry); // this is the ARRAY
+
+      // RESCALE Y AXIS for new country
+      function getMax(maleArr) {
+        let max = 0;
+        for (let i = 0; i < maleArr.length; i++) {
+          if (max == 0 || parseInt(maleArr[i].wvalue) > parseInt(max))
+            max = maleArr[i].wvalue;
+        }
+        return max;
+      }
+      let newMax = d3.map(selectCountry, (d) => getMax(d[1][1][1]))[0];
+      this.y.domain([0, newMax]);
+      let yAxis = d3.axisLeft().scale(this.y);
+      // REMOVE old Y-Axis
+      d3.select("#yAxis").remove();
+      // create NEW Y-axis
+      this.svg
+        .append("g")
+        .attr("class", "axis")
+        .attr("id", "yAxis")
+        .call(yAxis)
+        .append("text") // y-axis Label
+        .attr("id", "yAxisLabel")
+        .attr("fill", "black")
+        .attr("transform", "rotate(-90)")
+        .attr("x", 0)
+        .attr("y", 5)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end");
+
+      // Select all of the grouped elements and update the data
+      const selectCountryGroups = this.svg
+        .selectAll(".countryGroups")
+        .data(selectCountry);
+      // Select all the lines and transition to new positions
+      selectCountryGroups
+        .selectAll("path.line")
+        .data(([, values]) => values)
+        .transition()
+        .duration(600)
+        .attr("d", (d) => this.valueLine(Array.from(d.values())[1]));
+      
+    }, // onChange
+
     lineChart(data) {
-      // console.log("call line chart");
+      console.log("call line chart");
       // console.log(data);
 
       const margin = { top: 10, right: 0, bottom: 0, left: 40 };
@@ -29,6 +98,7 @@ export default {
         .y(function (d) {
           return y(d.wvalue);
         });
+      this.valueLine = valueLine;
       const svg = d3
         .select(this.$refs.tschart)
         .append("svg")
@@ -39,6 +109,7 @@ export default {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .attr("class", "svg");
+      this.svg = svg
 
       // Add a color legend
       svg
@@ -73,6 +144,7 @@ export default {
         (d) => d.state,
         (d) => d.lvalue
       );
+      this.nest = nest
 
       // Create a dropdown menu
       const countryMenu = d3.select("#countryDropdown");
@@ -88,8 +160,10 @@ export default {
 
       // Scales
       const x = d3.scaleLinear().domain([1995, 2011]).range([0, w]);
+      this.x = x
 
       const y = d3.scaleLinear().domain([0, 6000]).range([h, 0]);
+      this.y = y
 
       // Init graph
       const initialGraph = function (legis) {
@@ -161,65 +235,53 @@ export default {
       // Create initial graph
       // initialGraph("AUS")
       initialGraph("Australia");
-
-      // Update the data
-      const updateGraph = function (legis) {
-        // Filter the data to include only state of interest
-        const selectCountry = nest.filter(([key]) => key == legis); // this is the ARRAY
-
-        // RESCALE Y AXIS for new country
-        function getMax(maleArr) {
-          let max = 0;
-          for (let i = 0; i < maleArr.length; i++) {
-            if (max == 0 || parseInt(maleArr[i].wvalue) > parseInt(max))
-              max = maleArr[i].wvalue;
-          }
-          return max;
-        }
-        let newMax = d3.map(selectCountry, (d) => getMax(d[1][1][1]))[0];
-        y.domain([0, newMax]);
-        let yAxis = d3.axisLeft().scale(y);
-        // REMOVE old Y-Axis
-        d3.select("#yAxis").remove();
-        // create NEW Y-axis
-        svg
-          .append("g")
-          .attr("class", "axis")
-          .attr("id", "yAxis")
-          .call(yAxis)
-          .append("text") // y-axis Label
-          .attr("id", "yAxisLabel")
-          .attr("fill", "black")
-          .attr("transform", "rotate(-90)")
-          .attr("x", 0)
-          .attr("y", 5)
-          .attr("dy", ".71em")
-          .style("text-anchor", "end");
-
-        // Select all of the grouped elements and update the data
-        const selectCountryGroups = svg
-          .selectAll(".countryGroups")
-          .data(selectCountry);
-        // Select all the lines and transition to new positions
-        selectCountryGroups
-          .selectAll("path.line")
-          .data(([, values]) => values)
-          .transition()
-          .duration(600)
-          .attr("d", (d) => valueLine(Array.from(d.values())[1]));
-      };
-
-      // Run update function when dropdown selection changes
-      countryMenu.on("change", function () {
-        // Find which was selected from the dropdown
-        const selectedCountry = d3
-          .select(this)
-          .select("select")
-          .property("value"); // e.g. "Canada"
-        // Run update function with the selected one
-        updateGraph(selectedCountry);
-      });
     }, //linechart
+
+    updateGraph(legis) {
+      console.log("run updateGraph")
+      const selectCountry = this.nest.filter(([key]) => key == legis); // this is the ARRAY
+
+      // RESCALE Y AXIS for new country
+      function getMax(maleArr) {
+        let max = 0;
+        for (let i = 0; i < maleArr.length; i++) {
+          if (max == 0 || parseInt(maleArr[i].wvalue) > parseInt(max))
+            max = maleArr[i].wvalue;
+        }
+        return max;
+      }
+      let newMax = d3.map(selectCountry, (d) => getMax(d[1][1][1]))[0];
+      this.y.domain([0, newMax]);
+      let yAxis = d3.axisLeft().scale(this.y);
+      // REMOVE old Y-Axis
+      d3.select("#yAxis").remove();
+      // create NEW Y-axis
+      this.svg
+        .append("g")
+        .attr("class", "axis")
+        .attr("id", "yAxis")
+        .call(yAxis)
+        .append("text") // y-axis Label
+        .attr("id", "yAxisLabel")
+        .attr("fill", "black")
+        .attr("transform", "rotate(-90)")
+        .attr("x", 0)
+        .attr("y", 5)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end");
+
+      // Select all of the grouped elements and update the data
+      const selectCountryGroups = this.svg
+        .selectAll(".countryGroups")
+        .data(selectCountry);
+      // Select all the lines and transition to new positions
+      selectCountryGroups
+        .selectAll("path.line")
+        .data(([, values]) => values)
+        .transition()
+        .duration(600)
+        .attr("d", (d) => this.valueLine(Array.from(d.values())[1]));
+    }, // updateGraph
   },
   mounted: function () {
     // console.log("mounted Time Series Chart component");
