@@ -250,24 +250,6 @@ export default {
       });
       return wagegap_data;
     },
-    obtainStats(sliderValue, country_id, country, data) {
-      var update_data = data.filter(function(row){
-          var time = row['Time'];
-          var id = row['id'];
-          var indicator = row['Indicator'];
-          return time === sliderValue & id === country_id & indicator !== 'Gender wage gap at median' & indicator !== 'Gender wage gap at 9th decile (top)' & indicator !== 'Gender wage gap at 1st decile (bottom)';
-      });
-
-      var tooltip = `<b>Country</b>: ${country}`;
-
-      update_data.forEach(function(row) {
-          var indicator = row['Indicator'];
-          var value = row['Value'];
-          tooltip = tooltip + `<br/><b>${indicator}</b>: ${value}`
-      });
-
-      return tooltip;
-    },
     updateMapData(selectedOption, sliderValue, data, world, color) {
       var update_data = data.filter(function(row){
           var time = row['Time'];
