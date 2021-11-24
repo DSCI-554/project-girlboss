@@ -8,9 +8,19 @@
       </b-row>
     </b-container>
     <b-container>
+      <b-row>
+      <b-col cols="9">
+      <p style="text-align: left; font-size: 85%">
+        The gender wage gap is defined as the difference between earnings of men and women relative to earnings of men (%) and is a global problem.
+        Data from the Organisation for Economic Co-operation and Development (OECD) from 2000 to 2019 is displayed in the choropleth map below.
+        Although the gender pay gap has been closing in recent years, it is still prominent in median and top earners in many developed countries like the United States, Japan, and South Korea.</p>
+      </b-col>
+      </b-row>
+    </b-container>
+    <b-container>
       <b-row align-h="around">
-        <b-col><b-form-select id="#select" v-model="selected" :options="options" @change="onChange()"></b-form-select></b-col>
-        <b-col><p style="text-align:right" id="value-time"></p></b-col>
+        <b-col cols="4"><b-form-select id="#select" v-model="selected" :options="options" @change="onChange()"></b-form-select></b-col>
+        <b-col cols="8"><p style="text-align:right; font-weight: bold; font-size:120%" id="value-time"></p></b-col>
       </b-row>
       <b-row>
         <b-col align-self="end">
