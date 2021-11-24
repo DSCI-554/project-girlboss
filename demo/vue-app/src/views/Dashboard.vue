@@ -8,33 +8,33 @@
         >
           <div class="sidebar-sticky pt-3">
             <ul class="nav flex-column">
-              <b>Employment</b>
+              <b align="left">Employment</b>
               <hr>
               <li class="nav-item">
-                <a class="nav-link active" href="/wagegap">
+                <a class="nav-link active" align="left" href="/wagegap">
                   Gender Wage Gap Around the World
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/monthlywages">
+                <a class="nav-link" align="left" href="/monthlywages">
                   Monthly Wages by Gender Over Time
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" align="left" href="#">
                   Circle Packing Chart
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" align="left" href="#">
                   Mapbox Map
                 </a>
               </li>
               <br>
-              <b>Education</b>
+              <b align="left">Education</b>
               <hr>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" align="left" href="#">
                   Bar Chart
                 </a>
               </li>
