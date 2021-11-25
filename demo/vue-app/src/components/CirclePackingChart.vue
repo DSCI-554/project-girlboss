@@ -12,7 +12,9 @@
       </b-col>
     </b-row>
 
-    <div ref="cpchart" align="center"></div>
+    <!-- <div ref="cpchart" align="center"></div> -->
+    <!-- <div id="svgcontainer"></div> -->
+    <svg width="932" height="932"></svg>
   </div>
 </template>
 
@@ -20,11 +22,13 @@
 import * as d3 from "d3";
 export default {
   name: "CirclePackingChart",
+  mounted: function () {
+    d3.json("wages/all_employment_data.json").then((data) => {
+      this.circlePackingChart(data);
+    });
+  }, // mounted
   methods: {
     circlePackingChart(data) {
-      console.log("call circle chart");
-      console.log(data);
-
       const color = d3
         .scaleLinear()
         .domain([0, 5])
@@ -37,21 +41,19 @@ export default {
             .sum((d) => d.value)
             .sort((a, b) => b.value - a.value)
         );
-
       const root = pack(data);
       let focus = root;
       let view;
-
-      const svg = d3
-        .select(this.$refs.cpchart)
-        .attr("viewBox", `-${932 / 2} -${932 / 2} ${932} ${932}`)
+      // const svg = d3
+      //   .select(this.$refs.cpchart)
+      var svg = d3
+        .select("svg")
+        .attr("viewBox", `-${1000 / 2} -${932 / 2} ${932} ${932}`)
         .style("display", "block")
-        .style("margin", "0 -14px")
+        .style("margin", "0 -14px 100 0")
         .style("background", color(0))
         .style("cursor", "pointer")
         .on("click", (event) => zoom(event, root));
-
-      // this.svg = svg;
       function colorCircles(d) {
         if (d.children) {
           return color(d.depth);
@@ -63,7 +65,6 @@ export default {
           }
         } // else
       }
-
       const node = svg
         .append("g")
         .selectAll("circle")
@@ -81,9 +82,8 @@ export default {
           "click",
           (event, d) => focus !== d && (zoom(event, d), event.stopPropagation())
         );
-
+      // console.log(node)
       function displayText(d) {
-        // Don't display % for root nodes
         if (d.parent === root) {
           return d.data.name;
         } else {
@@ -93,6 +93,9 @@ export default {
       const label = svg
         .append("g")
         .attr("class", "zoom-font")
+        // .attr("font-size", "14px")
+        // .attr("font-weight", "600")
+        // .attr("font-family", "Arial")
         .attr("pointer-events", "none")
         .attr("text-anchor", "middle")
         .selectAll("text")
@@ -101,14 +104,11 @@ export default {
         .style("fill-opacity", (d) => (d.parent === root ? 1 : 0))
         .style("display", (d) => (d.parent === root ? "inline" : "none"))
         .text((d) => displayText(d));
-
+      // console.log(label)
       zoomTo([root.x, root.y, root.r * 2]);
-
       function zoomTo(v) {
         const k = 932 / v[2];
-
         view = v;
-
         label.attr(
           "transform",
           (d) => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`
@@ -118,10 +118,8 @@ export default {
           (d) => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`
         );
         node.attr("r", (d) => d.r * k);
-      }
-
+      } // zoomTo
       function zoom(event, d) {
-        // const focus0 = focus;
         focus = d;
         const transition = svg
           .transition()
@@ -142,17 +140,9 @@ export default {
           .on("end", function (d) {
             if (d.parent !== focus) this.style.display = "none";
           });
-      }
-      return svg.node();
+      } // zoom
     }, //circlepackingchart
   }, // methods
-
-  mounted: function () {
-    d3.json("wages/all_employment_data.json").then((data) => {
-      this.circlePackingChart(data);
-      this.data = data;
-    });
-  },
 };
 </script>
 
@@ -172,18 +162,14 @@ li {
 a {
   color: #42b983;
 }
-/* stylize the menu */
-.dropdown {
-  border-radius: 5px;
-  padding: 5px;
-  margin: 10%;
-  cursor: pointer;
-}
-option:hover {
-  cursor: pointer;
-}
 
 #tsdiv {
   padding-left: 10%;
+}
+
+svg >>> .zoom-font {
+  font-size: .96em;
+  font-weight: 600;
+  text-shadow: 2px 0 white, 0 1px white, 2px 0 white, 0 -2px white;
 }
 </style>
