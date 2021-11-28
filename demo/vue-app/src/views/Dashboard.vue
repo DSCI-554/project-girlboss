@@ -26,7 +26,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="#">
+                <a class="nav-link" align="left" href="/mapboxmap">
                   Mapbox Map
                 </a>
               </li>

@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import TimeSeriesChartView from '../views/TimeSeriesChartView.vue'
 import CirclePackingChartView from '../views/CirclePackingChartView.vue'
+import MapboxMapView from '../views/MapboxMapView.vue'
 
 Vue.use(VueRouter)
 
@@ -40,6 +41,11 @@ const routes = [
     path: '/employmentbysector',
     name: 'Employment by Sector and Country',
     component: CirclePackingChartView
+  },
+  {
+    path: '/mapboxmap',
+    name: 'Mapbox Map',
+    component: MapboxMapView
   },
 ]
 
