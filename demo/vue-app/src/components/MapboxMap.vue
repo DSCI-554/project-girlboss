@@ -1,92 +1,93 @@
 <template>
   <div id="tsdiv">
-
     <h1 align="left">Mapbox Map</h1>
     <b-row align-h="start">
       <b-col align-self="start" cols="8"> </b-col>
     </b-row>
 
     <div class="mapbox_container">
-        <div id="map"></div>
-        <div class='map-overlay' id='features'><h2>US Median Annual Income for Women Employed Full-Time, Year Round</h2><div id='pd'><p>Hover over a state!</p></div></div>
-        <div class='map-overlay' id='legend'></div>
+      <div id="map"></div>
+      <div class="map-overlay" id="features">
+        <h2>
+          US Median Annual Income for Women Employed Full-Time, Year Round
+        </h2>
+        <div id="pd"><p>Hover over a state!</p></div>
+      </div>
+      <div class="map-overlay" id="legend"></div>
     </div>
-
   </div>
 </template>
 
 <script>
 // import * as d3 from "d3";
-import * as mapboxgl from "mapbox";
+import mapboxgl from "mapbox-gl";
 export default {
   name: "MapboxMap",
-//   mounted: function () {
-//   }, // mounted
   methods: {
-      MapboxMap() {
-        mapboxgl.accessToken = 'pk.eyJ1IjoibXRob21wc29uNjQiLCJhIjoiY2t2MDBubjN1N2hxdTJwbW4ydmpwZjJrOSJ9.9vnWqmcjY-SJjCX8PneymQ';
-        const map = new mapboxgl.Map({
-            container: 'map', // container ID
-            style: 'mapbox://styles/mthompson64/ckwa9liup1gll14pip76obtr9', // style URL
-            center: [-98, 38.88], // starting position [lng, lat]
-            zoom: 3 // starting zoom
+    MapboxMap() {
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoibXRob21wc29uNjQiLCJhIjoiY2t2MDBubjN1N2hxdTJwbW4ydmpwZjJrOSJ9.9vnWqmcjY-SJjCX8PneymQ";
+      const map = new mapboxgl.Map({
+        container: "map", // container ID
+        style: "mapbox://styles/mthompson64/ckwa9liup1gll14pip76obtr9", // style URL
+        center: [-98, 38.88], // starting position [lng, lat]
+        zoom: 3, // starting zoom
+      });
+
+      map.on("load", () => {
+        // the rest of the code will go in here
+        const layers = [
+          "$0-$35,000",
+          "$35,000-$40,000",
+          "$40,000-$45,000",
+          "$45,000-$50,000",
+          "$50,000-$55,000",
+          "$55,000+",
+        ];
+        const colors = [
+          "#fae0e4",
+          "#f9bec7",
+          "#ff99ac",
+          "#ff7096",
+          "#ff5c8a",
+          "#ff0a54",
+        ];
+
+        // create legend
+        const legend = document.getElementById("legend");
+
+        layers.forEach((layer, i) => {
+          const color = colors[i];
+          const item = document.createElement("div");
+          const key = document.createElement("span");
+          key.className = "legend-key";
+          key.style.backgroundColor = color;
+          key.style.opacity = 0.4;
+
+          const value = document.createElement("span");
+          value.innerHTML = `${layer}`;
+          item.appendChild(key);
+          item.appendChild(value);
+          legend.appendChild(item);
         });
 
-        map.on('load', () => {
-            // the rest of the code will go in here
-            const layers = [
-                '$0-$35,000',
-                '$35,000-$40,000',
-                '$40,000-$45,000',
-                '$45,000-$50,000',
-                '$50,000-$55,000',
-                '$55,000+'
-            ];
-            const colors = [
-                '#fae0e4',
-                '#f9bec7',
-                '#ff99ac',
-                '#ff7096',
-                '#ff5c8a',
-                '#ff0a54'
-            ];
-
-            // create legend
-            const legend = document.getElementById('legend');
-
-            layers.forEach((layer, i) => {
-                const color = colors[i];
-                const item = document.createElement('div');
-                const key = document.createElement('span');
-                key.className = 'legend-key';
-                key.style.backgroundColor = color;
-                key.style.opacity = 0.4;
-
-                const value = document.createElement('span');
-                value.innerHTML = `${layer}`;
-                item.appendChild(key);
-                item.appendChild(value);
-                legend.appendChild(item);
-            });
-
-            map.on('mousemove', (event) => {
-                const states = map.queryRenderedFeatures(event.point, {
-                    layers: ['state-data']
-                });
-                document.getElementById('pd').innerHTML = states.length
-                    ? `<h3>${states[0].properties.name}</h3><p>Median Annual Earnings: <strong><em>${states[0].properties.earnings}</strong></em></p>`
-                    : `<p>Hover over a state!</p>`;
-            });
-
-            map.getCanvas().style.cursor = 'default';
-
+        map.on("mousemove", (event) => {
+          const states = map.queryRenderedFeatures(event.point, {
+            layers: ["state-data"],
+          });
+          document.getElementById("pd").innerHTML = states.length
+            ? `<h3>${states[0].properties.name}</h3><p>Median Annual Earnings: <strong><em>$${states[0].properties.earnings}</strong></em></p>`
+            : `<p>Hover over a state!</p>`;
         });
-      }
+
+        map.getCanvas().style.cursor = "default";
+      });
+    }, // MapboxMap
   }, // methods
   mounted: function () {
     console.log("mounted Mapbox map");
     this.MapboxMap();
-  }
+  },
 };
 </script>
 
@@ -99,7 +100,7 @@ export default {
   display: inline-block;
 }
 
-/* body {
+body {
   margin: 0;
   padding: 0;
 }
@@ -116,7 +117,7 @@ h3 {
 
 p {
   margin: 10px;
-} */
+}
 
 /**
         * Create a position for the map
@@ -154,9 +155,9 @@ p {
   padding: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   line-height: 18px;
-  height: 100px;
+  height: 125px;
   margin-bottom: 40px;
-  width: 150px;
+  width: 170px;
 }
 
 .legend-key {
@@ -167,4 +168,3 @@ p {
   margin-right: 5px;
 }
 </style>
-
