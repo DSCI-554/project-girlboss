@@ -9,21 +9,12 @@
         non-discrimination and equal treatment in the workplace is to ensure all workers are paid equally for labor of equal value, regardless of gender. The extent to which this is true can be evalulated using wage data disaggregated over time and by country.
       </p>
       </b-col>
-          <b-container>
-      <b-row align-h="around">
-        <b-col cols="4"><b-form-select id="#select"></b-form-select></b-col>
-        <b-col cols="8"><p style="text-align:right; font-weight: bold; font-size:120%" id="value-time"></p></b-col>
-      </b-row>
-      <b-row>
-        <b-col align-self="end">
-          <div class="tooltip" style="opacity: 0; text-align:left;"></div>
-        </b-col>
-      </b-row>
-    </b-container>
     </b-row>
 
     <div ref="bchart" align="left"></div> 
   </div>
+
+  
 </template>
 
 <script>
@@ -180,60 +171,5 @@ a {
 
 #tsdiv {
   padding-left: 10%;
-}
-text.xlabel {
-    text-anchor: middle;
-    font-size: 0.85em;
-}
-
-text.ylabel {
-    text-anchor: middle;
-    font-size: 0.85em;
-}
-
-text.name {
-    font-weight: bold;
-    text-anchor: middle;
-}
-
-.sort {
-    border-radius: 3px;
-    background-color: rgba(238, 238, 238, 0.795);
-    display: inline-block;
-    cursor: default;
-}
-
-.sort,
-label {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #444;
-    padding: 6px;
-    margin: 6px;
-}
-
-label {
-    vertical-align: text-bottom;
-}
-
-.filter {
-    border-radius: 5px;
-    background-color: rgba(238, 238, 238, 0.795);
-    padding: 6px;
-    margin: 6px;
-    color: #444;
-    text-align: left;
-    display: inline-block;
-    cursor: default;
-}
-
-.reset {
-    border-radius: 3px;
-    background-color: black;
-    padding: 6px;
-    margin: 6px;
-    color: white;
-    text-align: left;
-    display: inline-block;
-    cursor: pointer;
 }
 </style>

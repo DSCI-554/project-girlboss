@@ -35,8 +35,9 @@ export default {
     d3.csv("education/women-stem.csv").then((data) => {
       this.radialChart(data);
     });
-  }, // mounted
+  }, 
   methods: {
+    
     radialChart(data) {
 
     const margin = { top: 100, right: 0, bottom: 50, left: 0 };
@@ -44,6 +45,8 @@ export default {
     const width = 800 - margin.left - margin.right; // width
     const innerRadius = 90;
     const outerRadius = 500 / 2;
+
+    
 
     data.sort((a, b) => d3.ascending(a.Major_category, b.Major_category));
     const SHARE = d3.mean(data, d => d.ShareWomen);
@@ -66,6 +69,7 @@ export default {
 
 
 // Add the bars
+        // Add the bars
         svg.append("g")
             .selectAll("path")
             .data(data)
@@ -77,10 +81,21 @@ export default {
             .attr("d", d3.arc() // imagine your doing a part of a donut plot
                 .innerRadius(innerRadius)
                 .outerRadius(function(d) { return y(d.ShareWomen); })
+                .padAngle(0.01)
+                .padRadius(innerRadius));
+
+
+        svg.selectAll("path")
+            .transition()
+            .duration(100)
+            .attr("d", d3.arc() // imagine your doing a part of a donut plot
+                .innerRadius(innerRadius)
+                .outerRadius(function(d) { return y(d.ShareWomen); })
                 .startAngle(function(d) { return x(d.Major); })
                 .endAngle(function(d) { return x(d.Major) + x.bandwidth(); })
                 .padAngle(0.01)
-                .padRadius(innerRadius));
+                .padRadius(innerRadius))
+            .delay(function(d, i) { return (i * 60) });
 
             // Add the labels
         svg.append("g")
