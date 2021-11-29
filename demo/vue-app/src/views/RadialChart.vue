@@ -11,12 +11,12 @@
               <b align="left">Employment</b>
               <hr>
               <li class="nav-item">
-                <a class="nav-link active" align="left" href="/wagegap">
+                <a class="nav-link" align="left" href="/wagegap">
                   Gender Wage Gap Around the World
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/monthlywages">
+                <a class="nav-link active" align="left" href="/monthlywages">
                   Monthly Wages by Gender Over Time
                 </a>
               </li>
@@ -38,6 +38,11 @@
                   Bar Chart
                 </a>
               </li>
+                            <li class="nav-item">
+                <a class="nav-link" align="left" href="/radialchart">
+                  Radial Chart
+                </a>
+              </li>
             </ul>
           </div>
         </nav>
@@ -55,10 +60,13 @@
               border-bottom
             "
           >
+
             <h4>Visualizing the Gender Gap in Employment and Education</h4> 
           </div>
 
-        <MapChart />
+        <br>
+        <!-- Timeseries (Multiseries Line Chart) -->
+        <BubbleChart />
         
         </main>
       </div>
@@ -66,7 +74,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .nav-link.active,
 .nav-link:hover,
 .nav-link:focus{
@@ -76,12 +84,12 @@
 
 <script>
 // @ is an alias to /src
-import MapChart from '../components/MapChart'
+import RadialChart from '../components/RadialChart'
 
 export default {
   name: 'dashboard',
   components: {
-    MapChart
+    RadialChart
   }
 }
 </script>

@@ -34,7 +34,7 @@
               <b align="left">Education</b>
               <hr>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="#">
+                <a class="nav-link" align="left" href="/bubblechart">
                   Bar Chart
                 </a>
               </li>
