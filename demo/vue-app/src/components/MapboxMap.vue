@@ -83,6 +83,10 @@ export default {
         });
       }
   }, // methods
+  mounted: function () {
+    console.log("mounted Mapbox map");
+    this.MapboxMap();
+  }
 };
 </script>
 
