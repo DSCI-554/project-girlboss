@@ -2,7 +2,7 @@
   <div>
     <h1>Pie Chart</h1>
     <!-- USE ref=, not id= -->
-    <div ref="piechart"></div>
+    <div ref="majors"></div>
   </div>
 </template>
 
@@ -44,6 +44,65 @@ export default {
         const V = d3.map(data, value);
         const I = d3.range(N.length).filter((i) => !isNaN(V[i]));
 
+        const M =  d3.map(data, major);
+        const MAX = d3.max(data, women_percent);
+        const SHARE = d3.mean(data, women_percent);
+
+        const format = d3.format(".2%")
+
+        var X = d3.scaleBand()
+        .range([0, 2 * Math.PI]) // X axis goes from 0 to 2pi = all around the circle. If I stop at 1Pi, it will be around a half circle
+        .domain(M); // domain of the X axis is the list of majors.
+
+        var Y = d3.scaleRadial()
+            .range([innerRadius, outerRadius])
+            .domain([0, MAX]); // Domain of Y is from 0 to the max seen in the data
+
+
+
+// const svg = d3.select(this.$refs.piechart)
+        const svg = d3.select(this.$refs.majors)
+          .append("svg")
+          .attr("width", width)
+          .attr("height", height)
+          .attr("viewBox", [-width / 2, -height / 2, width, height])
+          .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+
+
+          // Add the bars
+        svg.append("g")
+            .selectAll("path")
+            .data(current)
+            .enter()
+            .append("path")
+            .style("fill", "pink")
+            .attr("stroke", "white")
+            .attr("stroke-width", 1)
+            .attr("d", d3.arc() // imagine your doing a part of a donut plot
+                .innerRadius(innerRadius)
+                .outerRadius(function(d) { return Y(d.women_percent); })
+                .padAngle(0.01)
+                .padRadius(innerRadius));
+
+
+        svg.selectAll("path")
+            .transition()
+            .duration(100)
+            .attr("d", d3.arc() // imagine your doing a part of a donut plot
+                .innerRadius(innerRadius)
+                .outerRadius(function(d) { return y(d.women_percent); })
+                .startAngle(function(d) { return x(d.major); })
+                .endAngle(function(d) { return x(d.major) + x.bandwidth(); })
+                .padAngle(0.01)
+                .padRadius(innerRadius))
+            .delay(function(d, i) { return (i * 60) });
+
+
+
+
+
+
+
         // Unique the names.
         if (names === undefined) names = N;
         names = new d3.InternSet(names);
@@ -81,14 +140,6 @@ export default {
           .innerRadius(labelRadius)
           .outerRadius(labelRadius);
 
-        // const svg = d3.select(this.$refs.piechart)
-        const svg = d3
-          .select(this.$refs.piechart)
-          .append("svg")
-          .attr("width", width)
-          .attr("height", height)
-          .attr("viewBox", [-width / 2, -height / 2, width, height])
-          .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
 
         svg
           .append("g")
@@ -128,17 +179,19 @@ export default {
       } // PieChart
 
       PieChart(data, {
-        // name: d => d.name,
-        name: (d) => d.label,
-        value: (d) => d.value,
-        width: 500,
-        height: 500,
-        innerRadius: 180,
+        major: (d) => d.Major,
+        major_cat: (d) => d.Major_category,
+        women_percent: (d) => d.ShareWomen,
+        median: (d) => d.Median,
+        width: 1000,
+        height: 650,
+        innerRadius = 90,
+        outerRadius = 250,
       });
     }, // pieChart
   },
   mounted: function () {
-    d3.csv("fem_to_male_enrollment_USA.csv").then((data) => {
+    d3.csv("education/women-stem.csv").then((data) => {
       this.educationCharts(data);
     });
   },
