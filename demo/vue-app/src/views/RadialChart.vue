@@ -38,7 +38,7 @@
                   Bar Chart
                 </a>
               </li>
-                            <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link" align="left" href="/radialchart">
                   Radial Chart
                 </a>
@@ -66,7 +66,7 @@
 
         <br>
         <!-- Timeseries (Multiseries Line Chart) -->
-        <BubbleChart />
+        <RadialChart />
         
         </main>
       </div>

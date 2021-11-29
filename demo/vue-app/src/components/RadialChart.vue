@@ -26,7 +26,6 @@ export default {
   }, // mounted
   methods: {
     radialChart(data) {
-        console.log(data);
 
     const margin = { top: 100, right: 0, bottom: 50, left: 0 };
     const height = 1000 - margin.top - margin.bottom; // height
@@ -34,7 +33,7 @@ export default {
     const innerRadius = 90;
     const outerRadius = 500 / 2;
 
-    var data = data.sort((a, b) => d3.ascending(a.Major_category, b.Major_category));
+    data.sort((a, b) => d3.ascending(a.Major_category, b.Major_category));
     const SHARE = d3.mean(data, d => d.ShareWomen);
 
       const svg = d3
@@ -44,7 +43,6 @@ export default {
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
             .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");
-;
 
     var x = d3.scaleBand()
             .range([0, 2 * Math.PI]) // X axis goes from 0 to 2pi = all around the circle. If I stop at 1Pi, it will be around a half circle

@@ -6,6 +6,8 @@ import TimeSeriesChartView from '../views/TimeSeriesChartView.vue'
 import CirclePackingChartView from '../views/CirclePackingChartView.vue'
 import MapboxMapView from '../views/MapboxMapView.vue'
 import BubbleChart from '../views/BubbleChart.vue'
+import RadialChart from '../views/RadialChart.vue'
+
 
 Vue.use(VueRouter)
 
@@ -52,6 +54,11 @@ const routes = [{
         path: '/bubblechart',
         name: 'Bar Chart',
         component: BubbleChart
+    },
+    {
+        path: '/radialchart',
+        name: 'Radial Chart',
+        component: RadialChart
     },
 ]
 

@@ -38,6 +38,11 @@
                   Bar Chart
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" align="left" href="/radialchart">
+                  Radial Chart
+                </a>
+              </li>
             </ul>
           </div>
         </nav>
