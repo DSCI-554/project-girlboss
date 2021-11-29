@@ -161,7 +161,7 @@ p {
 }
 
 .legend-key {
-  display: inline-block;
+  display: display-box;
   border-radius: 20%;
   width: 10px;
   height: 10px;
