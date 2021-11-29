@@ -42,7 +42,7 @@ export default {
           "$40,000-$45,000",
           "$45,000-$50,000",
           "$50,000-$55,000",
-          "$55,000+",
+          "$55,000+"
         ];
         const colors = [
           "#fae0e4",
@@ -50,7 +50,7 @@ export default {
           "#ff99ac",
           "#ff7096",
           "#ff5c8a",
-          "#ff0a54",
+          "#ff0a54"
         ];
 
         // create legend
@@ -62,7 +62,7 @@ export default {
           const key = document.createElement("span");
           key.className = "legend-key";
           key.style.backgroundColor = color;
-          key.style.opacity = 0.4;
+        //   key.style.opacity = 0.4;
 
           const value = document.createElement("span");
           value.innerHTML = `${layer}`;
@@ -157,11 +157,11 @@ p {
   line-height: 18px;
   height: 125px;
   margin-bottom: 40px;
-  width: 170px;
+  width: 150px;
 }
 
 .legend-key {
-  display: display-box;
+  display: inline-block;
   border-radius: 20%;
   width: 10px;
   height: 10px;
