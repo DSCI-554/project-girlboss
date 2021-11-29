@@ -170,4 +170,59 @@ a {
 #tsdiv {
   padding-left: 10%;
 }
+text.xlabel {
+    text-anchor: middle;
+    font-size: 0.85em;
+}
+
+text.ylabel {
+    text-anchor: middle;
+    font-size: 0.85em;
+}
+
+text.name {
+    font-weight: bold;
+    text-anchor: middle;
+}
+
+.sort {
+    border-radius: 3px;
+    background-color: rgba(238, 238, 238, 0.795);
+    display: inline-block;
+    cursor: default;
+}
+
+.sort,
+label {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #444;
+    padding: 6px;
+    margin: 6px;
+}
+
+label {
+    vertical-align: text-bottom;
+}
+
+.filter {
+    border-radius: 5px;
+    background-color: rgba(238, 238, 238, 0.795);
+    padding: 6px;
+    margin: 6px;
+    color: #444;
+    text-align: left;
+    display: inline-block;
+    cursor: default;
+}
+
+.reset {
+    border-radius: 3px;
+    background-color: black;
+    padding: 6px;
+    margin: 6px;
+    color: white;
+    text-align: left;
+    display: inline-block;
+    cursor: pointer;
+}
 </style>
