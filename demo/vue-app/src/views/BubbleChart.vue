@@ -16,7 +16,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" align="left" href="/monthlywages">
+                <a class="nav-link" align="left" href="/monthlywages">
                   Monthly Wages by Gender Over Time
                 </a>
               </li>
@@ -34,7 +34,7 @@
               <b align="left">Education</b>
               <hr>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/bubblechart">
+                <a class="nav-link active" align="left" href="/bubblechart">
                   Bar Chart
                 </a>
               </li>
