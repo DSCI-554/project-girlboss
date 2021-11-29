@@ -28,7 +28,7 @@ export default {
     bubbleChart(data) {
         console.log(data);
 
-    const margin = { top: 50, right: 20, bottom: 50, left: 70 };
+    const margin = { top: 50, right: 20, bottom: 50, left: 90 };
     const height = 550 - margin.top - margin.bottom; // height
     const width = 900 - margin.left - margin.right; // width
 
@@ -48,7 +48,7 @@ export default {
 
     svg.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .style('font-size', '16px')
+        .style('font-size', '14px')
         .call(d3.axisBottom(x).tickFormat(d3.format("~%")));
 
     // Add Y axis
@@ -61,7 +61,7 @@ export default {
         .domain([0, 100000])
         .range([0, 15]);
 
-    svg.append("g").style('font-size', '16px')
+    svg.append("g").style('font-size', '14px')
         .call(d3.axisLeft(y).tickFormat(d3.format("$~s")));
 
             // total sample size for bubble scale
@@ -112,26 +112,27 @@ export default {
         })
         .attr('text-anchor', 'middle')
         .attr('alignment-baseline', 'middle')
+        .style('font-weight', 'bold')
         .style('font-size', '16px');
 
-            // X Axis Label
+    // X Axis Label
     svg.append("text")
-        .attr("transform", "translate(" + (width / 2) + " ," + (height + 35) + ")")
+        .attr("transform", "translate(" + (width / 2) + " ," + (height + 45) + ")")
         .style("text-anchor", "middle")
-        .style('font-size', '12px')
+        .style('font-size', '14px')
         .style('color', '#fff')
-        .text("Forest Land % (% of Total Land Area)");
+        .text("Percent of Women Students");
 
     // Y Axis Label 
     svg.append('text')
         .attr('transform', 'rotate(-90)')
         .attr('y', 0 - margin.left)
         .attr('x', 0 - (height / 2))
-        .style('font-size', '12px')
+        .style('font-size', '14px')
         .style('color', '#fff')
         .attr('dy', '1em')
         .style('text-anchor', 'middle')
-        .text('Agricultural Land % (% of Total Land Area)');
+        .text('Median Salary');
 
     // Chart Title
     svg.append("text")
@@ -139,6 +140,7 @@ export default {
         .attr('y', -5)
         .attr('text-anchor', 'middle')
         .style('font-size', '18px')
+        .style('font-weight', 'bold')
         .style('color', '#fff')
         .text('Gender Share by STEM Majors and Median Salaries (United States)');
 

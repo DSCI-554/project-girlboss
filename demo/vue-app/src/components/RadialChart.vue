@@ -11,8 +11,20 @@
       </b-col>
     </b-row>
 
-    <div ref="rchart" align="left"></div> 
+     <div class="commands">
+        <span class="reset" id="all">Reset</span>
+    </div>
+
+    <div class="commands">
+        <span class="filter" id="engineering">Engineering</span>
+        <span class="filter" id="biology">Biology & Life Science</span>
+        <span class="filter" id="health">Health</span>
+        <span class="filter" id="math">Computers & Mathematics</span>
+        <span class="filter" id="physical">Physical Sciences</span>
+    </div>
+<div ref="rchart" align="left"></div> 
   </div>
+  
 </template>
 
 <script>
@@ -128,17 +140,8 @@ export default {
             .attr("dy", "0.35em")
             .text(y.tickFormat(4, "%"));
 
-    // Chart Title
-    svg.append("text")
-        .attr('x', (width / 2))
-        .attr('y', -5)
-        .attr('text-anchor', 'middle')
-        .style('font-size', '18px')
-        .style('color', '#fff')
-        .text('Gender Share by STEM Majors and Median Salaries (United States)');
 
-
-    }, //bubble chart
+    }, //radial chart
   }, // methods
 };
 </script>
