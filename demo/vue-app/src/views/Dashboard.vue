@@ -62,8 +62,11 @@
           >
             <h4>Visualizing the Gender Gap in Employment and Education</h4> 
           </div>
-
+        
+        <TimeSeriesChart />
         <MapChart />
+        <CirclePackingChart />
+        <MapboxMap />
         
         </main>
       </div>
@@ -82,11 +85,17 @@
 <script>
 // @ is an alias to /src
 import MapChart from '../components/MapChart'
+import TimeSeriesChart from '../components/TimeSeriesChart'
+import CirclePackingChart from '../components/CirclePackingChart'
+import MapboxMap from '../components/MapboxMap'
 
 export default {
   name: 'dashboard',
   components: {
-    MapChart
+    MapChart,
+    TimeSeriesChart,
+    CirclePackingChart,
+    MapboxMap
   }
 }
 </script>
