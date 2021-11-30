@@ -163,10 +163,12 @@ export default {
         });
 
       svg.append("path")
+        .attr("class", "country-border")
         .datum(topojson.mesh(world, world.objects.countries, (a, b) => a !== b))
         .attr("fill", "none")
         .attr("stroke", "white")
         .attr("stroke-linejoin", "round")
+        .attr("opacity", 0.5)
         .attr("d", path);
 
       var sliderTime = sliderHorizontal()
@@ -376,7 +378,9 @@ export default {
 flex: 1; }
 
 svg >>> .selected {
-fill: rgb(0, 132, 255);
+stroke: black;
+stroke-width: 1.5;
+opacity: 1;
 }
 
 div.tooltip {	
