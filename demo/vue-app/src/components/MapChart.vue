@@ -3,7 +3,7 @@
     <b-container>
       <b-row>
         <b-col>
-          <h1>Gender Wage Gap Around the World</h1>
+          <h1 id="wagegap_around_world">Gender Wage Gap Around the World</h1>
         </b-col>
       </b-row>
     </b-container>

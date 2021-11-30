@@ -11,7 +11,12 @@
               <b align="left">Employment</b>
               <hr />
               <li class="nav-item">
-                <a class="nav-link active" align="left" href="/wagegap">
+                <a class="nav-link active" align="left" href="#gender_disparity_wages">
+                  Gender Disparity in Wages
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" align="left" href="#wagegap_around_world">
                   Gender Wage Gap Around the World
                 </a>
               </li>
@@ -26,7 +31,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/mapboxmap">
+                <a class="nav-link" align="left" href="#mapbox_map">
                   Median Annual Income of US Women
                 </a>
               </li>

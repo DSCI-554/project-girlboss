@@ -3,7 +3,7 @@
     <b-container>
       <b-row>
         <b-col>
-          <h1>Median Annual Income of US Women</h1>
+          <h1 id="mapbox_map">Median Annual Income of US Women</h1>
         </b-col>
       </b-row>
     </b-container>
