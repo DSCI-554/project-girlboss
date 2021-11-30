@@ -3,8 +3,8 @@
     <h2 align="left">Gender Disparity in Wages</h2>
     <h3 align="left">Female to Male Earnings Ratio (1995-2011)</h3>
     <p align="left">
-      The female-to-male earnings ratio is calculated as average monthly wages of
-      females divided by average monthly wages of males. The monthly wages are sourced from the No Ceilings dataset for 85 unique countries between the years
+      The total female-to-male earnings ratio is calculated as average monthly wages of
+      females divided by average monthly wages of males. We calculate the earnings ratio to provide an overeview of data from countries with different local currencies. The data is sourced from the No Ceilings dataset for 85 unique countries between the years
       1995 to 2011.
     </p>
     <div ref="tschartoverview" align="left"></div>
