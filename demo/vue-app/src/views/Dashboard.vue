@@ -2,14 +2,14 @@
   <div class="dashboard">
     <div class="container-fluid">
       <div class="row">
-<nav
+        <nav
           id="sidebarMenu"
           class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
         >
           <div class="sidebar-sticky pt-3">
             <ul class="nav flex-column">
               <b align="left">Employment</b>
-              <hr>
+              <hr />
               <li class="nav-item">
                 <a class="nav-link active" align="left" href="/wagegap">
                   Gender Wage Gap Around the World
@@ -30,9 +30,9 @@
                   Median Annual Income of US Women
                 </a>
               </li>
-              <br>
+              <br />
               <b align="left">Education</b>
-              <hr>
+              <hr />
               <li class="nav-item">
                 <a class="nav-link" align="left" href="/bubblechart">
                   Bar Chart
@@ -60,14 +60,14 @@
               border-bottom
             "
           >
-            <h4>Visualizing the Gender Gap in Employment and Education</h4> 
+            <h4>Visualizing the Gender Gap in Employment and Education</h4>
           </div>
-        
-        <TimeSeriesChart />
-        <MapChart />
-        <CirclePackingChart />
-        <MapboxMap />
-        
+
+          <TimeSeriesAggChart />
+          <TimeSeriesChart />
+          <MapChart />
+          <!-- <CirclePackingChart /> -->
+          <MapboxMap />
         </main>
       </div>
     </div>
@@ -77,25 +77,27 @@
 <style>
 .nav-link.active,
 .nav-link:hover,
-.nav-link:focus{
-    color: #111;
+.nav-link:focus {
+  color: #111;
 }
 </style>
 
 <script>
 // @ is an alias to /src
-import MapChart from '../components/MapChart'
-import TimeSeriesChart from '../components/TimeSeriesChart'
-import CirclePackingChart from '../components/CirclePackingChart'
-import MapboxMap from '../components/MapboxMap'
+import MapChart from "../components/MapChart";
+import TimeSeriesAggChart from "../components/TimeSeriesAggChart";
+import TimeSeriesChart from "../components/TimeSeriesChart";
+// import CirclePackingChart from '../components/CirclePackingChart'
+import MapboxMap from "../components/MapboxMap";
 
 export default {
-  name: 'dashboard',
+  name: "dashboard",
   components: {
     MapChart,
+    TimeSeriesAggChart,
     TimeSeriesChart,
-    CirclePackingChart,
-    MapboxMap
-  }
-}
+    // CirclePackingChart,
+    MapboxMap,
+  },
+};
 </script>
