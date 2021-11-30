@@ -1,20 +1,49 @@
 <template>
   <div id="tsdiv">
-    <h1 align="left">Mapbox Map</h1>
+    <b-container>
+      <b-row>
+        <b-col>
+          <h1>Median Annual Income of US Women</h1>
+        </b-col>
+      </b-row>
+    </b-container>
+    <b-container>
+      <b-row>
+        <b-col cols="9">
+          <p style="text-align: left; font-size: 85%">
+            Data from the IWPR Status of Women in the States dataset (2013) is
+            used in this chloropleth map to show the median annual income for
+            women employed full-time, year-round across the United States. There
+            is a stark difference between the median annual income of women
+            living in rural states, such as Arkansas, where the median annual
+            income is $30,000, and more populus states, such as the District of
+            Columbia, where the median annual income is $60,000. The purpose of
+            this chart is to visualize the regional differences between women's
+            income in the United States.
+          </p>
+        </b-col>
+      </b-row>
+    </b-container>
+    <b-container>
+      <b-row>
+        <b-col>
+          <div class="mapbox_container">
+            <div id="map"></div>
+            <div class="map-overlay" id="features">
+              <h2>
+                US Median Annual Income for Women Employed Full-Time, Year Round
+              </h2>
+              <div id="pd"><p>Hover over a state!</p></div>
+            </div>
+            <div class="map-overlay" id="legend"></div>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
+    <!-- <h1 align="left">Mapbox Map</h1>
     <b-row align-h="start">
       <b-col align-self="start" cols="8"> </b-col>
-    </b-row>
-
-    <div class="mapbox_container">
-      <div id="map"></div>
-      <div class="map-overlay" id="features">
-        <h2>
-          US Median Annual Income for Women Employed Full-Time, Year Round
-        </h2>
-        <div id="pd"><p>Hover over a state!</p></div>
-      </div>
-      <div class="map-overlay" id="legend"></div>
-    </div>
+    </b-row> -->
   </div>
 </template>
 
@@ -42,7 +71,7 @@ export default {
           "$40,000-$45,000",
           "$45,000-$50,000",
           "$50,000-$55,000",
-          "$55,000+"
+          "$55,000+",
         ];
         const colors = [
           "#fae0e4",
@@ -50,7 +79,7 @@ export default {
           "#ff99ac",
           "#ff7096",
           "#ff5c8a",
-          "#ff0a54"
+          "#ff0a54",
         ];
 
         // create legend
@@ -62,7 +91,7 @@ export default {
           const key = document.createElement("span");
           key.className = "legend-key";
           key.style.backgroundColor = color;
-        //   key.style.opacity = 0.4;
+          //   key.style.opacity = 0.4;
 
           const value = document.createElement("span");
           value.innerHTML = `${layer}`;
@@ -166,5 +195,13 @@ p {
   width: 10px;
   height: 10px;
   margin-right: 5px;
+}
+
+.container {
+  display: flex;
+}
+
+.col {
+  flex: 1;
 }
 </style>

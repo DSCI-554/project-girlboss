@@ -27,7 +27,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" align="left" href="/mapboxmap">
-                  Mapbox Map
+                  Median Annual Income of US Women
                 </a>
               </li>
               <br>
