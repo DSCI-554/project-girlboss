@@ -11,7 +11,7 @@
               <b align="left">Employment</b>
               <hr />
               <li class="nav-item">
-                <a class="nav-link" align="left" href="#gender_disparity_wages">
+                <a class="nav-link active" align="left" href="#gender_disparity_wages">
                   Gender Disparity in Wages
                 </a>
               </li>
@@ -25,11 +25,11 @@
                   Monthly Wages by Gender Over Time
                 </a>
               </li> -->
-              <!-- <li class="nav-item">
-                <a class="nav-link" align="left" href="/employmentbysector">
+              <li class="nav-item">
+                <a class="nav-link" align="left" href="#employment-by-sector">
                   Employment by Sector
                 </a>
-              </li> -->
+              </li>
               <li class="nav-item">
                 <a class="nav-link" align="left" href="#mapbox_map">
                   Median Annual Income of US Women
@@ -69,10 +69,13 @@
           </div>
 
           <TimeSeriesAggChart />
-          <!-- <TimeSeriesChart /> -->
+
+          <!-- <a href="/monthlywages">Click here to explore wage differences by country</a> -->
+          <a class="btn btn-primary" href="/monthlywages" role="button" id="line-button">Explore wage differences by country</a>
+          
           <AnimatedMap />
           <!-- <MapChart /> -->
-          <!-- <CirclePackingChart /> -->
+          <CirclePackingChart />
           <MapboxMap />
         </main>
       </div>
@@ -86,6 +89,11 @@
 .nav-link:focus {
   color: #111;
 }
+
+#line-button {
+  margin-bottom: 4%;
+  margin-right: 20%;
+}
 </style>
 
 <script>
@@ -94,7 +102,7 @@
 import AnimatedMap from "../components/AnimatedMap";
 import TimeSeriesAggChart from "../components/TimeSeriesAggChart";
 // import TimeSeriesChart from "../components/TimeSeriesChart";
-// import CirclePackingChart from '../components/CirclePackingChart'
+import CirclePackingChart from '../components/CirclePackingChart'
 import MapboxMap from "../components/MapboxMap";
 
 export default {
@@ -104,7 +112,7 @@ export default {
     AnimatedMap,
     TimeSeriesAggChart,
     // TimeSeriesChart,
-    // CirclePackingChart,
+    CirclePackingChart,
     MapboxMap
   }
 };
