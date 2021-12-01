@@ -1,6 +1,6 @@
 <template>
   <div id="tsdiv">
-    <h1 align="left">Employment by Sector</h1>
+    <h1 id="employment-by-sector" align="left">Employment by Sector</h1>
     <b-row align-h="start">
       <b-col align-self="start" cols="8">
         <!-- <p align="left">
@@ -14,7 +14,8 @@
 
     <!-- <div ref="cpchart" align="center"></div> -->
     <!-- <div id="svgcontainer"></div> -->
-    <svg width="932" height="932"></svg>
+    <!-- <svg width="932" height="932"></svg> -->
+    <svg ref="cpchart" width="932" height="932"></svg>
   </div>
 </template>
 
@@ -44,10 +45,10 @@ export default {
       const root = pack(data);
       let focus = root;
       let view;
-      // const svg = d3
-      //   .select(this.$refs.cpchart)
-      var svg = d3
-        .select("svg")
+      const svg = d3
+        .select(this.$refs.cpchart)
+      // var svg = d3
+        // .select("svg")
         .attr("viewBox", `-${1000 / 2} -${932 / 2} ${932} ${932}`)
         .style("display", "block")
         .style("margin", "0 -14px 100 0")

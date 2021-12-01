@@ -20,13 +20,13 @@
                   Gender Wage Gap Around the World
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" align="left" href="/monthlywages">
                   Monthly Wages by Gender Over Time
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/employmentbysector">
+                <a class="nav-link" align="left" href="#employment-by-sector">
                   Employment by Sector
                 </a>
               </li>
@@ -69,10 +69,14 @@
           </div>
 
           <TimeSeriesAggChart />
-          <TimeSeriesChart />
+
+          <a href="/monthlywages">Click here to explore wage differences by country</a>
+          
+
+          <!-- <TimeSeriesChart /> -->
           <AnimatedMap />
           <!-- <MapChart /> -->
-          <!-- <CirclePackingChart /> -->
+          <CirclePackingChart />
           <MapboxMap />
         </main>
       </div>
@@ -93,8 +97,8 @@
 // import MapChart from "../components/MapChart";
 import AnimatedMap from "../components/AnimatedMap";
 import TimeSeriesAggChart from "../components/TimeSeriesAggChart";
-import TimeSeriesChart from "../components/TimeSeriesChart";
-// import CirclePackingChart from '../components/CirclePackingChart'
+// import TimeSeriesChart from "../components/TimeSeriesChart";
+import CirclePackingChart from '../components/CirclePackingChart'
 import MapboxMap from "../components/MapboxMap";
 
 export default {
@@ -103,8 +107,8 @@ export default {
     // MapChart,
     AnimatedMap,
     TimeSeriesAggChart,
-    TimeSeriesChart,
-    // CirclePackingChart,
+    // TimeSeriesChart,
+    CirclePackingChart,
     MapboxMap
   }
 };
