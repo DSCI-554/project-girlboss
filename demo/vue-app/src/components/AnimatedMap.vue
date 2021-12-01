@@ -16,7 +16,7 @@
       </p>
       <p style="text-align: left; font-size: 85%">
         From the data, it can be observed that the gender pay gap has been closing in recent years and is not as significant amongst bottom earners. However, the gender wage gap is still prominent in median and top earners in developed countries like the United States, Japan, and South Korea.
-        Click <a href="/wagegap">here</a> to explore the data in more detail.
+        Click the "Start" button to see how the gender wage gap changes from 2000 to 2019 across OECD countries. Click <a href="/wagegap">here</a> to explore the data in more detail.
       </p>
       </b-col>
       </b-row>
@@ -35,7 +35,7 @@
       </b-row> -->
     </b-container>
     <div id="wrapper">
-      <button id="play">Play</button>
+      <button id="play">Start</button>
     </div>
     <!-- <div id="div_template"></div> -->
     <b-container>
@@ -193,7 +193,7 @@ export default {
               playing = true;   // change the status of the animation
             } else {    // else if is currently playing
               clearInterval(timer);   // stop the animation by clearing the interval
-              d3.select(this).html('Play');   // change the button label to play
+              d3.select(this).html('Start');   // change the button label to play
               playing = false;   // change the status again
             }
         });
