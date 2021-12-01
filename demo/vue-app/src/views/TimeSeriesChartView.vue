@@ -2,7 +2,7 @@
   <div class="dashboard">
     <div class="container-fluid">
       <div class="row">
-<nav
+        <nav
           id="sidebarMenu"
           class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
         >
@@ -18,11 +18,6 @@
               <li class="nav-item">
                 <a class="nav-link" align="left" href="/wagegap">
                   Gender Wage Gap Around the World
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" align="left" href="/employmentbysector">
-                  Employment by Sector
                 </a>
               </li>
             </ul>
