@@ -17,10 +17,10 @@ Team members:
 
 <!-- 🎒 Complete and ensure that all the links work! -->
 
-- [Project proposal]()
-- Final presentation: [Transcript](presentation/TRANSCRIPT.md) | [slides](presentation/presentation.pdf)
-- Paper: [Overleaf read-only link](https://www.overleaf.com/read/btvmfhdyrbvk) | [PDF](paper/paper.pdf)
-- [Demo link](demo/dist/)
+- [Project proposal](https://docs.google.com/presentation/d/10bKIzyufguNpWEI1ctUmEc4_5Azgg6CX6jQvGCalh-4/edit?usp=sharing)
+- Final presentation: [Transcript](presentation/TRANSCRIPT.md) | [slides](presentation/presentation.sozi.pdf)
+- Paper: [Overleaf read-only link]() | [PDF](paper/paper.pdf)
+- [Demo link](demo/vue-app/)
 - Video [Transcript](video/TRANSCRIPT.md) | [YouTube link]()
 
 
@@ -32,7 +32,7 @@ Team members:
 
 <!-- 🎒 Complete for each project member. -->
 
-## Proposal presentation
+### Proposal presentation
 
 [Tommy Trojan](mailto:tommy@usc.edu)
 
@@ -40,7 +40,15 @@ Team members:
 -
 -
 
-## Final presentation
+### Final presentation
+
+[Madeleine Thompson](mailto:mjt43250@usc.edu)
+
+-
+-
+-
+
+### Paper
 
 [Tommy Trojan](mailto:tommy@usc.edu)
 
@@ -48,15 +56,7 @@ Team members:
 -
 -
 
-## Paper
-
-[Tommy Trojan](mailto:tommy@usc.edu)
-
--
--
--
-
-## Demo
+### Demo
 
 [Tommy Trojan](mailto:tommy@usc.edu)
 

@@ -12,7 +12,7 @@
   "exportType": "pdf",
   "exportToPDFPageSize": "A4",
   "exportToPDFPageOrientation": "landscape",
-  "exportToPDFInclude": "",
+  "exportToPDFInclude": "1:11",
   "exportToPDFExclude": "",
   "exportToPPTXSlideSize": "screen4x3",
   "exportToPPTXInclude": "",
@@ -849,7 +849,7 @@
         "layer2": {
           "cx": 895.0857411688487,
           "cy": 232.16975812064757,
-          "width": 226.62570322455238,
+          "width": 226.6257032245524,
           "height": 127.47695806381073,
           "opacity": 1,
           "angle": 0,
@@ -862,7 +862,7 @@
         "__sozi_auto__": {
           "cx": 895.0857411688487,
           "cy": 232.16975812064757,
-          "width": 226.62570322455238,
+          "width": 226.6257032245524,
           "height": 127.47695806381073,
           "opacity": 1,
           "angle": 0,
