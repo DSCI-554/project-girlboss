@@ -113,6 +113,8 @@
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
+
+
 .sidebar-sticky {
   position: relative;
   top: 0;
@@ -129,8 +131,19 @@
   }
 }
 
-#main_div {
+/* #main_div {
   margin-left: 175px;
+} */
+@media only screen and (min-width : 320px) {
+  #main_div {
+    margin-left: 200px;
+  }
+}
+
+@media only screen and (min-width : 1400px) {
+  #main_div {
+    margin-left: 300px;
+  }
 }
 </style>
 
