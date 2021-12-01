@@ -8,39 +8,21 @@
         >
           <div class="sidebar-sticky pt-3">
             <ul class="nav flex-column">
-              <b align="left">Employment</b>
-              <hr>
-              <li class="nav-item">
-                <a class="nav-link" align="left" href="/wagegap">
-                  Gender Wage Gap Around the World
-                </a>
-              </li>
+              <b align="left">Explore</b>
+              <hr />
               <li class="nav-item">
                 <a class="nav-link" align="left" href="/monthlywages">
                   Monthly Wages by Gender Over Time
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" align="left" href="/wagegap">
+                  Gender Wage Gap Around the World
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link active" align="left" href="/employmentbysector">
                   Employment by Sector
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" align="left" href="/mapboxmap">
-                  Median Annual Income of US Women
-                </a>
-              </li>
-              <br>
-              <b align="left">Education</b>
-              <hr>
-              <li class="nav-item">
-                <a class="nav-link" align="left" href="/bubblechart">
-                  Bar Chart
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" align="left" href="/radialchart">
-                  Radial Chart
                 </a>
               </li>
             </ul>

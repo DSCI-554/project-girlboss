@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 //import Home from '../views/Home.vue'
 import Dashboard from '../views/Dashboard.vue'
 import TimeSeriesChartView from '../views/TimeSeriesChartView.vue'
+import Explore from '../views/Explore.vue'
+import Map from '../views/Map.vue'
 import CirclePackingChartView from '../views/CirclePackingChartView.vue'
 import MapboxMapView from '../views/MapboxMapView.vue'
 import BubbleChart from '../views/BubbleChart.vue'
@@ -31,9 +33,14 @@ const routes = [{
         component: Dashboard
     },
     {
+        path: '/explore',
+        name: 'Explore',
+        component: Explore
+    },
+    {
         path: '/wagegap',
         name: 'Wage Gap',
-        component: Dashboard
+        component: Map
     },
     {
         path: '/monthlywages',
