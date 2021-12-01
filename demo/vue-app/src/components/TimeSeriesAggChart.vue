@@ -7,7 +7,7 @@
       wages of females divided by average monthly wages of males. We calculate
       the earnings ratio to provide an overview of data from countries with
       different local currencies. The data is sourced from the No Ceilings
-      dataset for 85 unique countries. The dashed <span style="color:red">red line</span> represents perfect gender wage parity if male and female wage was exactly equal. The <span style="color:blue">blue line</span> shows the current average gender earnings ratio and how much progress there is left to go.
+      dataset for 85 unique countries. The dashed <span style="color:red">red line</span> represents perfect gender wage parity if male and female wages were equal. The <span style="color:blue">blue line</span> shows the current global average gender earnings ratio and how much progress is left to go.
     </p>
     <div ref="tschartoverview" align="left"></div>
   </div>
