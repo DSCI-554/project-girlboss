@@ -2,7 +2,7 @@
   <div class="dashboard">
     <div class="container-fluid">
       <div class="row">
-<nav
+        <nav
           id="sidebarMenu"
           class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
         >
@@ -42,36 +42,47 @@
               border-bottom
             "
           >
-
-            <h4>Visualizing the Gender Gap in Employment and Education</h4> 
+            <h4>Visualizing the Gender Gap in Employment and Education</h4>
           </div>
 
-        <br>
-        <!-- Timeseries (Multiseries Line Chart) -->
-        <TimeSeriesChart />
-        
+          <!-- <TimeSeriesAggChart /> -->
+          <TimeSeriesChart />
+          <!-- <AnimatedMap /> -->
+          <!-- <MapChart /> -->
+          <!-- <CirclePackingChart /> -->
+          <!-- <MapboxMap /> -->
         </main>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style>
 .nav-link.active,
 .nav-link:hover,
-.nav-link:focus{
-    color: #111;
+.nav-link:focus {
+  color: #111;
 }
 </style>
 
 <script>
 // @ is an alias to /src
-import TimeSeriesChart from '../components/TimeSeriesChart'
+// import MapChart from "../components/MapChart";
+// import AnimatedMap from "../components/AnimatedMap";
+// import TimeSeriesAggChart from "../components/TimeSeriesAggChart";
+import TimeSeriesChart from "../components/TimeSeriesChart";
+// import CirclePackingChart from '../components/CirclePackingChart'
+// import MapboxMap from "../components/MapboxMap";
 
 export default {
-  name: 'dashboard',
+  name: "dashboard",
   components: {
+    // MapChart,
+    // AnimatedMap,
+    // TimeSeriesAggChart,
     TimeSeriesChart
+    // CirclePackingChart,
+    // MapboxMap
   }
-}
+};
 </script>
