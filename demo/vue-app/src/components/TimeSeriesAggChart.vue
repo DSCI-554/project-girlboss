@@ -1,13 +1,12 @@
 <template>
   <div id="tsdiv2">
     <h2 align="left" id="gender_disparity_wages">Gender Disparity in Wages</h2>
-    <h3 align="left">Average Female to Male Earnings Ratio (1995-2011)</h3>
+    <h3 align="left">Average Female-to-Male Earnings Ratio (1995-2011)</h3>
     <p align="left">
       The total female-to-male earnings ratio is calculated as average monthly
       wages of females divided by average monthly wages of males. We calculate
-      the earnings ratio to provide an overview of data from countries with
-      different local currencies. The data is sourced from the No Ceilings
-      dataset for 85 unique countries. The dashed <span style="color:red">red line</span> represents perfect gender wage parity if male and female wages were equal. The <span style="color:blue">blue line</span> shows the current global average gender earnings ratio and how much progress is left to go.
+      the relative earnings ratio to provide an overview of wages by gender for countries with
+      different local currencies. The No Ceilings dataset has wage data for 85 unique countries. The dashed <span style="color:red">red line</span> represents perfect gender wage parity if male and female wages were equal. The <span style="color:blue">blue line</span> shows the global average gender earnings ratio and how much progress is left to go.
     </p>
     <div ref="tschartoverview" align="left"></div>
   </div>
@@ -45,12 +44,6 @@ export default {
       // Add Y axis
       var y = d3
         .scaleLinear()
-        // .domain([
-        //   0.65,
-        //   d3.max(data, function (d) {
-        //     return +d.w_m_ratio;
-        //   }),
-        // ])
         .domain([0.5, 1.02])
         .range([height, 0]);
 
@@ -128,15 +121,15 @@ a {
   color: #42b983;
 }
 /* stylize the menu */
-.dropdown {
+/* .dropdown {
   border-radius: 5px;
   padding: 5px;
   margin: 10%;
   cursor: pointer;
-}
-option:hover {
+} */
+/* option:hover {
   cursor: pointer;
-}
+} */
 
 #tsdiv2 {
   width: 80%;
