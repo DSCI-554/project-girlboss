@@ -9,11 +9,14 @@
     </b-container>
     <b-container>
       <b-row>
-      <b-col cols="9">
+      <b-col cols="12">
       <p style="text-align: left; font-size: 85%">
         The gender wage gap is a global problem that is defined as the difference between earnings of men and women relative to earnings of men (%).
-        Data from the Organisation for Economic Co-operation and Development (OECD) from 2000 to 2019 is displayed in the map below.
-        Although the gender pay gap has been closing in recent years, it is still prominent in median and top earners in developed countries like the United States, Japan, and South Korea.</p>
+        Data from the Organisation for Economic Co-operation and Development (OECD) from 2000 to 2019 is displayed in the map below. Select the indicator from the drop down and click "Play" to observe trends amongst the gender wage gap across median earners, top earners (9th decile), and bottom earners (1st decile).
+      </p>
+      <p style="text-align: left; font-size: 85%">
+        From the data, it can be observed that the gender pay gap has been closing in recent years and is not as significant amongst bottom earners. However, the gender wage gap is still prominent in median and top earners in developed countries like the United States, Japan, and South Korea.
+      </p>
       </b-col>
       </b-row>
     </b-container>
@@ -135,7 +138,7 @@ export default {
       svg.append("g")
         .attr("transform", "translate(15,410)")
         // .attr("transform", "translate(25,20)")
-        .append(() => this.legend({ color, title: 'OECD Gender Wage Gap', width: 260 }));
+        .append(() => this.legend({ color, title: 'Gender Wage Gap (%)', width: 260 }));
 
       svg.append("g")
         .selectAll("path")
