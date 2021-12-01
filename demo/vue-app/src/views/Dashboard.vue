@@ -11,7 +11,7 @@
               <b align="left">Employment</b>
               <hr />
               <li class="nav-item">
-                <a class="nav-link active" align="left" href="#gender_disparity_wages">
+                <a class="nav-link" align="left" href="#gender_disparity_wages">
                   Gender Disparity in Wages
                 </a>
               </li>
@@ -20,16 +20,16 @@
                   Gender Wage Gap Around the World
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" align="left" href="/monthlywages">
                   Monthly Wages by Gender Over Time
                 </a>
-              </li>
-              <li class="nav-item">
+              </li> -->
+              <!-- <li class="nav-item">
                 <a class="nav-link" align="left" href="/employmentbysector">
                   Employment by Sector
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a class="nav-link" align="left" href="#mapbox_map">
                   Median Annual Income of US Women
@@ -69,7 +69,7 @@
           </div>
 
           <TimeSeriesAggChart />
-          <TimeSeriesChart />
+          <!-- <TimeSeriesChart /> -->
           <AnimatedMap />
           <!-- <MapChart /> -->
           <!-- <CirclePackingChart /> -->
@@ -93,7 +93,7 @@
 // import MapChart from "../components/MapChart";
 import AnimatedMap from "../components/AnimatedMap";
 import TimeSeriesAggChart from "../components/TimeSeriesAggChart";
-import TimeSeriesChart from "../components/TimeSeriesChart";
+// import TimeSeriesChart from "../components/TimeSeriesChart";
 // import CirclePackingChart from '../components/CirclePackingChart'
 import MapboxMap from "../components/MapboxMap";
 
@@ -103,7 +103,7 @@ export default {
     // MapChart,
     AnimatedMap,
     TimeSeriesAggChart,
-    TimeSeriesChart,
+    // TimeSeriesChart,
     // CirclePackingChart,
     MapboxMap
   }
