@@ -11,7 +11,7 @@
               <b align="left">Employment</b>
               <hr />
               <li class="nav-item">
-                <a class="nav-link active" align="left" href="#gender_disparity_wages">
+                <a class="nav-link" align="left" href="#gender_disparity_wages">
                   Gender Disparity in Wages
                 </a>
               </li>
