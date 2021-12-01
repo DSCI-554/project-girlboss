@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import TimeSeriesChartView from '../views/TimeSeriesChartView.vue'
 import Explore from '../views/Explore.vue'
+import Education from '../views/Education.vue'
 import Map from '../views/Map.vue'
 import CirclePackingChartView from '../views/CirclePackingChartView.vue'
 import MapboxMapView from '../views/MapboxMapView.vue'
@@ -36,6 +37,11 @@ const routes = [{
         path: '/explore',
         name: 'Explore',
         component: Explore
+    },
+    {
+        path: '/education',
+        name: 'Education',
+        component: Education
     },
     {
         path: '/wagegap',
