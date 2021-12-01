@@ -20,11 +20,6 @@
                   Gender Wage Gap Around the World
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" align="left" href="/employmentbysector">
-                  Employment by Sector
-                </a>
-              </li>
             </ul>
           </div>
         </nav>
