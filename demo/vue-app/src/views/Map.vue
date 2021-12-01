@@ -11,7 +11,7 @@
               <b align="left">Explore</b>
               <hr />
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/monthlywages">
+                <a class="nav-link" align="left" href="/explore">
                   Monthly Wages by Gender Over Time
                 </a>
               </li>
