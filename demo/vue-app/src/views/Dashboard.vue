@@ -70,10 +70,9 @@
 
           <TimeSeriesAggChart />
 
-          <a href="/monthlywages">Click here to explore wage differences by country</a>
+          <!-- <a href="/monthlywages">Click here to explore wage differences by country</a> -->
+          <a class="btn btn-primary" href="/monthlywages" role="button" id="line-button">Explore wage differences by country</a>
           
-
-          <!-- <TimeSeriesChart /> -->
           <AnimatedMap />
           <!-- <MapChart /> -->
           <CirclePackingChart />
@@ -89,6 +88,11 @@
 .nav-link:hover,
 .nav-link:focus {
   color: #111;
+}
+
+#line-button {
+  margin-bottom: 4%;
+  margin-right: 20%;
 }
 </style>
 
