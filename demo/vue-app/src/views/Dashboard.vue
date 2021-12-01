@@ -70,7 +70,8 @@
 
           <TimeSeriesAggChart />
           <TimeSeriesChart />
-          <MapChart />
+          <AnimatedMap />
+          <!-- <MapChart /> -->
           <!-- <CirclePackingChart /> -->
           <MapboxMap />
         </main>
@@ -89,7 +90,8 @@
 
 <script>
 // @ is an alias to /src
-import MapChart from "../components/MapChart";
+// import MapChart from "../components/MapChart";
+import AnimatedMap from "../components/AnimatedMap";
 import TimeSeriesAggChart from "../components/TimeSeriesAggChart";
 import TimeSeriesChart from "../components/TimeSeriesChart";
 // import CirclePackingChart from '../components/CirclePackingChart'
@@ -98,11 +100,12 @@ import MapboxMap from "../components/MapboxMap";
 export default {
   name: "dashboard",
   components: {
-    MapChart,
+    // MapChart,
+    AnimatedMap,
     TimeSeriesAggChart,
     TimeSeriesChart,
     // CirclePackingChart,
-    MapboxMap,
-  },
+    MapboxMap
+  }
 };
 </script>
