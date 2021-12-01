@@ -23,8 +23,10 @@
         <b-col cols="8"><p style="text-align:right; font-weight: bold; font-size:120%" id="value-time"></p></b-col>
       </b-row>
       <b-row>
-        <b-col align-self="end">
-          <div class="tooltip" style="opacity: 0; text-align:left;"></div>
+        <b-col align-h="end">
+        <div id="wrapper">
+          <button id="play">Play</button>
+        </div>
         </b-col>
       </b-row>
     </b-container>
@@ -32,7 +34,7 @@
     <b-container>
       <b-row>
         <b-col>
-          <svg id="chart" style="background-color: white"></svg>
+          <svg id="animated_chart" style="background-color: white"></svg>
           <div class="row align-items-center">
               <div class="col-sm"><div id="slider-time"></div></div>
           </div>
@@ -45,7 +47,7 @@
 <script>
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
-import { sliderHorizontal } from "d3-simple-slider";
+// import { sliderHorizontal } from "d3-simple-slider";
 export default {
   name: "MapChart",
   data () {
@@ -60,20 +62,23 @@ export default {
   },
   methods: {
     onChange() {
-      var sliderValue = this.sliderValue;
       var select = this.selected;
-      var update_data = this.data.filter(function(row){
-          var time = row['Time'];
-          var indicator = row['Indicator'];
-          return time === sliderValue &&  indicator === select;
-      });
+      this.all_years_data = this.findAllYearsData(this.data, this.timeFrame, select);
 
-      update_data = new Map(update_data.map((d) => [d.id, +d.Value]));
+      d3.select('p#value-time').text("Gender Wage Gap in Year "+ this.timeFrame[0]);
+
+      // var update_data = this.data.filter(function(row){
+      //     var time = row['Time'];
+      //     var indicator = row['Indicator'];
+      //     return time === sliderValue &&  indicator === select;
+      // });
+
+      // update_data = new Map(update_data.map((d) => [d.id, +d.Value]));
 
       d3.selectAll('.country')
           .data(topojson.feature(this.world, this.world.objects.countries).features)
-          .attr("fill", d => ((typeof(update_data.get(d.id)) == "undefined") ? '#ccc' : this.color(update_data.get(d.id))))
-          .text(d => `Country: ${d.properties.name} OECD Gender Wage Gap: ${update_data.get(d.id)}`);
+          .attr("fill", d => ((typeof(this.all_years_data[0].get(d.id)) == "undefined") ? '#ccc' : this.color(this.all_years_data[0].get(d.id))));
+          // .text(d => `Country: ${d.properties.name} OECD Gender Wage Gap: ${update_data.get(d.id)}`);
 
       var display_data = this.data.filter(function(row) {
           var indicator = row['Indicator'];
@@ -81,6 +86,8 @@ export default {
       });
 
       this.display_data = display_data;
+
+      this.animateMap(this.all_years_data, this.timeFrame, this.world, this.color);
     },
     mapChart() {
       var width = 975;
@@ -111,13 +118,16 @@ export default {
       this.color = color;
 
       var timeFrame = [2000,2005,2010,2015,2016,2017,2018,2019];
+      this.timeFrame = timeFrame;
       var dataTime = timeFrame.map(function(d) {
         return new Date(d,10,3);
       });
       var sliderValue = d3.timeFormat('%Y')(dataTime[0]);
       this.sliderValue = sliderValue;
 
-      var svg = d3.select('#chart')
+      d3.select('p#value-time').text("Gender Wage Gap in Year "+ timeFrame[0]);
+
+      var svg = d3.select('#animated_chart')
         .attr("width", width)
         .attr("height", height);
 
@@ -128,13 +138,13 @@ export default {
         .projection(projection);
 
       svg.append("g")
-        .attr("transform", "translate(25,530)")
+        .attr("transform", "translate(15,410)")
         // .attr("transform", "translate(25,20)")
         .append(() => this.legend({ color, title: 'OECD Gender Wage Gap', width: 260 }));
 
-      var div = d3.select(".tooltip");
-      var country;
-      var country_id;
+      // var div = d3.select(".tooltip");
+      // var country;
+      // var country_id;
 
       svg.append("g")
         .selectAll("path")
@@ -142,26 +152,26 @@ export default {
         .join("path")
         .attr("fill", d => ((typeof(default_data.get(d.id)) == "undefined") ? '#ccc' : color(default_data.get(d.id))))
         .attr("d", path)
-        .attr("class", 'country')
-        .on("mouseover", function() {
-            svg.select('.selected')
-                .classed('selected', false);
-            d3.select(this)
-                .classed('selected', true);		
-            div.transition()		
-                .duration(200)		
-                .style("opacity", .9);		
-            country = this.__data__.properties.name;
-            country_id = this.__data__.id;
-            div.html(obtainStats(sliderValue, country_id, country, data));
-            })					
-        .on("mouseout", function() {
-            d3.select(this)
-                .classed('selected', false);			
-            div.transition()		
-                .duration(500)		
-                .style("opacity", 0);	
-        });
+        .attr("class", 'country');
+        // .on("mouseover", function() {
+        //     svg.select('.selected')
+        //         .classed('selected', false);
+        //     d3.select(this)
+        //         .classed('selected', true);		
+        //     div.transition()		
+        //         .duration(200)		
+        //         .style("opacity", .9);		
+        //     country = this.__data__.properties.name;
+        //     country_id = this.__data__.id;
+        //     div.html(obtainStats(sliderValue, country_id, country, data));
+        //     })					
+        // .on("mouseout", function() {
+        //     d3.select(this)
+        //         .classed('selected', false);			
+        //     div.transition()		
+        //         .duration(500)		
+        //         .style("opacity", 0);	
+        // });
 
       svg.append("path")
         .attr("class", "country-border")
@@ -172,53 +182,125 @@ export default {
         .attr("opacity", 0.5)
         .attr("d", path);
 
-      var sliderTime = sliderHorizontal()
-        .min(d3.min(dataTime))
-        .max(d3.max(dataTime))
-        .width(925)
-        .displayValue(false)
-        .on('onchange', val => {
-            d3.select('p#value-time').text("OECD Gender Wage Gap in Year "+d3.timeFormat('%Y')(val));
-            this.updateTimeframe(this.display_data, d3.timeFormat('%Y')(val), world, color);
-            sliderValue = d3.timeFormat('%Y')(val);
-            this.sliderValue = sliderValue;
-      });
+      // function findAllYearsData(data, timeFrame, selected_indicator) {
+      //   var all_years_data = [];
+      //   var wagegap_data;
+      //   var update_data;
+      //   timeFrame.forEach(function(item) {
+      //     wagegap_data = data.filter(function(row){
+      //       var time = +row['Time'];
+      //       var indicator = row['Indicator'];
+      //       return indicator === selected_indicator && time === item;
+      //     });
+      //     update_data = new Map(wagegap_data.map((d) => [d.id, +d.Value]));
+      //     all_years_data.push(update_data);
+      //   });
+      //   return all_years_data;
+      // }
 
-      sliderTime.tickValues(dataTime)
-        .marks(dataTime)
-        .tickFormat(d3.timeFormat('%Y'));
+      var all_years_data;
+      all_years_data = this.findAllYearsData(data, timeFrame, 'Gender wage gap at median');
+      this.all_years_data = all_years_data;
 
-      var gTime = d3
-        .select('div#slider-time')
-        .append('svg')
-        .attr('width', 975)
-        .attr('height', 100)
-        .append('g')
-        .attr('transform', 'translate(30,30)');
+      // function animateMap(transitionMap, all_years_data, world, color) {
+      //   let time = 0;
+      //   let interval = setInterval( function() {
+      //     if (time <= 7) {
+      //       transitionMap(all_years_data, time, world, color);
+      //       time++;
+      //     } else {
+      //       time = 0;
+      //       // clearInterval(interval);
+      //     }
+      //   }, 200);
+      //   console.log(interval);
+      // }
+      // animateMap(transitionMap, all_years_data, this.world, color);
 
-      gTime.call(sliderTime);
-
-      d3.select('p#value-time').text("OECD Gender Wage Gap in Year "+d3.timeFormat('%Y')(sliderTime.value()));
-
-      function obtainStats(sliderValue, country_id, country, data) {
-        var update_data = data.filter(function(row){
-            var time = row['Time'];
-            var id = row['id'];
-            //var indicator = row['Indicator'];
-            return time === sliderValue & id === country_id
-            //return time === sliderValue & id === country_id & indicator !== 'Gender wage gap at median' & indicator !== 'Gender wage gap at 9th decile (top)' & indicator !== 'Gender wage gap at 1st decile (bottom)';
+      // function animateMap(all_years_data, timeFrame, world, color) {
+      //   var timer;  // create timer object
+      //   let time = 0;
+      //   var playing;
+      //   var update_data;
+      //   console.log(timeFrame[time]);
+      //   d3.select('#play')  
+      //     .on('click', function() {  // when user clicks the play button
+      //       if(playing == false) {  // if the map is currently playing
+      //         timer = setInterval(function() {   // set a JS interval
+      //           if (time <= 7) {
+      //             update_data = all_years_data[time];
+      //             d3.select('p#value-time').text("OECD Gender Wage Gap in Year "+ timeFrame[time]);
+      //             d3.selectAll('.country')
+      //               .data(topojson.feature(world, world.objects.countries).features)
+      //               .transition()
+      //               .delay(100)
+      //               .duration(500)
+      //               .attr("fill", d => ((typeof(update_data.get(d.id)) == "undefined") ? '#ccc' : color(update_data.get(d.id))))
+      //             time++;
+      //           } else {
+      //             time = 0;
+      //           }
+      //         }, 2000);
+            
+      //         d3.select(this).html('stop');  // change the button label to stop
+      //         playing = true;   // change the status of the animation
+      //       } else {    // else if is currently playing
+      //         clearInterval(timer);   // stop the animation by clearing the interval
+      //         d3.select(this).html('play');   // change the button label to play
+      //         playing = false;   // change the status again
+      //       }
+      //   });
+      // }
+      this.animateMap(this.all_years_data, timeFrame, this.world, color);
+    },
+    animateMap(all_years_data, timeFrame, world, color) {
+        var timer;  // create timer object
+        let time = 0;
+        var playing;
+        var update_data;
+        console.log(timeFrame[time]);
+        d3.select('#play')  
+          .on('click', function() {  // when user clicks the play button
+            if(playing == false) {  // if the map is currently playing
+              timer = setInterval(function() {   // set a JS interval
+                if (time <= 7) {
+                  update_data = all_years_data[time];
+                  d3.select('p#value-time').text("Gender Wage Gap in Year "+ timeFrame[time]);
+                  d3.selectAll('.country')
+                    .data(topojson.feature(world, world.objects.countries).features)
+                    .transition()
+                    .delay(100)
+                    .duration(500)
+                    .attr("fill", d => ((typeof(update_data.get(d.id)) == "undefined") ? '#ccc' : color(update_data.get(d.id))))
+                  time++;
+                } else {
+                  time = 0;
+                }
+              }, 2000);
+            
+              d3.select(this).html('stop');  // change the button label to stop
+              playing = true;   // change the status of the animation
+            } else {    // else if is currently playing
+              clearInterval(timer);   // stop the animation by clearing the interval
+              d3.select(this).html('play');   // change the button label to play
+              playing = false;   // change the status again
+            }
         });
-
-        var tooltip = `<b>Country</b>: ${country}`;
-
-        update_data.forEach(function(row) {
+    },
+    findAllYearsData(data, timeFrame, selected_indicator) {
+        var all_years_data = [];
+        var wagegap_data;
+        var update_data;
+        timeFrame.forEach(function(item) {
+          wagegap_data = data.filter(function(row){
+            var time = +row['Time'];
             var indicator = row['Indicator'];
-            var value = row['Value'];
-            tooltip = tooltip + `<br/><b>${indicator}</b>: ${value}`
+            return indicator === selected_indicator && time === item;
+          });
+          update_data = new Map(wagegap_data.map((d) => [d.id, +d.Value]));
+          all_years_data.push(update_data);
         });
-
-        return tooltip;
-      }
+        return all_years_data;
     },
     combineWageGapData(data) {
       var wagegap_data = data.filter(function(row){
