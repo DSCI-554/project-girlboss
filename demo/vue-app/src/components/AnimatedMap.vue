@@ -26,18 +26,18 @@
         <b-col cols="6"><b-form-select id="#select" v-model="selected" :options="options" @change="onChange()"></b-form-select></b-col>
         <b-col cols="6"><p style="text-align:right; font-weight: bold; font-size:120%" id="value-time"></p></b-col>
       </b-row>
-      <b-row>
+      <!-- <b-row>
         <b-col align-h="end">
           <div id="wrapper">
             <button id="play">Play</button>
           </div>
         </b-col>
-      </b-row>
+      </b-row> -->
     </b-container>
-    <!-- <div id="wrapper">
+    <div id="wrapper">
       <button id="play">Play</button>
     </div>
-    <div id="div_template"></div> -->
+    <!-- <div id="div_template"></div> -->
     <b-container>
       <b-row>
         <b-col>
@@ -187,7 +187,7 @@ export default {
                 } else {
                   time = 0;
                 }
-              }, 2000);
+              }, 850);
             
               d3.select(this).html('Stop');  // change the button label to stop
               playing = true;   // change the status of the animation
