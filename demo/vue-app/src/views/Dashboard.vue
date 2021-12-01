@@ -11,6 +11,11 @@
               <b align="left">Employment</b>
               <hr />
               <li class="nav-item">
+                <a class="nav-link" align="left" href="#overview">
+                  Overview
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" align="left" href="#gender_disparity_wages">
                   Gender Disparity in Wages
                 </a>
@@ -68,6 +73,7 @@
             <h4>Visualizing the Gender Gap in Employment and Education</h4>
           </div>
 
+          <Overview />
           <TimeSeriesAggChart />
 
           <!-- <a href="/monthlywages">Click here to explore wage differences by country</a> -->
@@ -99,6 +105,7 @@
 <script>
 // @ is an alias to /src
 // import MapChart from "../components/MapChart";
+import Overview from "../components/Overview";
 import AnimatedMap from "../components/AnimatedMap";
 import TimeSeriesAggChart from "../components/TimeSeriesAggChart";
 // import TimeSeriesChart from "../components/TimeSeriesChart";
@@ -109,6 +116,7 @@ export default {
   name: "dashboard",
   components: {
     // MapChart,
+    Overview,
     AnimatedMap,
     TimeSeriesAggChart,
     // TimeSeriesChart,
