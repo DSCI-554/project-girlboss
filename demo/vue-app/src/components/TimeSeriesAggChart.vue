@@ -1,11 +1,13 @@
 <template>
   <div id="tsdiv2">
     <h2 align="left" id="gender_disparity_wages">Gender Disparity in Wages</h2>
-    <h3 align="left">Female to Male Earnings Ratio (1995-2011)</h3>
+    <h3 align="left">Average Female to Male Earnings Ratio (1995-2011)</h3>
     <p align="left">
-      The total female-to-male earnings ratio is calculated as average monthly wages of
-      females divided by average monthly wages of males. We calculate the earnings ratio to provide an overeview of data from countries with different local currencies. The data is sourced from the No Ceilings dataset for 85 unique countries between the years
-      1995 to 2011.
+      The total female-to-male earnings ratio is calculated as average monthly
+      wages of females divided by average monthly wages of males. We calculate
+      the earnings ratio to provide an overview of data from countries with
+      different local currencies. The data is sourced from the No Ceilings
+      dataset for 85 unique countries. The dashed <span style="color:red">red line</span> represents perfect gender wage parity if male and female wage was exactly equal. The <span style="color:blue">blue line</span> shows the current average gender earnings ratio and how much progress there is left to go.
     </p>
     <div ref="tschartoverview" align="left"></div>
   </div>
@@ -43,12 +45,13 @@ export default {
       // Add Y axis
       var y = d3
         .scaleLinear()
-        .domain([
-          0.65,
-          d3.max(data, function (d) {
-            return +d.w_m_ratio;
-          }),
-        ])
+        // .domain([
+        //   0.65,
+        //   d3.max(data, function (d) {
+        //     return +d.w_m_ratio;
+        //   }),
+        // ])
+        .domain([0.5, 1.02])
         .range([height, 0]);
 
       svg.append("g").call(d3.axisLeft(y));
@@ -59,7 +62,7 @@ export default {
         .datum(data)
         .attr("fill", "none")
         .attr("stroke", "steelblue")
-        .attr("stroke-width", 3)
+        .attr("stroke-width", 3.5)
         .attr(
           "d",
           d3
@@ -71,6 +74,34 @@ export default {
               return y(d.w_m_ratio);
             })
         );
+
+      // draw horizontal perfect gender line
+      svg
+        .append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "#CD5C5C")
+        .style("stroke-dasharray", "3, 3")
+        .attr("stroke-width", 4)
+        .attr(
+          "d",
+          d3
+            .line()
+            .x(function (d) {
+              return x(d.year);
+            })
+            .y(y(1.0))
+        );
+
+      // Line labels
+      svg
+        .append("text")
+        .attr("x", width - 70)
+        .attr("y", 0 + 10)
+        .attr("text-anchor", "middle")
+        .style("font-size", "12px")
+        .text("Perfect Gender Wage Parity");
+
       //   }); // .tjem
     }, //linechart
   }, // methods
