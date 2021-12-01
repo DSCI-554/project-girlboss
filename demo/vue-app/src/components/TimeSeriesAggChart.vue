@@ -6,7 +6,7 @@
       The total female-to-male earnings ratio is calculated as average monthly
       wages of females divided by average monthly wages of males. We calculate
       the relative earnings ratio to provide an overview of wages by gender for countries with
-      different local currencies. The No Ceilings dataset has wage data for 85 unique countries. The dashed <span style="color:red">red line</span> represents perfect gender wage parity if male and female wages were equal. The <span style="color:blue">blue line</span> shows the global average gender earnings ratio and how much progress is left to go.
+      different local currencies. The No Ceilings dataset has wage data for 85 unique countries. The dashed <span style="color:red">red line</span> represents perfect gender wage parity if male and female wages were equal. The <span style="color:blue">blue line</span> represents the global average gender earnings ratio, which flattens around 0.75, showing much progress is left to go. Gender wage differences have existed and continued to exist since 1995.
     </p>
     <div ref="tschartoverview" align="left"></div>
   </div>
@@ -44,7 +44,7 @@ export default {
       // Add Y axis
       var y = d3
         .scaleLinear()
-        .domain([0.5, 1.02])
+        .domain([0.65, 1.02])
         .range([height, 0]);
 
       svg.append("g").call(d3.axisLeft(y));
