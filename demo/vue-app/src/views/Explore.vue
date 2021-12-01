@@ -65,8 +65,6 @@
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
-
-
 .sidebar-sticky {
   position: relative;
   top: 0;
