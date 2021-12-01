@@ -109,7 +109,7 @@ option:hover {
 
 #tsdiv2 {
   width: 80%;
-  padding-left: 10%;
+  padding-left: 3%;
   padding-bottom: 5%;
   padding-top: 5%;
 }
