@@ -172,7 +172,6 @@ export default {
         let time = 0;
         var playing;
         var update_data;
-        console.log(timeFrame[time]);
         d3.select('#play')  
           .on('click', function() {  // when user clicks the play button
             if(playing == false) {  // if the map is currently playing
@@ -349,8 +348,7 @@ export default {
     }
   },
   mounted: function () {
-    console.log("mounted Map Chart component");
-
+    // console.log("mounted Map Chart component");
     var promises = [];
     var world_file = 'gendergap/countries-110m.json';
     var data_file = 'gendergap/oecd_data.csv';
