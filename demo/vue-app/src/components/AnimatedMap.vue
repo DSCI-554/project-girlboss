@@ -9,7 +9,7 @@
     </b-container>
     <b-container>
       <b-row>
-      <b-col cols="12">
+      <b-col cols="10">
       <p style="text-align: left; font-size: 85%">
         The gender wage gap is a global problem that is defined as the difference between earnings of men and women relative to earnings of men (%).
         Data from the Organisation for Economic Co-operation and Development (OECD) from 2000 to 2019 is displayed in the map below. Select the wage gap indicator* from the drop down and click the "Start" button to observe trends amongst OECD countries from 2000 to 2019.
