@@ -9,14 +9,17 @@
     </b-container>
     <b-container>
       <b-row>
-      <b-col cols="12">
+      <b-col cols="10">
       <p style="text-align: left; font-size: 85%">
         The gender wage gap is a global problem that is defined as the difference between earnings of men and women relative to earnings of men (%).
-        Data from the Organisation for Economic Co-operation and Development (OECD) from 2000 to 2019 is displayed in the map below. Select the indicator from the drop down and click "Play" to observe trends amongst the gender wage gap across median earners, top earners (9th decile), and bottom earners (1st decile).
+        Data from the Organisation for Economic Co-operation and Development (OECD) from 2000 to 2019 is displayed in the map below. Select the wage gap indicator* from the drop down and click the "Start" button to observe trends amongst OECD countries from 2000 to 2019.
       </p>
       <p style="text-align: left; font-size: 85%">
         From the data, it can be observed that the gender pay gap has been closing in recent years and is not as significant amongst bottom earners. However, the gender wage gap is still prominent in median and top earners in developed countries like the United States, Japan, and South Korea.
-        Click the "Start" button to see how the gender wage gap changes from 2000 to 2019 across OECD countries. Click <a href="/wagegap">here</a> to explore the data in more detail.
+        Click <a href="/wagegap">here</a> to explore the data in more detail.
+      </p>
+      <p style="text-align: left; font-size: 70%">
+        *The indicators include gender wage gap across median earners, top 10% earners (9th decile), and bottom 10% earners (1st decile).
       </p>
       </b-col>
       </b-row>
@@ -169,7 +172,6 @@ export default {
         let time = 0;
         var playing;
         var update_data;
-        console.log(timeFrame[time]);
         d3.select('#play')  
           .on('click', function() {  // when user clicks the play button
             if(playing == false) {  // if the map is currently playing
@@ -346,8 +348,7 @@ export default {
     }
   },
   mounted: function () {
-    console.log("mounted Map Chart component");
-
+    // console.log("mounted Map Chart component");
     var promises = [];
     var world_file = 'gendergap/countries-110m.json';
     var data_file = 'gendergap/oecd_data.csv';
