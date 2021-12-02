@@ -26,7 +26,7 @@ Team members:
 
 ## Project Summary
 
-<!-- 🎒 Add a project summary here in 250 words or less. -->
+Gender discrimination is an issue that has plagued modern economies, and although female participation in the workforce has been climbing, there are still many issues left to be addressed, especially outside of the US and in specific disciplines such as STEM. This project aims to create an interactive infographic that allows users to explore data documenting the gender gap in employment and in education. The resulting website and infographic can be used by everyone curious about learning more about how this gender gap affects women across the world.
 
 ## Contributions
 
@@ -34,7 +34,7 @@ Team members:
 
 ### Proposal presentation
 
-[Tommy Trojan](mailto:tommy@usc.edu)
+All
 
 -
 -
@@ -44,24 +44,35 @@ Team members:
 
 [Madeleine Thompson](mailto:mjt43250@usc.edu)
 
--
--
--
+- Prepared transcript and slides for final presentation
+- Gave final presentation in class on 12/1/2021
 
 ### Paper
 
-[Tommy Trojan](mailto:tommy@usc.edu)
+[Madeleine Thompson](mailto:mjt43250@usc.edu)
 
--
--
--
+- Wrote the majority of the paper
+- Included screenshots of visualizations used in the demo and cited all relevant references
 
 ### Demo
 
-[Tommy Trojan](mailto:tommy@usc.edu)
+[Erin Szeto](mailto:erinszet@usc.edu)
 
--
--
+- Interactive d3 choropleth map using OECD gender wage gap, employment, and GDP data
+- Created Vue app and formatted website with Bootstrap
+
+[Erica Xia](mailto:ericaxia@usc.edu)
+
+- Interactive responsive time series line chart using monthly wage data
+- Zoomable circle packing chart using employment data
+- Created Vue app and formatted website with Bootstrap
+
+[Madeleine Thompson](mailto:mjt43250@usc.edu)
+
+- Interactive Mapbox map using median annual income data
+
+[Sarah Pursley](mailto:spursley@usc.edu)
+
 -
 
 # Visualizations created in the Demo
@@ -72,12 +83,12 @@ Team members:
 
 | Requirement                            | Label        | Done |
 | -------------------------------------- | ------------ | ---- |
-| responsive d3 chart                    | responsive   |      |
-| interactive d3 chart                   | interactive  |      |
-| d3 chart with an animated transition   | animated     |      |
-| d3 layout                              | layout       |      |
-| d3 map                                 | map          |      |
-| Mapbox map                             | mapbox       |      |
+| responsive d3 chart                    | responsive   | ✅   |
+| interactive d3 chart                   | interactive  | ✅   |
+| d3 chart with an animated transition   | animated     | ✅   |
+| d3 layout                              | layout       | ✅   |
+| d3 map                                 | map          | ✅   |
+| Mapbox map                             | mapbox       | ✅   |
 
 ## Table of visualizations used by page
 
