@@ -19,7 +19,7 @@ Team members:
 
 - [Project proposal](https://docs.google.com/presentation/d/10bKIzyufguNpWEI1ctUmEc4_5Azgg6CX6jQvGCalh-4/edit?usp=sharing)
 - Final presentation: [Transcript](presentation/TRANSCRIPT.md) | [slides](presentation/presentation.sozi.pdf)
-- Paper: [Overleaf read-only link]() | [PDF](paper/paper.pdf)
+- Paper: [Overleaf read-only link](https://www.overleaf.com/read/twcpxmqjtnvf) | [PDF](paper/paper.pdf)
 - [Demo link](demo/vue-app/)
 - Video [Transcript](video/TRANSCRIPT.md) | [YouTube link]()
 
