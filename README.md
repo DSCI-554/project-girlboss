@@ -34,11 +34,10 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 
 ### Proposal presentation
 
-All
+[Erin Szeto](mailto:erinszet@usc.edu)
 
--
--
--
+- With help of all team members, created slides
+- Gave presentation in class
 
 ### Final presentation
 
