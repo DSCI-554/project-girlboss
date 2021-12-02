@@ -10,7 +10,19 @@
       </p>
       </b-col>
     </b-row>
-
+    <b-container>
+      <b-row align-h="start">
+        <b-col align-self="start" cols="1"
+          ><b-form-select
+            id="#select"
+            v-model="selected"
+            :options="options"
+            @change="onChange($event)"
+            class="dropdown"
+          ></b-form-select
+        ></b-col>
+      </b-row>
+    </b-container>
     <div ref="lchart" align="left"></div> 
   </div>
 
@@ -21,26 +33,146 @@
 import * as d3 from "d3";
 export default {
   name: "LineChart",
-  mounted: function () {
-    d3.csv("education/global_levels.csv").then((data) => {
-      this.lineChart(data);
-    });
-  }, // mounted
+  data() {
+    return {
+      selected: "Australia",
+    };
+  }, //data
+    computed: {
+    options: () => [
+      "Australia",
+      "Austria",
+      "Azerbaijan",
+      // "Belarus",
+      "Belgium",
+      "Brazil",
+      "Bulgaria",
+      "Cambodia",
+      "Canada",
+      "Colombia",
+      "Costa Rica",
+      "Croatia",
+      "Cyprus",
+      "Czech Republic",
+      // "Congo, Dem. Rep.",
+      // "Denmark",
+      "Ecuador",
+      "Egypt, Arab Rep.",
+      "El Salvador",
+      "Estonia",
+      "Finland",
+      "France",
+      "Georgia",
+      "Germany",
+      // "Ghana",
+      // "Guatemala",
+      "Guyana",
+      "Honduras",
+      "Iceland",
+      "Iraq",
+      "Ireland",
+      "Israel",
+      "Japan",
+      "Jordan",
+      "Kazakhstan",
+      "Latvia",
+      "Lebanon",
+      "Lithuania",
+      "Luxembourg",
+      "Mexico",
+      "Mongolia",
+      "Myanmar",
+      "Nepal",
+      "Netherlands",
+      "New Zealand",
+      "Norway",
+      "Oman",
+      "Pakistan",
+      "Panama",
+      "Paraguay",
+      "Peru",
+      "Philippines",
+      "Poland",
+      "Portugal",
+      "Qatar",
+      "Korea, Rep.",
+      "Romania",
+      "Singapore",
+      "Slovak Republic",
+      "Spain",
+      "Sri Lanka",
+      "Eswatini",
+      "Sweden",
+      "Switzerland",
+      "Syrian Arab Republic",
+      "Thailand",
+      "Timor-Leste",
+      "Turkey",
+      "Ukraine",
+      "United Kingdom",
+      "Uruguay",
+      "Venezuela, RB",
+      "Vietnam",
+      "United States",
+    ],
+  },
   methods: {
+      onChange() {
+          
+          console.log("call onChange");
+          let selectedCountry = this.selected;
+        const selectCountry = this.data.filter(([key]) => key == selectedCountry); // this is the ARRAY          
+          
+          let newMin = d3.min(selectCountry, d => d.Value);
+          let newMax = d3.max(selectCountry, d => d.Value);
+          
+          this.y.domain([newMin, newMax]);
+          let yAxis = d3.axisLeft().scale(this.y);
+          
+          // REMOVE old Y-Axis
+          d3.select("#yAxis").remove();
+          
+          // create NEW Y-axis
+          this.svg
+          .append("g")
+          .attr("class", "axis")
+          .attr("id", "yAxis").call(yAxis)
+          .attr("font-size", "12px")
+          .append("text") // y-axis Label
+          .attr("id", "yAxisLabel")
+          .attr("fill", "black")
+          .attr("transform", "rotate(-90)")
+          .attr("x", 0)
+          .attr("y", 5)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Wages");
+          
+          // Select all of the grouped elements and update the data
+          const selectCountryGroups = this.svg
+          .selectAll(".countryGroups")
+          .data(selectCountry);
+          
+          // Select all the lines and transition to new positions
+          selectCountryGroups
+          .selectAll("path.line")
+          .data(([, values]) => values)
+          .transition()
+          .duration(600)
+          .attr("d", (d) => this.valueLine(Array.from(d.values())[1]));
+    }, // onChange
+
     lineChart(data) {
         console.log(data);
+        //data = data.filter(d => d.Country == selectCountry)
 
-    const margin = { top: 50, right: 30, bottom: 150, left: 75 };
-    const height = 700 - margin.top - margin.bottom; // height
-    const width = 500 - margin.left - margin.right; // width
+        const countryMenu = d3.select("#countryDropdown");
 
+        const margin = { top: 50, right: 30, bottom: 150, left: 75 };
+        const height = 700 - margin.top - margin.bottom; // height
+        const width = 500 - margin.left - margin.right; // width
 
-     function original_time_series(data) {
-
-        data = data.filter(d => d.Country == "World")
-
-      const svg = d3
-        .select(this.$refs.lchart)
+        const svg = d3.select(this.$refs.lchart)
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -48,113 +180,129 @@ export default {
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
+        const valueLine = d3.line()
+        .x(function(d) { return x(d.Year); })
+        .y(function(d) { return y(d.Value); });
+
+        this.valueLine = valueLine;
+
+        //nest variable aka GROUP
+        const nest = d3.nest()
+            .key(d => d.country)
+            .entries(data);
+
+        this.nest = nest;
+        console.log(nest);
+
+        countryMenu
+        .append("select")
+        .selectAll("option")
+        .data(nest)
+        .enter()
+        .append("option")
+        .attr("value", d => d.key)
+        .text(d => d.key);
+
+        console.log( nest.key);
+
         //scale x axis 
         const x = d3.scaleTime()
-            .domain(d3.extent(data, d => d.Year))
-            .range([0, width]);
-
+        .domain(d3.extent(nest, d => d.Year))
+        .range([0, width]);
 
         //scale y axis
         const y = d3.scaleLinear()
-            .domain([d3.min(data, d => d.Value) - .1, d3.max(data, d => d.Value) + .1])
-            .range([height, 0]);
+        .domain([d3.min(nest, d => d.Value) - .1, d3.max(nest, d => d.Value) + .1])
+        .range([height, 0]);
+        
+        this.x = x;
+        this.y = y;
 
+    // Init graph
+      const initialGraph = function (selected) {
+        // Create AXES
+        let xAxis = d3
+          .axisBottom()
+          .scale(x)
+          .ticks(10)
+          .tickFormat(d3.format("d"))
+          .tickSize(7);
+        let yAxis = d3.axisLeft().scale(y).tickSize(7);
+        svg
+          .append("g")
+          .attr("class", "axis")
+          .attr("id", "xAxis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis)
+          .attr("font-size", "12px")
+          .append("text") // X-axis Label
+          .attr("id", "xAxisLabel")
+          .attr("fill", "black")
+          .attr("y", -10)
+          .attr("x", width)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Year");
+        
+        // Y-axis
+        svg
+          .append("g")
+          .attr("class", "axis")
+          .attr("id", "yAxis")
+          .call(yAxis)
+          .attr("font-size", "12px")
+          .append("text") // y-axis Label
+          .attr("id", "yAxisLabel")
+          .attr("fill", "black")
+          .attr("transform", "rotate(-90)")
+          .attr("x", 0)
+          .attr("y", 5)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Wages");
 
-        svg.append("g")
-            .attr("class", "axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
+        const selectCountry = nest.filter(d => d.key == selected);
 
-        svg.append("text")
-            .attr("transform", "translate(" + (width / 2) + " ," + (height + 35) + ")")
-            .style("text-anchor", "end")
-            .style('font-size', '14px')
-            .style('color', '#fff')
-            .text("Year");
+        const selectCountryGroups = svg
+          .selectAll(".countryGroups")
+          .data(selectCountry, function (d) {
+            return d ? d.key : this.key;
+          })
+          .enter()
+          .append("g")
+          .attr("class", "countryGroups");
 
-        // draw y axis and label    
-        svg.append("g")
-            .attr("class", "axis")
-            .call(d3.axisLeft(y).ticks(10));
+        // color palette
+        const color = d3.scaleOrdinal().range(["#e41a1c", "#377eb8"]);
 
-        svg.append("text")
-            .attr('transform', 'rotate(-90)')
-            .attr('y', 10 - margin.left)
-            .attr('x', 0 - (height / 2))
-            .style('font-size', '14px')
-            .style('color', '#fff')
-            .attr('dy', '1em')
-            .style('text-anchor', 'middle')
-            .text("Gender Parity Index (GPI)");
+        const initialPath = selectCountryGroups
+          .selectAll(".line")
+          .data(([, values]) => values)
+          .enter()
+          .append("path")
+          .attr("fill", "none") // ADDED
+          .attr("stroke", function (d) {
+            return color(d[0]);
+          })
+          .attr("stroke-width", 2.5);
 
-        //use d3 nest function to next lines
-        const sumstat = d3.nest()
-            .key(d => d.Country)
-            .entries(data);
+        initialPath
+          .attr("d", (d) => valueLine(Array.from(d.values())[1]))
+          .attr("class", "line");
+      }; // initialGraph
 
-        console.log(sumstat);
+      // Create initial graph
+      // initialGraph("AUS")
+      initialGraph("Australia");
 
-        const line = d3.line()
-            .x(function(d) { return x(d.Year); })
-            .y(function(d) { return y(d.Value); });;
-
-        svg.append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "#8d99ae")
-            .attr("stroke-linejoin", "round")
-            .attr("stroke-linecap", "round")
-            .attr("stroke-width", 3)
-            .attr("d", line);
-
-        //append circle 
-        svg.selectAll("circle")
-            .append("g")
-            .data(data)
-            .enter()
-            .append("circle")
-            .attr("r", 4)
-            .attr("cx", d => x(d.Year))
-            .attr("cy", d => y(d.Value))
-            .style("fill", d => color(d.Country));
-
-        // create legend using color function
-        svg.selectAll("mydots")
-            .data(sumstat)
-            .enter()
-            .append("rect")
-            .attr("x", width - 50)
-            .attr("y", function(d, i) { return 10 + i * 25 })
-            .attr("width", 15)
-            .attr("height", 15)
-            .style("fill", "#8d99ae" );
-
-        // create legend labels
-        svg.selectAll("mylabels")
-            .data(sumstat)
-            .enter()
-            .append("text")
-            .attr("x", width - 30)
-            .attr("y", function(d, i) { return 20 + i * 25 })
-            .style("fill", "black")
-            .text(function(d) { return d.key })
-            .attr("text-anchor", "left")
-            .style('font-size', '14px')
-            .style("alignment-baseline", "middle");
-
-        // Chart Title
-        svg.append("text")
-            .attr('x', (width / 2))
-            .attr('y', 0)
-            .attr('text-anchor', 'middle')
-            .style('font-size', '18px')
-            .style('color', '#fff')
-            .text('Carbon Emission Estimates in South America (1995-2017)');
-    }
-
-
-    }, //bubble chart
+    }, //linechart
   }, // methods
+  mounted: function () {
+    d3.csv("education/gpi.csv").then((data) => {
+      this.lineChart(data);
+      this.data = data;
+    });
+  },
 };
 </script>
 
@@ -174,8 +322,18 @@ li {
 a {
   color: #42b983;
 }
+/* stylize the menu */
+.dropdown {
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10%;
+  cursor: pointer;
+}
+option:hover {
+  cursor: pointer;
+}
 
 #tsdiv {
-  padding-left: 10%;
+  padding-left: 20%;
 }
 </style>

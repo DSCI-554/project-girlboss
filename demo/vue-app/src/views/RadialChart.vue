@@ -43,6 +43,11 @@
                   Radial Chart
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" align="left" href="/linechart">
+                  Line Chart
+                </a>
+                </li>
             </ul>
           </div>
         </nav>

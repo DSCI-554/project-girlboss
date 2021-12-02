@@ -71,7 +71,7 @@
 
         <br>
         <!-- Timeseries (Multiseries Line Chart) -->
-        <BubbleChart />
+        <LineChart />
         
         </main>
       </div>
