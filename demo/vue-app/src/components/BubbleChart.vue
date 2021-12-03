@@ -1,6 +1,6 @@
 <template>
   <div id="tsdiv">
-    <h1 align="left">Monthly Wages by Gender Over Time (local currency)</h1>
+    <h2 align="left" id="stem_salaries">Monthly Wages by Gender Over Time (local currency)</h2>
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
       <p align="left">

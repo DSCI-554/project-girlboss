@@ -40,19 +40,29 @@
                   Median Annual Income of US Women
                 </a>
               </li>
-              <br />
+              <!-- <br />
               <b align="left">Education</b>
               <hr />
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/bubblechart">
-                  Bar Chart
+                <a class="nav-link" align="left" href="/education#student_enroll">
+                  Global Student Enrollment
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/radialchart">
-                  Radial Chart
+                <a class="nav-link" align="left" href="/education#gender_parity">
+                  Gender Parity Indices in Tertiary Education
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" align="left" href="/education#stem_salaries">
+                  STEM Graduates and Median Salaries
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" align="left" href="/education#stem_graduates">
+                  STEM Distribution of US Women
+                </a>
+              </li> -->
             </ul>
           </div>
         </nav>
@@ -78,7 +88,7 @@
             <TimeSeriesAggChart />
 
             <!-- <a href="/monthlywages">Click here to explore wage differences by country</a> -->
-            <a class="btn btn-primary" href="/explore" role="button" id="line-button">Explore wage differences by country</a>
+            <a class="btn btn-primary" href="/explore-wagegap" role="button" id="line-button">Explore wage differences by country</a>
             
             <AnimatedMap />
             <!-- <MapChart /> -->
