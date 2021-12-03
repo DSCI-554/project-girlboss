@@ -96,9 +96,8 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 | Page name | Chart description | Libraries used | Requirement label |
 | --------- | ----------------- | -------------- | ----------------- |
 | Home page | main map          | d3, topojson   | map               |
-| Home page | circle packing chart          | d3   | layout             |
+| Home page | circle packing chart    | d3   | layout             |
 | Explore page |   line chart of monthly wages by country      |       d3         |       responsive, interactive, animated            |
-
 |           |                   |                |                   |
 |           |                   |                |                   |
 |           |                   |                |                   |
