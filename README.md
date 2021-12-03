@@ -50,11 +50,11 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 
 [Madeleine Thompson](mailto:mjt43250@usc.edu)
 
-- Wrote the majority of the paper
+- Contributed to Abstract, Related Work, Data, Approach, System, and Conclusion sections
 - Included screenshots of visualizations used in the demo and cited all relevant references
 
 [Erin Szeto](mailto:erinszet@usc.edu)
-- wrote Introduction and contributed to Abstract, Data, Approach, System, and Conclusion sections
+- Wrote Introduction section and contributed to Abstract, Data, Approach, System, and Conclusion sections
 
 [Erica Xia](mailto:ericaxia@usc.edu)
 - Contributed to Related Work, Data, Approach, and System sections
@@ -77,10 +77,14 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 [Madeleine Thompson](mailto:mjt43250@usc.edu)
 
 - Interactive Mapbox map using median annual income data
+- Contributed to Vue app formatting
 
 [Sarah Pursley](mailto:spursley@usc.edu)
 
--
+- Interactive bar chart using student enrollment data
+- Line chart of gender parity indices with drop-down selection for country-specific views
+- Interactive bubble chart using college majors and wage data
+- Interactive radial bar chart using college major data
 
 ### Video
 
@@ -109,13 +113,16 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 
 | Page name | Chart description | Libraries used | Requirement label |
 | --------- | ----------------- | -------------- | ----------------- |
-| Home page | main map          | d3, topojson   | map               |
+| Employment page | line chart of gender disparity in wages         | d3   | d3 layout               |
 | Employemnt page | circle packing chart    | d3   | layout             |
 | Employment page | choropleth map on gender wage gap | d3, topojson | d3 map, animated transition  |
+| Employment page | map of median annual income of US women | Mapbox | Mapbox map |
+| Education page | bar chart of student enrollment | d3               |                   |
+| Education page | line chart of education parity indices | d3               |                   |
+| Education page | bubble chart of college majors & median salaries | d3               |                   |
+| Education page | radial bar chart of college majors | d3               |                   |
 | Explore page |   line chart of monthly wages by country      |       d3         |       responsive, interactive, animated            |
 | Explore page | choropleth map on gender wage gap  | d3, topojson, d3-simple-slider | d3 map, interactive  |
-|           |                   |                |                   |
-|           |                   |                |                   |
 
 ## Summary table of visualization forms used
 
