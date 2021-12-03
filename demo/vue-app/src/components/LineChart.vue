@@ -1,6 +1,6 @@
 <template>
   <div id="tsdiv">
-    <h1 align="left">Gender Parity Indices in Tertiary Education</h1>
+    <h2 align="left" id="gender_parity">Gender Parity Indices in Tertiary Education</h2>
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
       <p align="left">

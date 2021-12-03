@@ -1,6 +1,6 @@
 <template>
   <div id="tsdiv">
-    <h1 align="left"> Student Enrollment by Education Level and Country (2010)</h1>
+    <h2 align="left" id="student_enroll"> Student Enrollment by Education Level and Country (2010)</h2>
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
       <p align="left">

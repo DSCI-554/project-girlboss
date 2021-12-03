@@ -1,6 +1,6 @@
 <template>
   <div id="tsdiv">
-    <h1 align="left">Distribution of Women STEM Graduates by Major</h1>
+    <h2 align="left" id="stem_graduates">Distribution of Women STEM Graduates by Major</h2>
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
       <p align="left">
