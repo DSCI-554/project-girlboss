@@ -31,8 +31,8 @@
         <option value="Republic of Korea">Republic of Korea</option>
         <option value="Slovakia">Slovakia</option>
         <option value="Sweden">Sweden</option>
-        <option value="United Kingdom of Great Britain and Northern Ireland">United Kingdom of Great Britain and Northern Ireland</option>
-        <option value="United States of America">United States of America</option>
+        <option value="United Kingdom">United Kingdom of Great Britain and Northern Ireland</option>
+        <option value="United States">United States of America</option>
     </select>
 
     <p id="selected-dropdown" align="left"></p>
