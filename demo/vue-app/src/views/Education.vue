@@ -63,9 +63,7 @@
         </nav>
 
           <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <div id="main_div">
-              <div
-                class="
+            <div class="
                   d-flex
                   justify-content-between
                   flex-wrap flex-md-nowrap
@@ -75,14 +73,16 @@
                   mb-3
                   border-bottom
                 "
-              >
+                style="margin-left: 212px"
+            >
                 <h4>Visualizing the Gender Gap in Employment and Education</h4>
-              </div>
             </div>
+            <div style="margin-left:30px">
             <BarChart />
             <LineChart />
             <BubbleChart />
             <RadialChart />
+            </div>
             <!-- Insert components here -->
           </main>
         <!-- </div> -->
