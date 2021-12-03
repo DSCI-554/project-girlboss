@@ -53,11 +53,14 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 - Wrote the majority of the paper
 - Included screenshots of visualizations used in the demo and cited all relevant references
 
+[Erin Szeto](mailto:erinszet@usc.edu)
+- wrote Introduction and contributed to Abstract, Data, Approach, System, and Conclusion sections
+
 ### Demo
 
 [Erin Szeto](mailto:erinszet@usc.edu)
 
-- Interactive d3 choropleth map using OECD gender wage gap, employment, and GDP data
+- Animated and interactive d3 choropleth map using OECD gender wage gap, employment, and GDP data
 - Created Vue app and formatted website with Bootstrap
 
 [Erica Xia](mailto:ericaxia@usc.edu)
@@ -74,6 +77,12 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 [Sarah Pursley](mailto:spursley@usc.edu)
 
 -
+
+## Video
+
+[Erin Szeto](mailto:erinszet@usc.edu)
+
+- Wrote transcript and recorded video
 
 # Visualizations created in the Demo
 
@@ -97,9 +106,10 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 | Page name | Chart description | Libraries used | Requirement label |
 | --------- | ----------------- | -------------- | ----------------- |
 | Home page | main map          | d3, topojson   | map               |
-| Home page | circle packing chart    | d3   | layout             |
+| Employemnt page | circle packing chart    | d3   | layout             |
+| Employment page | choropleth map on gender wage gap | d3, topojson | d3 map, animated transition  |
 | Explore page |   line chart of monthly wages by country      |       d3         |       responsive, interactive, animated            |
-|           |                   |                |                   |
+| Explore page | choropleth map on gender wage gap  | d3, topojson, d3-simple-slider | d3 map, interactive  |
 |           |                   |                |                   |
 |           |                   |                |                   |
 
