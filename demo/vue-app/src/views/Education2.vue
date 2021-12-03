@@ -11,7 +11,7 @@
               <b>Education</b>
               <hr />
               <li class="nav-item">
-                <a class="nav-link active" align="left" href="#student_enroll">
+                <a class="nav-link active" align="left" href="/education-enrollment">
                   Global Student Enrollment
                 </a>
               </li>

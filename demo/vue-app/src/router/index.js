@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
 import TimeSeriesChartView from '../views/TimeSeriesChartView.vue'
 import Explore from '../views/Explore.vue'
-import Education from '../views/Education.vue'
+// import Education from '../views/Education.vue'
 import Education2 from '../views/Education2.vue'
 import Map from '../views/Map.vue'
 import CirclePackingChartView from '../views/CirclePackingChartView.vue'
@@ -41,7 +41,7 @@ const routes = [{
         component: Explore
     },
     {
-        path: '/education',
+        path: '/education-enrollment',
         name: 'Education',
         component: Education2
     },
@@ -79,12 +79,12 @@ const routes = [{
         path: '/education-stem-graduates',
         name: 'Radial Chart',
         component: RadialChart
-    },
-    {
-        path: '/education2',
-        name: 'Original Education Page',
-        component: Education
     }
+    // {
+    //     path: '/education2',
+    //     name: 'Original Education Page',
+    //     component: Education
+    // }
 ]
 
 const router = new VueRouter({

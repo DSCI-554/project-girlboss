@@ -4,7 +4,7 @@
       <router-link to="/">Employment</router-link> |
       <!-- <router-link to="/about">About</router-link> | -->
       <!-- <router-link to="/employment">Employment</router-link> | -->
-      <router-link to="/education">Education</router-link> |
+      <router-link to="/education-enrollment">Education</router-link> |
       <router-link to="/explore">Explore</router-link>
     </div>
     <router-view/>
