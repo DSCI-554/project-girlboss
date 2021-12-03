@@ -88,7 +88,7 @@
             <TimeSeriesAggChart />
 
             <!-- <a href="/monthlywages">Click here to explore wage differences by country</a> -->
-            <a class="btn btn-primary" href="/explore-wagegap" role="button" id="line-button">Explore wage differences by country</a>
+            <a class="btn btn-primary" href="/explore" role="button" id="line-button">Explore wage differences by country</a>
             
             <AnimatedMap />
             <!-- <MapChart /> -->
