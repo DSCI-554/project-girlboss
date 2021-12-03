@@ -11,11 +11,12 @@
       <b-row>
       <b-col cols="10">
       <p style="text-align: left; font-size: 85%">
+        It is clear that gender wage differences exist and that women tend to earn less than men on average. To look at this issue on a global scale, gender wage gap data from the Organisation for Economic Co-operation and Development (OECD) from 2000 to 2019 is displayed in the map below.
         The gender wage gap is a global problem that is defined as the difference between earnings of men and women relative to earnings of men (%).
-        Data from the Organisation for Economic Co-operation and Development (OECD) from 2000 to 2019 is displayed in the map below. Select the wage gap indicator* from the drop down and click the "Start" button to observe trends amongst OECD countries from 2000 to 2019.
+        Select the wage gap indicator* from the drop down and click the "Start" button to observe trends amongst OECD countries from 2000 to 2019.
       </p>
       <p style="text-align: left; font-size: 85%">
-        From the data, it can be observed that the gender pay gap has been closing in recent years and is not as significant amongst bottom earners. However, the gender wage gap is still prominent in median and top earners in developed countries like the United States, Japan, and South Korea.
+        From the data, it can be observed that the gender pay gap has been closing in recent years and is not as significant amongst bottom earners and in European countries. However, the gender wage gap is still prominent in median and top earners in developed countries like the United States, Japan, and South Korea.
         Click <a href="/wagegap">here</a> to explore the data in more detail.
       </p>
       <p style="text-align: left; font-size: 70%">
@@ -192,6 +193,7 @@ export default {
               }, 850);
             
               d3.select(this).html('Stop');  // change the button label to stop
+              d3.select(".button_tooltip").html('Test');
               playing = true;   // change the status of the animation
             } else {    // else if is currently playing
               clearInterval(timer);   // stop the animation by clearing the interval
@@ -378,7 +380,7 @@ stroke-width: 1.5;
 opacity: 1;
 }
 
-div.tooltip {	
+/* div.tooltip {	
     position: absolute;			
     text-align: center;			
     width: 275px;					
@@ -389,5 +391,5 @@ div.tooltip {
     border: 0px;		
     border-radius: 8px;			
     pointer-events: none;			
-}
+} */
 </style>
