@@ -136,7 +136,7 @@ a {
 
 #tsdiv2 {
   width: 80%;
-  padding-left: 3%;
+  padding-left: 11%;
   padding-bottom: 5%;
   padding-top: 5%;
 }
