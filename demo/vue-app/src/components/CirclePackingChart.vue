@@ -1,8 +1,10 @@
 <template>
   <div id="tsdiv">
+    <b-container>
     <h1 id="employment-by-sector" align="left">Employment by Sector</h1>
-    <b-row align-h="start">
-      <b-col align-self="start" cols="10">
+    <!-- <b-row align-h="start"> -->
+      <b-row>
+      <b-col cols="10">
         <p align="left" style="font-size: 85%">
           Not only is there a gender wage gap across the globe, but there also
           exists an imbalance in the distribution of gender within job sectors.
@@ -26,6 +28,7 @@
     <!-- <svg width="932" height="932"></svg> -->
     <svg ref="cpchart" width="932" height="932"></svg>
     <svg ref="cplegend" width="932" height="200"></svg>
+    </b-container>
   </div>
 </template>
 
@@ -229,7 +232,7 @@ a {
 }
 
 #tsdiv {
-  padding-left: 11%;
+  padding-left: 2%;
 }
 
 svg >>> .zoom-font {

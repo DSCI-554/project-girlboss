@@ -1,17 +1,40 @@
 <template>
   <div id="tsdiv2">
-    <h2 align="left" id="gender_disparity_wages">Gender Disparity in Wages</h2>
-    <h3 align="left">Average Female-to-Male Earnings Ratio (1995-2011)</h3>
-    <p align="left" style="font-size: 85%">
-      Gender wage differences have existed since 1995 and continue to exist. Women, on average, earn less than 80% of what men earn.
-      
-      To showcase this, the average female-to-male earnings ratio is shown in the chart below.
-      The female-to-male earnings ratio is calculated as average monthly
-      wages of females divided by average monthly wages of males. We calculate
-      the relative earnings ratio to provide an overview of wages by gender for countries with
-      different local currencies. The No Ceilings dataset has wage data for 85 unique countries. The dashed <span style="color:red">red line</span> represents perfect gender wage parity if male and female wages were equal. The <span style="color:blue">blue line</span> represents the global average gender earnings ratio, which flattens around 0.75, showing much progress is left to go.
-    </p>
-    <div ref="tschartoverview" align="left"></div>
+    <b-container>
+      <b-row>
+        <b-col cols="10">
+          <h2 align="left" id="gender_disparity_wages">
+            Gender Disparity in Wages
+          </h2>
+          <h3 align="left" >
+            Average Female-to-Male Earnings Ratio (1995-2011)
+          </h3>
+          <p align="left" style="font-size: 85%">
+            Gender wage differences have existed since 1995 and continue to
+            exist. Women, on average, earn less than 80% of what men earn. To
+            showcase this, the average female-to-male earnings ratio is shown in
+            the chart below. The female-to-male earnings ratio is calculated as
+            average monthly wages of females divided by average monthly wages of
+            males. We calculate the relative earnings ratio to provide an
+            overview of wages by gender for countries with different local
+            currencies. The No Ceilings dataset has wage data for 85 unique
+            countries. The dashed
+            <span style="color: red">red line</span> represents perfect gender
+            wage parity if male and female wages were equal. The
+            <span style="color: blue">blue line</span> represents the global
+            average gender earnings ratio, which flattens around 0.75, showing
+            much progress is left to go.
+          </p>
+        </b-col>
+      </b-row>
+    </b-container>
+    <b-container>
+      <b-row>
+        <b-col cols="10">
+          <div ref="tschartoverview"></div>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -45,10 +68,7 @@ export default {
         .call(d3.axisBottom(x).tickFormat(d3.format("d")));
 
       // Add Y axis
-      var y = d3
-        .scaleLinear()
-        .domain([0.65, 1.02])
-        .range([height, 0]);
+      var y = d3.scaleLinear().domain([0.65, 1.02]).range([height, 0]);
 
       svg.append("g").call(d3.axisLeft(y));
 
@@ -135,8 +155,8 @@ a {
 } */
 
 #tsdiv2 {
-  width: 80%;
-  padding-left: 11%;
+  /* width: 80%; */
+  /* padding-left: 2%; */
   padding-bottom: 5%;
   padding-top: 5%;
 }
