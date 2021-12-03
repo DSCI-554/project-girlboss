@@ -26,7 +26,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" align="left" href="/mapboxmap">
+                <a class="nav-link" align="left" href="/mapboxmap">
                   Median Annual Income of US Women
                 </a>
               </li>
@@ -34,7 +34,7 @@
               <b align="left">Education</b>
               <hr>
                 <li class="nav-item">
-                <a class="nav-link" align="left" href="/barchart">
+                <a class="nav-link active" align="left" href="/barchart">
                   Global Student Enrollment
                 </a>
               </li>
@@ -49,10 +49,11 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" align="left" href="/radialchart">
+                <a class="nav-link" align="left" href="/radialchart">
                   STEM Distribution of US Women
                 </a>
               </li>
+ 
             </ul>
           </div>
         </nav>
@@ -71,12 +72,12 @@
             "
           >
 
-            <h4>Visualizing Women's Annual Income in the US</h4> 
+            <h4>Visualizing the Gender Gap in Employment and Education</h4> 
           </div>
 
         <br>
-        <!-- Mapbox Map -->
-        <MapboxMap />
+        <!-- Timeseries (Multiseries Line Chart) -->
+        <BarChart />
         
         </main>
       </div>
@@ -94,12 +95,12 @@
 
 <script>
 // @ is an alias to /src
-import MapboxMap from '../components/MapboxMap'
+import BarChart from '../components/BarChart'
 
 export default {
   name: 'dashboard',
   components: {
-    MapboxMap
+    BarChart
   }
 }
 </script>

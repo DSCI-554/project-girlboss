@@ -1,13 +1,11 @@
 <template>
   <div id="tsdiv">
-    <h1 align="left">Monthly Wages by Gender Over Time (local currency)</h1>
+    <h1 align="left">Distribution of Women STEM Graduates by Major</h1>
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
       <p align="left">
-        Gender equality in the workplace and provision of fair pay is key to economic development. Women still face significant barriers to access
-        decision-making roles and jobs all across the world. The goal of
-        non-discrimination and equal treatment in the workplace is to ensure all workers are paid equally for labor of equal value, regardless of gender. The extent to which this is true can be evalulated using wage data disaggregated over time and by country.
-      </p>
+        While we didn't see extreme differences in global student enrollment by education level, we found a great dataset that provided 
+         </p>
       </b-col>
     </b-row>
 
@@ -22,7 +20,7 @@
         <span class="filter" id="math">Computers & Mathematics</span>
         <span class="filter" id="physical">Physical Sciences</span>
     </div>
-<div ref="rchart" align="left"></div> 
+<div ref="rchart" align="center"></div> 
   </div>
   
 </template>
@@ -95,7 +93,7 @@ export default {
                 .endAngle(function(d) { return x(d.Major) + x.bandwidth(); })
                 .padAngle(0.01)
                 .padRadius(innerRadius))
-            .delay(function(d, i) { return (i * 60) });
+            .delay(function(d, i) { return (i * 30) });
 
             // Add the labels
         svg.append("g")
@@ -177,8 +175,29 @@ li {
 a {
   color: #42b983;
 }
+.filter {
+    border-radius: 5px;
+    background-color: rgba(238, 238, 238, 0.795);
+    padding: 6px;
+    margin: 6px;
+    color: #444;
+    text-align: left;
+    display: inline-block;
+    cursor: default;
+}
+
+.reset {
+    border-radius: 3px;
+    background-color: black;
+    padding: 6px;
+    margin: 6px;
+    color: white;
+    text-align: left;
+    display: inline-block;
+    cursor: pointer;
+}
 
 #tsdiv {
-  padding-left: 10%;
+  padding-left: 20%;
 }
 </style>

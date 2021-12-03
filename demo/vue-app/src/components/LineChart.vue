@@ -50,7 +50,7 @@ export default {
   name: "LineChart",
   mounted: function () {
     d3.csv("education/gpi.csv").then((data) => {
-      this.lineChart(data);
+        this.lineChart(data);
     });
   }, // mounted
   methods: {

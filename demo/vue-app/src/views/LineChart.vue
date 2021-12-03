@@ -33,19 +33,24 @@
               <br>
               <b align="left">Education</b>
               <hr>
-              <li class="nav-item">
-                <a class="nav-link active" align="left" href="/bubblechart">
-                  Bar Chart
+                <li class="nav-item">
+                <a class="nav-link" align="left" href="/barchart">
+                  Global Student Enrollment
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" align="left" href="/radialchart">
-                  Radial Chart
-                </a>
-              </li>
-                            <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" align="left" href="/linechart">
-                  Line Chart
+                  Gender Parity Indices in Tertiary Education
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" align="left" href="/bubblechart">
+                STEM Graduates and Median Salaries
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" align="left" href="/radialchart">
+                  STEM Distribution of US Women
                 </a>
               </li>
             </ul>
