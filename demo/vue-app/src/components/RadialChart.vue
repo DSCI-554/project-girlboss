@@ -4,8 +4,7 @@
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
       <p align="left">
-        While we didn't see extreme differences in global student enrollment by education level, we found a great dataset that provided 
-         </p>
+Equality in the workplace and provision of fair pay is paramount to economic development. Women still face significant barriers to access decision-making roles and jobs all across the world, and this access often starts with education. This chart highlights the unfortunate trend that women are often underrepresented in the majors that afford students the highest salaries. For example, women only make up 20-30% of the population of Engineering majors, the highest-earning field shown in the data collected from FiveThirtyEight.         </p>
       </b-col>
     </b-row>
 
@@ -20,7 +19,8 @@
         <span class="filter" id="math">Computers & Mathematics</span>
         <span class="filter" id="physical">Physical Sciences</span>
     </div>
-<div ref="rchart" align="center"></div> 
+<div id="rchart" align="center"></div> 
+<div id="info3" align="right"></div>
   </div>
   
 </template>
@@ -37,40 +37,104 @@ export default {
   methods: {
     
     radialChart(data) {
+    console.log(data);
+    const all = data;
 
-    const margin = { top: 100, right: 0, bottom: 50, left: 0 };
-    const height = 1000 - margin.top - margin.bottom; // height
-    const width = 800 - margin.left - margin.right; // width
-    const innerRadius = 90;
-    const outerRadius = 500 / 2;
+         //✅ ✅ ✅
+    d3.select('#all')
+        .on('click', () => {
+            current = data.sort((a, b) => d3.ascending(a.Major_category, b.Major_category));
+            d3.selectAll("#rchart> *").remove();
+            draw();
+            toggle("#all");
+        });
 
-    
+    d3.select('#engineering')
+        .on('click', () => {
+            current = all.filter(d => d.Major_category == 'Engineering');
+            d3.selectAll("#rchart> *").remove();
+            draw();
+            toggle("#engineering");
 
-    data.sort((a, b) => d3.ascending(a.Major_category, b.Major_category));
-    const SHARE = d3.mean(data, d => d.ShareWomen);
+        });
 
-      const svg = d3
-        .select(this.$refs.rchart)
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
+    d3.select('#biology')
+        .on('click', () => {
+            current = all.filter(d => d.Major_category == 'Biology & Life Science');
+
+            d3.selectAll("#rchart> *").remove();
+            draw();
+            toggle("#biology");
+
+        });
+
+    d3.select('#health')
+        .on('click', () => {
+            current = all.filter(d => d.Major_category == 'Health');
+            d3.selectAll("#rchart> *").remove();
+            draw();
+            toggle("#health");
+        });
+
+    d3.select('#math')
+        .on('click', () => {
+            current = all.filter(d => d.Major_category == 'Computers & Mathematics');
+            d3.selectAll("#rchart> *").remove();
+
+            draw();
+            toggle("#math");
+        });
+
+    d3.select('#physical')
+        .on('click', () => {
+            current = all.filter(d => d.Major_category == 'Physical Sciences');
+            d3.selectAll("#rchart> *").remove();
+            draw();
+            toggle("#physical");
+        });
+
+
+    function toggle(id) {
+        d3.selectAll('.filter')
+            .style('background-color', '#ddd');
+        d3.select(id)
+            .style('background-color', '#e25a0077');
+    }
+        // set the dimensions and margins of the graph
+var margin = { top: 100, right: 0, bottom: 50, left: 0 },
+    width = 1000 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom,
+    innerRadius = 90,
+    outerRadius = 500 / 2; // the outerRadius goes from the middle of the SVG area to the border
+
+    var current = data.sort((a, b) => d3.ascending(a.Major_category, b.Major_category));
+    draw();
+
+
+// draw radial bar charts based on current filtered datasets, add animation to fill the women bars sequentially as a visual 
+    function draw() {
+
+        var avg_share = d3.mean(current, d => d.ShareWomen)
+
+        var svg = d3.select('#rchart').append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
             .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");
 
-    var x = d3.scaleBand()
+        var x = d3.scaleBand()
             .range([0, 2 * Math.PI]) // X axis goes from 0 to 2pi = all around the circle. If I stop at 1Pi, it will be around a half circle
-            .domain(data.map(function(d) { return d.Major; })); // domain of the X axis is the list of majors.
+            .domain(current.map(function(d) { return d.Major; })); // domain of the X axis is the list of majors.
 
         var y = d3.scaleRadial()
             .range([innerRadius, outerRadius])
-            .domain([0, d3.max(data, d => d.ShareWomen)]); // Domain of Y is from 0 to the max seen in the data
+            .domain([0, d3.max(current, d => d.ShareWomen)]); // Domain of Y is from 0 to the max seen in the data
 
 
-// Add the bars
         // Add the bars
         svg.append("g")
             .selectAll("path")
-            .data(data)
+            .data(current)
             .enter()
             .append("path")
             .style("fill", "pink")
@@ -93,12 +157,13 @@ export default {
                 .endAngle(function(d) { return x(d.Major) + x.bandwidth(); })
                 .padAngle(0.01)
                 .padRadius(innerRadius))
-            .delay(function(d, i) { return (i * 30) });
+            .delay(function(d, i) { return (i * 20) });
 
-            // Add the labels
+
+        // Add the labels
         svg.append("g")
             .selectAll("g")
-            .data(data)
+            .data(current)
             .enter()
             .append("g")
             .attr("class", "name")
@@ -110,15 +175,14 @@ export default {
             .style("font-size", "9px")
             .attr("alignment-baseline", "middle")
 
-        const format = d3.format(".2%")
+        var format = d3.format(".2%")
 
-
-                svg.append("text")
+        svg.append("text")
             .style("font-size", "24px")
             .attr("y", height / innerRadius - 20)
             .attr("x", width / innerRadius - 45)
             .attr("alignment-baseline", "middle")
-            .text(format(SHARE));
+            .text(format(avg_share));
 
         svg.append("text")
             .style("font-size", "14px")
@@ -153,6 +217,11 @@ export default {
             .attr("dy", "0.35em")
             .text(y.tickFormat(4, "%"));
 
+        //yAxis.append("text")
+        //    .attr("y", function(d) { return -y(y.ticks(4).pop()); })
+        //    .attr("dy", "-1em")
+        //    .text("% Women");
+    }
 
     }, //radial chart
   }, // methods

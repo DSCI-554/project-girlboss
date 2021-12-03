@@ -1,16 +1,15 @@
 <template>
   <div id="tsdiv">
-    <h1 align="left">Monthly Wages by Gender Over Time (local currency)</h1>
+    <h1 align="left">Gender Parity Indices in Tertiary Education</h1>
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
       <p align="left">
-        Gender equality in the workplace and provision of fair pay is key to economic development. Women still face significant barriers to access
-        decision-making roles and jobs all across the world. The goal of
-        non-discrimination and equal treatment in the workplace is to ensure all workers are paid equally for labor of equal value, regardless of gender. The extent to which this is true can be evalulated using wage data disaggregated over time and by country.
-      </p>
+        Gender Parity Index (GPI) = Ratio of girls to boys in tertiary education</p>
+             <p align="left">
+        Gender Parity Index (GPI) = Ratio of girls to boys in tertiary education</p>
       </b-col>
     </b-row>
-    <select id="d3-dropdown">
+    <select id="d3-dropdown" class="dropdown">
         <option value="all">All</option>
         <option value="Australia">Australia</option>
         <option value="Austria">Austria</option>
@@ -36,7 +35,7 @@
         <option value="United States of America">United States of America</option>
     </select>
 
-    <p id="selected-dropdown"></p>
+    <p id="selected-dropdown" align="left"></p>
     <!-- <div id="div_template"></div> -->
     <div id="lchart" align="left"></div> 
   </div>
@@ -330,7 +329,8 @@ a {
 .dropdown {
   border-radius: 5px;
   padding: 5px;
-  margin: 10%;
+  width: 250px;
+  margin: 1%;
   cursor: pointer;
 }
 option:hover {

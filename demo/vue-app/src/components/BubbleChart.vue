@@ -4,14 +4,15 @@
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
       <p align="left">
-        Gender equality in the workplace and provision of fair pay is key to economic development. Women still face significant barriers to access
-        decision-making roles and jobs all across the world. The goal of
-        non-discrimination and equal treatment in the workplace is to ensure all workers are paid equally for labor of equal value, regardless of gender. The extent to which this is true can be evalulated using wage data disaggregated over time and by country.
-      </p>
+      This chart further breaks down the distribution of female graduates in different disciplines. As you can see, women make up a smaller proportion of Engineering and Computers & Mathematics students, but make up an overwhelming proportion of Health students. This speaks to a greater trend in women’s education and thus employment that bars women from participating equally in STEM disciplines. Also, majors with the larger percent of women are among the lowest median salaries.</p>
+      <p align="left">Please hover and click our the bubbles to get detailed information on each major.</p>
       </b-col>
     </b-row>
 
-    <div ref="bchart" align="left"></div> 
+                <div class="commands">
+            <p class="alert" id="info3"></p>
+        </div>
+        <div ref="bchart" align="left"></div> 
   </div>
 
   
@@ -30,7 +31,7 @@ export default {
     bubbleChart(data) {
         console.log(data);
 
-    const margin = { top: 50, right: 20, bottom: 50, left: 90 };
+    const margin = { top: 20, right: 20, bottom: 50, left: 90 };
     const height = 550 - margin.top - margin.bottom; // height
     const width = 900 - margin.left - margin.right; // width
 
@@ -71,6 +72,7 @@ export default {
         .domain(data.map(function(d) { return d.Major_category; }))
         .range(d3.quantize(d3.interpolateHcl("#f4e153", "#362142"), 7));
 
+    const formatValue = d3.format(",");
 
             // Draw bubbles and color code using color function
     svg.append('g')
@@ -94,7 +96,17 @@ export default {
         })
         .on("mouseout", function () {
           d3.select(this).attr("stroke", null);
+        })
+                .on('click', function() {
+            svg.select('.selected')
+                .classed('selected', false);
+            d3.select(this)
+                .classed('selected', true);
+            d3.select('#info3')
+                .text('Field: ' + this.__data__.Major_category +
+                    ', Median Salary: $' + formatValue(this.__data__.Median));
         });
+
 
 
 
@@ -168,8 +180,16 @@ li {
 a {
   color: #42b983;
 }
+div.commands {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
 
 #tsdiv {
-  padding-left: 10%;
+  padding-left: 20%;
 }
 </style>

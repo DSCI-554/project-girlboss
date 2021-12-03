@@ -11,6 +11,8 @@
           Compared to the United States, primary education equates to elementary school
 grade 6 (age 11–12) through grade 12 (age 17–18)
       </p>
+    <p align="left">Please click on the gendered bars for specific enrollment data.</p>
+
       </b-col>
     </b-row>
     <b-row align-h="start">
@@ -43,9 +45,10 @@ grade 6 (age 11–12) through grade 12 (age 17–18)
     <p id="selected-dropdown" align="left"></p>
     </b-row>
     <!-- <div id="div_template"></div> -->
-    <b-row>
+    <div id="info" align="right"></div>
+    <div id="info3" align="right"></div>
+    <div id="info4" align="right"></div>
     <div id="barchart" align="left"></div> 
-    <div id="info3" align="right"></div></b-row>
   </div>
 
   
@@ -110,8 +113,7 @@ export default {
           var x = d3.scaleLinear()
               .range([0, width])
               .domain([0, d3.max(data.filter(d => d.level == "total"), d => d.all)]);
-
-
+          
           // append the rectangles for the bar chart
           svg.selectAll(".bar")
               .data(data)
@@ -120,7 +122,21 @@ export default {
               .attr("x", x(0))
               .attr("y", d => y(d.level))
               .attr("width", d => x(d.female))
-              .attr("height", y.bandwidth());
+              .attr("height", y.bandwidth())
+                      .on("mouseover", function () {
+          d3.select(this).attr("stroke", "#000");
+        })
+        .on("mouseout", function () {
+          d3.select(this).attr("stroke", null);
+        })
+                .on('click', function() {
+            svg.select('.selected')
+                .classed('selected', false);
+            d3.select(this)
+                .classed('selected', true);
+            d3.select('#info3')
+                .text('Female Population: ' + formatValue(this.__data__.female));
+        });
 
           // append the rectangles for the bar chart
           svg.selectAll(".bar")
@@ -131,36 +147,23 @@ export default {
               .attr("y", d => y(d.level))
               .attr("width", d => x(d.male))
               .attr("height", y.bandwidth())
-                      .on('click', function() {
+        .on("mouseover", function () {
+          d3.select(this).attr("stroke", "#000");
+        })
+        .on("mouseout", function () {
+          d3.select(this).attr("stroke", null);
+        })
+                .on('click', function() {
             svg.select('.selected')
                 .classed('selected', false);
             d3.select(this)
                 .classed('selected', true);
-            d3.select('#info3')
-                .text('Female Population: ' + JSON.stringify(data.get(this.__data__.properties.female)) +
-                    ', Male Population: ' + JSON.stringify(data.get(this.__data__.properties.male)));
+            d3.select('#info4')
+                .text('Male Population: ' + formatValue(this.__data__.male));
         });
 
           // format population, x axis
-          formatValue = d3.format(".2s");
-
-          // append the rectangles for the bar chart
-          svg.selectAll(".name")
-              .data(data)
-              .enter().append("text")
-              .attr("class", "name")
-              .text(d => formatValue(d.female))
-              .attr("x", 20)
-              .attr("y", d => y(d.level) + 30);
-
-          svg.selectAll(".name")
-              .data(data)
-              .enter().append("text")
-              .attr("class", "name")
-              .text(d => formatValue(d.male))
-              .attr("x", d => x(d.male))
-              .attr("y", d => y(d.level) + 30);
-
+          formatValue = d3.format(".4s");
           // add the x Axis
           svg.append("g")
               .attr("transform", "translate(0," + height + ")")
@@ -189,6 +192,53 @@ export default {
               .style('font-size', '13px')
               .style('color', '#fff')
               .text("Population");
+              
+                              // create legend using color function
+        svg.selectAll("mydots")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("x", width/2 - 20)
+            .attr("y", 0)
+            .attr("width", 15)
+            .attr("height", 15)
+            .style("fill", "#e0b1cb");
+
+        // create legend labels
+        svg.selectAll("mylabels")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("x", width/2)
+            .attr("y", 10)
+            .style("fill", "black")
+            .text("Female")
+            .attr("text-anchor", "left")
+            .style('font-size', '14px')
+            .style("alignment-baseline", "middle");
+
+        svg.selectAll("mydots")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("x", width/2 +60)
+            .attr("y", 0)
+            .attr("width", 15)
+            .attr("height", 15)
+            .style("fill", "#489fb5");
+
+        // create legend labels
+        svg.selectAll("mylabels")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("x", width/2+80)
+            .attr("y", 10)
+            .style("fill", "black")
+            .text("Male")
+            .attr("text-anchor", "left")
+            .style('font-size', '14px')
+            .style("alignment-baseline", "middle");
       }
 
       function draw(selected) {
@@ -221,7 +271,20 @@ export default {
               .attr("y", d => y(d.level))
               .attr("width", d => x(d.female))
               .attr("height", y.bandwidth())
-
+                      .on("mouseover", function () {
+          d3.select(this).attr("stroke", "#000");
+        })
+        .on("mouseout", function () {
+          d3.select(this).attr("stroke", null);
+        })
+                .on('click', function() {
+            svg.select('.selected')
+                .classed('selected', false);
+            d3.select(this)
+                .classed('selected', true);
+            d3.select('#info3')
+                .text(this.__data__.level + ' Female Population: ' + formatValue(this.__data__.female));
+        });
 
 
           // append the rectangles for the bar chart
@@ -232,27 +295,21 @@ export default {
               .attr("x", d => x(d.female))
               .attr("y", d => y(d.level))
               .attr("width", d => x(d.male))
-              .attr("height", y.bandwidth());
-
-          // append the rectangles for the bar chart
-          svg.selectAll(".name")
-              .data(updated)
-              .enter().append("text")
-              .attr("class", "name")
-              .text(d => formatValue(d.male))
-              .attr("x", d => x(d.male) + 30)
-              .attr("y", d => y(d.level) + 30);
-
-          // append the rectangles for the bar chart
-          svg.selectAll(".name")
-              .data(updated)
-              .enter().append("text")
-              .attr("class", "name")
-              .attr("x", 20)
-              .attr("y", d => y(d.level) + 30)
-              .text(d => formatValue(d.female));
-
-          // append the rectangles for the bar chart
+              .attr("height", y.bandwidth())
+                      .on("mouseover", function () {
+          d3.select(this).attr("stroke", "#000");
+        })
+        .on("mouseout", function () {
+          d3.select(this).attr("stroke", null);
+        })
+                .on('click', function() {
+            svg.select('.selected')
+                .classed('selected', false);
+            d3.select(this)
+                .classed('selected', true);
+            d3.select('#info4')
+                .text(this.__data__.level + ' Male Population: ' + formatValue(this.__data__.male));
+        });
 
 
           // add the x Axis
@@ -284,7 +341,57 @@ export default {
               .style('font-size', '13px')
               .style('color', '#fff')
               .text("Population");
+
+                      // create legend using color function
+        svg.selectAll("mydots")
+            .data(updated)
+            .enter()
+            .append("rect")
+            .attr("x", width/2 - 20)
+            .attr("y", 0)
+            .attr("width", 15)
+            .attr("height", 15)
+            .style("fill", "#e0b1cb");
+
+        // create legend labels
+        svg.selectAll("mylabels")
+            .data(updated)
+            .enter()
+            .append("text")
+            .attr("x", width/2)
+            .attr("y", 10)
+            .style("fill", "black")
+            .text("Female")
+            .attr("text-anchor", "left")
+            .style('font-size', '14px')
+            .style("alignment-baseline", "middle");
+
+        svg.selectAll("mydots")
+            .data(updated)
+            .enter()
+            .append("rect")
+            .attr("x", width/2 +60)
+            .attr("y", 0)
+            .attr("width", 15)
+            .attr("height", 15)
+            .style("fill", "#489fb5");
+
+        // create legend labels
+        svg.selectAll("mylabels")
+            .data(updated)
+            .enter()
+            .append("text")
+            .attr("x", width/2+80)
+            .attr("y", 10)
+            .style("fill", "black")
+            .text("Male")
+            .attr("text-anchor", "left")
+            .style('font-size', '14px')
+            .style("alignment-baseline", "middle");
+            
       }
+
+      
 
    }, //bubble chart
   }, // methods
