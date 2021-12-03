@@ -21,12 +21,12 @@ Team members:
 - Final presentation: [Transcript](presentation/TRANSCRIPT.md) | [slides](presentation/presentation.sozi.pdf)
 - Paper: [Overleaf read-only link](https://www.overleaf.com/read/twcpxmqjtnvf) | [PDF](paper/paper.pdf)
 - [Demo link](demo/vue-app/)
-- Video [Transcript](video/TRANSCRIPT.md) | [YouTube link]()
+- Video [Transcript](video/TRANSCRIPT.md) | [YouTube link](https://youtu.be/fftbNES3kxg)
 
 
 ## Project Summary
 
-Gender discrimination is an issue that has plagued modern economies, and although female participation in the workforce has been climbing, there are still many issues left to be addressed, especially outside of the US and in specific disciplines such as STEM. This project aims to create an interactive infographic that allows users to explore data documenting the gender gap in employment and in education. The resulting website and infographic can be used by everyone curious about learning more about how this gender gap affects women across the world.
+Gender discrimination is an issue that has plagued modern economies, and although female participation in the workforce has been climbing, there are still many issues left to be addressed, especially outside of the US and in specific disciplines such as STEM. In this project, we create an interactive infographic that allows users to explore data documenting the gender gap in employment and in education. Visualizations in the infographic showcase information about the average female-to-male earnings ratio, gender wage gap, gender distribution by job sector, and more. The resulting website and infographic can be used by everyone curious about learning more about how this gender gap affects women across the world.
 
 ## Contributions
 
