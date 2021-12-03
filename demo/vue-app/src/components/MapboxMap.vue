@@ -11,15 +11,9 @@
       <b-row>
         <b-col cols="9">
           <p style="text-align: left; font-size: 85%">
-            Data from the IWPR Status of Women in the States dataset (2013) is
-            used in this chloropleth map to show the median annual income for
-            women employed full-time, year-round across the United States. There
-            is a stark difference between the median annual income of women
-            living in rural states, such as Arkansas, where the median annual
-            income is $30,000, and more populus states, such as the District of
-            Columbia, where the median annual income is $60,000. The purpose of
-            this chart is to visualize the regional differences between women's
-            income in the United States.
+            Data from the IWPR Status of Women in the States dataset (2013) is used in this chloropleth map to show the median annual income for women employed full-time, year-round across the United States. There is a stark difference between the median annual income of women living in rural states, such as Arkansas, where the median annual income is $30,000, and more populus states, such as the District of Columbia, where the median annual income is $60,000. The purpose of this chart is to visualize the regional differences between women's income in the United States.
+
+            *The values of the median annual income for each state can be seen on hover
           </p>
         </b-col>
       </b-row>
@@ -35,7 +29,7 @@
               </h2>
               <div id="pd"><p>Hover over a state!</p></div>
             </div>
-            <div class="map-overlay" id="legend"></div>
+            <!-- <div class="map-overlay" id="legend"></div> -->
           </div>
         </b-col>
       </b-row>
@@ -83,21 +77,21 @@ export default {
         ];
 
         // create legend
-        const legend = document.getElementById("legend");
+        // const legend = document.getElementById("legend");
 
         layers.forEach((layer, i) => {
           const color = colors[i];
-          const item = document.createElement("div");
+          // const item = document.createElement("div");
           const key = document.createElement("span");
           key.className = "legend-key";
           key.style.backgroundColor = color;
           //   key.style.opacity = 0.4;
 
-          const value = document.createElement("span");
-          value.innerHTML = `${layer}`;
-          item.appendChild(key);
-          item.appendChild(value);
-          legend.appendChild(item);
+          // const value = document.createElement("span");
+          // value.innerHTML = `${layer}`;
+          // item.appendChild(key);
+          // item.appendChild(value);
+          // legend.appendChild(item);
         });
 
         map.on("mousemove", (event) => {

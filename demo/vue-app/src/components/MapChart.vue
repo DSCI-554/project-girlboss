@@ -13,7 +13,11 @@
       <p style="text-align: left; font-size: 85%">
         The gender wage gap is a global problem that is defined as the difference between earnings of men and women relative to earnings of men (%).
         Data from the Organisation for Economic Co-operation and Development (OECD) from 2000 to 2019 is displayed in the map below.
-        Although the gender pay gap has been closing in recent years, it is still prominent in median and top earners in developed countries like the United States, Japan, and South Korea.</p>
+      </p>
+      <p style="text-align: left; font-size: 85%">
+        Explore the gender wage gap and how it differs amongst countries and over time. Select from the dropdown a visualize a specific gender wage gap indicator.
+        Hover over a country to find more details on the country's labor force participation rate, GDP per capita, and gender wage gap at median, top 10% (9th decile), and bottom 10% (1st decile) earners.
+      </p>
       </b-col>
       </b-row>
     </b-container>
@@ -73,7 +77,7 @@ export default {
       d3.selectAll('.country')
           .data(topojson.feature(this.world, this.world.objects.countries).features)
           .attr("fill", d => ((typeof(update_data.get(d.id)) == "undefined") ? '#ccc' : this.color(update_data.get(d.id))))
-          .text(d => `Country: ${d.properties.name} Gender Wage Gap: ${update_data.get(d.id)}`);
+          .text(d => `Country: ${d.properties.name} Gender Wage Gap (%): ${update_data.get(d.id)}`);
 
       var display_data = this.data.filter(function(row) {
           var indicator = row['Indicator'];
@@ -129,7 +133,7 @@ export default {
       svg.append("g")
         .attr("transform", "translate(25,530)")
         // .attr("transform", "translate(25,20)")
-        .append(() => this.legend({ color, title: 'Gender Wage Gap', width: 260 }));
+        .append(() => this.legend({ color, title: 'Gender Wage Gap (%)', width: 260 }));
 
       var div = d3.select(".tooltip");
       var country;
@@ -146,7 +150,7 @@ export default {
             svg.select('.selected')
                 .classed('selected', false);
             d3.select(this)
-                .classed('selected', true);		
+                .classed('selected', true)		
             div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
@@ -203,6 +207,7 @@ export default {
         var update_data = data.filter(function(row){
             var time = row['Time'];
             var id = row['id'];
+
             //var indicator = row['Indicator'];
             return time === sliderValue & id === country_id
             //return time === sliderValue & id === country_id & indicator !== 'Gender wage gap at median' & indicator !== 'Gender wage gap at 9th decile (top)' & indicator !== 'Gender wage gap at 1st decile (bottom)';
@@ -210,10 +215,20 @@ export default {
 
         var tooltip = `<b>Country</b>: ${country}`;
 
+        function numberWithCommas(x) {
+          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
         update_data.forEach(function(row) {
             var indicator = row['Indicator'];
             var value = row['Value'];
-            tooltip = tooltip + `<br/><b>${indicator}</b>: ${value}`
+
+            if (indicator.includes("wage gap") || indicator.includes("participation rate")) {
+              tooltip = tooltip + `<br/><b>${indicator}</b>: ${value}%`;
+            } else {
+              value = numberWithCommas(+value);
+              tooltip = tooltip + `<br/><b>${indicator}</b>: ${value}`;
+            }
         });
 
         return tooltip;
@@ -237,7 +252,7 @@ export default {
       d3.selectAll('.country')
           .data(topojson.feature(world, world.objects.countries).features)
           .attr("fill", d => ((typeof(update_data.get(d.id)) == "undefined") ? '#ccc' : color(update_data.get(d.id))))
-          .text(d => `Country: ${d.properties.name} Gender Wage Gap: ${update_data.get(d.id)}`);
+          .text(d => `Country: ${d.properties.name} Gender Wage Gap (%): ${update_data.get(d.id)}`);
     },
     legend({
         color,

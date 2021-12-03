@@ -3,8 +3,13 @@
     <h1 id="employment-by-sector" align="left">Employment by Sector</h1>
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
-        <p align="left">
-          Gender equality in labor force participation within different industry sectors is key to sustainable economic growth. Women still face significant barriers to access decision-making roles and jobs all across the world. Explore the trends from the No Ceilings dataset to observe how certain sectors are dominated by one gender or another. For instance, craft and related trade workers have large male participation rates, while service and sales workers have larger female participation rates. The trend shows managers are still predominantly male in many countries.
+        <p align="left" style="font-size: 85%">
+          Not only is there a gender wage gap across the globe, but there also exists an imbalance in the distribution of gender within job sectors.
+          Explore the trends from the No Ceilings dataset to observe how certain sectors are dominated by one gender or another. For instance, craft and related trade workers have large male participation rates, while service and sales workers have larger female participation rates.
+          The trend shows managers are still predominantly male in many countries.
+        </p>
+        <p align="left" style="font-size: 85%">
+          Gender equality in labor force participation within different industry sectors is key to sustainable economic growth. Women still face significant barriers to access decision-making roles and jobs all across the world.
         </p>
       </b-col>
     </b-row>
