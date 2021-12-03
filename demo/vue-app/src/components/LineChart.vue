@@ -6,7 +6,7 @@
       <p align="left">
         Gender Parity Index (GPI) = Ratio of girls to boys in tertiary education</p>
              <p align="left">
-        Gender Parity Index (GPI) = Ratio of girls to boys in tertiary education</p>
+        Like in the global student population by education level, we excepted to see a larger gap between female and male enrollment, especially in tertiary education. The GPI also tends to increase by year for most countries indicating a rise in the ratio of girls to boys.</p>
       </b-col>
     </b-row>
     <select id="d3-dropdown" class="dropdown">
