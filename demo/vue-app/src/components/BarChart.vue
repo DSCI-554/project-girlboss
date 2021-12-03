@@ -77,7 +77,7 @@ export default {
       //var data = data.sort((a, b) => d3.ascending(a.country, b.country));
       var formatValue = d3.format(".2s");
 
-      const margin = { top: 50, right: 30, bottom: 150, left: 75 };
+      const margin = { top: 50, right: 30, bottom: 150, left: 100 };
       const height = 500 - margin.top - margin.bottom; // height
       const width = 700 - margin.left - margin.right; // width
 
