@@ -8,7 +8,7 @@
         >
           <div class="sidebar-sticky pt-3">
             <ul class="nav flex-column">
-              <b align="left">Employment</b>
+              <!-- <b align="left">Employment</b>
               <hr />
               <li class="nav-item">
                 <a class="nav-link" align="left" href="/employment#overview">
@@ -35,26 +35,26 @@
                   Median Annual Income of US Women
                 </a>
               </li>
-              <br />
+              <br /> -->
               <b align="left">Education</b>
               <hr />
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/education">
+                <a class="nav-link" align="left" href="#student_enroll">
                   Global Student Enrollment
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/education">
+                <a class="nav-link" align="left" href="#gender_parity">
                   Gender Parity Indices in Tertiary Education
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/education">
+                <a class="nav-link" align="left" href="#stem_salaries">
                   STEM Graduates and Median Salaries
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/education">
+                <a class="nav-link" align="left" href="#stem_graduates">
                   STEM Distribution of US Women
                 </a>
               </li>
