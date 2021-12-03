@@ -39,40 +39,53 @@
               <b align="left">Education</b>
               <hr />
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/bubblechart">
-                  Bar Chart
+                <a class="nav-link" align="left" href="/education">
+                  Global Student Enrollment
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/radialchart">
-                  Radial Chart
+                <a class="nav-link" align="left" href="/education">
+                  Gender Parity Indices in Tertiary Education
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" align="left" href="/education">
+                  STEM Graduates and Median Salaries
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" align="left" href="/education">
+                  STEM Distribution of US Women
                 </a>
               </li>
             </ul>
           </div>
         </nav>
 
-        <div id="main_div">
           <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <div
-              class="
-                d-flex
-                justify-content-between
-                flex-wrap flex-md-nowrap
-                align-items-center
-                pt-3
-                pb-2
-                mb-3
-                border-bottom
-              "
-            >
-              <h4>Visualizing the Gender Gap in Employment and Education</h4>
+            <div id="main_div">
+              <div
+                class="
+                  d-flex
+                  justify-content-between
+                  flex-wrap flex-md-nowrap
+                  align-items-center
+                  pt-3
+                  pb-2
+                  mb-3
+                  border-bottom
+                "
+              >
+                <h4>Visualizing the Gender Gap in Employment and Education</h4>
+              </div>
             </div>
-
+            <BarChart />
+            <LineChart />
+            <BubbleChart />
+            <RadialChart />
             <!-- Insert components here -->
-
           </main>
-        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -121,7 +134,7 @@
 } */
 @media only screen and (min-width : 320px) {
   #main_div {
-    margin-left: 200px;
+    margin-left: 225px;
   }
 }
 
@@ -135,11 +148,18 @@
 <script>
 // @ is an alias to /src
 // import Overview from "../components/Overview";
-
+import BarChart from "../components/BarChart";
+import LineChart from "../components/LineChart";
+import BubbleChart from "../components/BubbleChart";
+import RadialChart from "../components/RadialChart";
 
 export default {
   name: "education",
   components: {
+    BarChart,
+    LineChart,
+    BubbleChart,
+    RadialChart
     // Overview
   }
 };
