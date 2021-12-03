@@ -3,10 +3,11 @@
     <h2 align="left">Monthly Wages by Gender Over Time (local currency)</h2>
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
-      <p align="left">
+      <p align="left" style="font-size: 85%">
         Gender equality in the workplace and provision of fair pay is key to economic development. Women still face significant barriers to access
         decision-making roles and jobs all across the world. The goal of
         non-discrimination and equal treatment in the workplace is to ensure all workers are paid equally for labor of equal value, regardless of gender. The extent to which this is true can be evalulated using wage data disaggregated over time and by country.
+        Use the drop down to select specific countries and observe monthly wage differences amongst men and women from 1995 to 2011.
       </p>
       </b-col>
     </b-row>

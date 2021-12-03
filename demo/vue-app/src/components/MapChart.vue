@@ -13,7 +13,11 @@
       <p style="text-align: left; font-size: 85%">
         The gender wage gap is a global problem that is defined as the difference between earnings of men and women relative to earnings of men (%).
         Data from the Organisation for Economic Co-operation and Development (OECD) from 2000 to 2019 is displayed in the map below.
-        Although the gender pay gap has been closing in recent years, it is still prominent in median and top earners in developed countries like the United States, Japan, and South Korea.</p>
+      </p>
+      <p style="text-align: left; font-size: 85%">
+        Explore the gender wage gap and how it differs amongst countries and over time. Select from the dropdown a visualize a specific gender wage gap indicator.
+        Hover over a country to find more details on the country's labor force participation rate, GDP per capita, and gender wage gap at median, top 10% (9th decile), and bottom 10% (1st decile) earners.
+      </p>
       </b-col>
       </b-row>
     </b-container>
