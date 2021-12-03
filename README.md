@@ -63,6 +63,7 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 [Erica Xia](mailto:ericaxia@usc.edu)
 
 - Interactive responsive time series line chart using monthly wage data
+- Aggregated static time series line chart showing female-male earnings ratio
 - Zoomable circle packing chart using employment data
 - Created Vue app and formatted website with Bootstrap
 
