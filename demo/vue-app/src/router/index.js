@@ -5,11 +5,13 @@ import Dashboard from '../views/Dashboard.vue'
 import TimeSeriesChartView from '../views/TimeSeriesChartView.vue'
 import Explore from '../views/Explore.vue'
 import Education from '../views/Education.vue'
+import Education2 from '../views/Education2.vue'
 import Map from '../views/Map.vue'
 import CirclePackingChartView from '../views/CirclePackingChartView.vue'
 import MapboxMapView from '../views/MapboxMapView.vue'
 import BubbleChart from '../views/BubbleChart.vue'
 import RadialChart from '../views/RadialChart.vue'
+import LineChart from '../views/LineChart.vue'
 
 
 Vue.use(VueRouter)
@@ -41,12 +43,17 @@ const routes = [{
     {
         path: '/education',
         name: 'Education',
-        component: Education
+        component: Education2
     },
     {
         path: '/explore-wagegap',
         name: 'Wage Gap',
         component: Map
+    },
+    {
+        path: '/education-parity-indices',
+        name: 'Line Chart',
+        component: LineChart
     },
     {
         path: '/monthlywages',
@@ -64,15 +71,20 @@ const routes = [{
         component: MapboxMapView
     },
     {
-        path: '/bubblechart',
+        path: '/education-stem-salaries',
         name: 'Bar Chart',
         component: BubbleChart
     },
     {
-        path: '/radialchart',
+        path: '/education-stem-graduates',
         name: 'Radial Chart',
         component: RadialChart
     },
+    {
+        path: '/education2',
+        name: 'Original Education Page',
+        component: Education
+    }
 ]
 
 const router = new VueRouter({
