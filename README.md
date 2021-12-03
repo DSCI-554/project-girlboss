@@ -78,7 +78,7 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 
 -
 
-## Video
+### Video
 
 [Erin Szeto](mailto:erinszet@usc.edu)
 
