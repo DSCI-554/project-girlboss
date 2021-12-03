@@ -40,29 +40,29 @@
                   Median Annual Income of US Women
                 </a>
               </li>
-              <br />
+              <!-- <br />
               <b align="left">Education</b>
               <hr />
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/education">
+                <a class="nav-link" align="left" href="/education#student_enroll">
                   Global Student Enrollment
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/education">
+                <a class="nav-link" align="left" href="/education#gender_parity">
                   Gender Parity Indices in Tertiary Education
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/education">
+                <a class="nav-link" align="left" href="/education#stem_salaries">
                   STEM Graduates and Median Salaries
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" align="left" href="/education">
+                <a class="nav-link" align="left" href="/education#stem_graduates">
                   STEM Distribution of US Women
                 </a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </nav>
