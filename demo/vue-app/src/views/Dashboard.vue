@@ -103,11 +103,16 @@
   margin-right: 20%;
 }
 
+#sidebarMenu {
+  width: 215px;
+}
+
 .sidebar {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
+  width: 100px;
   z-index: 100; /* Behind the navbar */
   padding: 48px 0 0; /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
@@ -132,12 +137,6 @@
 @media only screen and (min-width : 320px) {
   #main_div {
     margin-left: 200px;
-  }
-}
-
-@media only screen and (min-width : 1400px) {
-  #main_div {
-    margin-left: 300px;
   }
 }
 </style>

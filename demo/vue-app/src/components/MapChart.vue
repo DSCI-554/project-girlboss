@@ -73,7 +73,7 @@ export default {
       d3.selectAll('.country')
           .data(topojson.feature(this.world, this.world.objects.countries).features)
           .attr("fill", d => ((typeof(update_data.get(d.id)) == "undefined") ? '#ccc' : this.color(update_data.get(d.id))))
-          .text(d => `Country: ${d.properties.name} OECD Gender Wage Gap: ${update_data.get(d.id)}`);
+          .text(d => `Country: ${d.properties.name} Gender Wage Gap: ${update_data.get(d.id)}`);
 
       var display_data = this.data.filter(function(row) {
           var indicator = row['Indicator'];
@@ -129,7 +129,7 @@ export default {
       svg.append("g")
         .attr("transform", "translate(25,530)")
         // .attr("transform", "translate(25,20)")
-        .append(() => this.legend({ color, title: 'OECD Gender Wage Gap', width: 260 }));
+        .append(() => this.legend({ color, title: 'Gender Wage Gap', width: 260 }));
 
       var div = d3.select(".tooltip");
       var country;
@@ -177,7 +177,7 @@ export default {
         .width(925)
         .displayValue(false)
         .on('onchange', val => {
-            d3.select('p#value-time').text("OECD Gender Wage Gap in Year "+d3.timeFormat('%Y')(val));
+            d3.select('p#value-time').text("Gender Wage Gap in Year "+d3.timeFormat('%Y')(val));
             this.updateTimeframe(this.display_data, d3.timeFormat('%Y')(val), world, color);
             sliderValue = d3.timeFormat('%Y')(val);
             this.sliderValue = sliderValue;
@@ -197,7 +197,7 @@ export default {
 
       gTime.call(sliderTime);
 
-      d3.select('p#value-time').text("OECD Gender Wage Gap in Year "+d3.timeFormat('%Y')(sliderTime.value()));
+      d3.select('p#value-time').text("Gender Wage Gap in Year "+d3.timeFormat('%Y')(sliderTime.value()));
 
       function obtainStats(sliderValue, country_id, country, data) {
         var update_data = data.filter(function(row){
@@ -237,7 +237,7 @@ export default {
       d3.selectAll('.country')
           .data(topojson.feature(world, world.objects.countries).features)
           .attr("fill", d => ((typeof(update_data.get(d.id)) == "undefined") ? '#ccc' : color(update_data.get(d.id))))
-          .text(d => `Country: ${d.properties.name} OECD Gender Wage Gap: ${update_data.get(d.id)}`);
+          .text(d => `Country: ${d.properties.name} Gender Wage Gap: ${update_data.get(d.id)}`);
     },
     legend({
         color,

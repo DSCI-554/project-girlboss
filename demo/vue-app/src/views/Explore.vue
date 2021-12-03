@@ -55,6 +55,10 @@
   color: #111;
 }
 
+#sidebarMenu {
+  width: 215px;
+}
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -84,12 +88,6 @@
 @media only screen and (min-width : 320px) {
   #main_div {
     margin-left: 200px;
-  }
-}
-
-@media only screen and (min-width : 1400px) {
-  #main_div {
-    margin-left: 300px;
   }
 }
 </style>
