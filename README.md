@@ -56,6 +56,10 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 [Erin Szeto](mailto:erinszet@usc.edu)
 - wrote Introduction and contributed to Abstract, Data, Approach, System, and Conclusion sections
 
+[Erica Xia](mailto:ericaxia@usc.edu)
+- Contributed to Related Work, Data, Approach, and System sections
+
+
 ### Demo
 
 [Erin Szeto](mailto:erinszet@usc.edu)
