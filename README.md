@@ -113,16 +113,16 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 
 | Page name | Chart description | Libraries used | Requirement label |
 | --------- | ----------------- | -------------- | ----------------- |
-| Employment page | line chart of gender disparity in wages         | d3   | d3 layout               |
-| Employemnt page | circle packing chart    | d3   | layout             |
-| Employment page | choropleth map on gender wage gap | d3, topojson | d3 map, animated transition  |
-| Employment page | map of median annual income of US women | Mapbox | Mapbox map |
-| Education page | bar chart of student enrollment | d3               |                   |
-| Education page | line chart of education parity indices | d3               |                   |
-| Education page | bubble chart of college majors & median salaries | d3               |                   |
-| Education page | radial bar chart of college majors | d3               |                   |
-| Explore page |   line chart of monthly wages by country      |       d3         |       responsive, interactive, animated            |
-| Explore page | choropleth map on gender wage gap  | d3, topojson, d3-simple-slider | d3 map, interactive  |
+| Employment page (Gender Disparity in Wages) | line chart of gender disparity in wages         | d3   | layout               |
+| Employment page (Gender Wage Gap Arond the World) | choropleth map on gender wage gap | d3, topojson | map, animated  |
+| Employemnt page (Employment by Sector) | circle packing chart    | d3   | layout             |
+| Employment page (Median Annual Income of US Women) | map of median annual income of US women | Mapbox | mapbox |
+| Education page (Global Student Enrollment) | bar chart of student enrollment | d3               |  interactive  |
+| Education page (Gender Parity Indices in Tertiary Education) | line chart of education parity indices | d3               |  interactive   |
+| Education page (STEM Graduates and Median Salaries) | bubble chart of college majors & median salaries | d3               |  interactive  |
+| Education page (STEM Distribution of US Women) | radial bar chart of college majors | d3               | interactive, animated |
+| Explore page (Monthly Wages by Gender Over Time) |   line chart of monthly wages by country      |       d3         |       responsive, interactive, animated            |
+| Explore page (Gender Wage Gap Around the World) | choropleth map on gender wage gap  | d3, topojson, d3-simple-slider | map, interactive  |
 
 ## Summary table of visualization forms used
 
@@ -131,8 +131,9 @@ Gender discrimination is an issue that has plagued modern economies, and althoug
 | Type             | Count |
 | ---------------- | ----- |
 | interactive maps | 3     |
-| interactive line chart                 |   1    |
+| interactive line chart                 |   2    |
 | static line chart                 |   1    |
-|  circle packing chart                |   1    |
-|                  |       |
-|                  |       |
+| circle packing chart                |   1    |
+| interactive bar chart  |  1  |
+| interactive bubble chart  |  1  |
+| interactive radial bar chart  |  1  |
