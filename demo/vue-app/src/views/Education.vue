@@ -36,7 +36,7 @@
                 </a>
               </li>
               <br /> -->
-              <b align="left">Education</b>
+              <b>Education</b>
               <hr />
               <li class="nav-item">
                 <a class="nav-link" align="left" href="#student_enroll">

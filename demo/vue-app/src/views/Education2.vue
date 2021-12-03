@@ -8,7 +8,7 @@
         >
           <div class="sidebar-sticky pt-3">
             <ul class="nav flex-column">
-              <b align="left">Education</b>
+              <b>Education</b>
               <hr />
               <li class="nav-item">
                 <a class="nav-link active" align="left" href="#student_enroll">
