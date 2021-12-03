@@ -229,7 +229,7 @@ a {
 }
 
 #tsdiv {
-  padding-left: 2%;
+  padding-left: 11%;
 }
 
 svg >>> .zoom-font {
