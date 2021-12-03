@@ -44,7 +44,7 @@ const routes = [{
         component: Education
     },
     {
-        path: '/wagegap',
+        path: '/explore-wagegap',
         name: 'Wage Gap',
         component: Map
     },

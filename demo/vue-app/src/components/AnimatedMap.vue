@@ -17,7 +17,7 @@
       </p>
       <p style="text-align: left; font-size: 85%">
         From the data, it can be observed that the gender pay gap has been closing in recent years and is not as significant amongst bottom earners and in European countries. However, the gender wage gap is still prominent in median and top earners in developed countries like the United States, Japan, and South Korea.
-        Click <a href="/wagegap">here</a> to explore the data in more detail.
+        Click <a href="/explore-wagegap">here</a> to explore the data in more detail.
       </p>
       <p style="text-align: left; font-size: 70%">
         *The indicators include gender wage gap across median earners, top 10% earners (9th decile), and bottom 10% earners (1st decile).
