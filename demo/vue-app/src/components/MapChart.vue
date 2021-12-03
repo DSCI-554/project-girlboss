@@ -73,7 +73,7 @@ export default {
       d3.selectAll('.country')
           .data(topojson.feature(this.world, this.world.objects.countries).features)
           .attr("fill", d => ((typeof(update_data.get(d.id)) == "undefined") ? '#ccc' : this.color(update_data.get(d.id))))
-          .text(d => `Country: ${d.properties.name} Gender Wage Gap: ${update_data.get(d.id)}`);
+          .text(d => `Country: ${d.properties.name} Gender Wage Gap (%): ${update_data.get(d.id)}`);
 
       var display_data = this.data.filter(function(row) {
           var indicator = row['Indicator'];
@@ -129,7 +129,7 @@ export default {
       svg.append("g")
         .attr("transform", "translate(25,530)")
         // .attr("transform", "translate(25,20)")
-        .append(() => this.legend({ color, title: 'Gender Wage Gap', width: 260 }));
+        .append(() => this.legend({ color, title: 'Gender Wage Gap (%)', width: 260 }));
 
       var div = d3.select(".tooltip");
       var country;
@@ -146,7 +146,7 @@ export default {
             svg.select('.selected')
                 .classed('selected', false);
             d3.select(this)
-                .classed('selected', true);		
+                .classed('selected', true)		
             div.transition()		
                 .duration(200)		
                 .style("opacity", .9);		
@@ -203,6 +203,7 @@ export default {
         var update_data = data.filter(function(row){
             var time = row['Time'];
             var id = row['id'];
+
             //var indicator = row['Indicator'];
             return time === sliderValue & id === country_id
             //return time === sliderValue & id === country_id & indicator !== 'Gender wage gap at median' & indicator !== 'Gender wage gap at 9th decile (top)' & indicator !== 'Gender wage gap at 1st decile (bottom)';
@@ -210,10 +211,20 @@ export default {
 
         var tooltip = `<b>Country</b>: ${country}`;
 
+        function numberWithCommas(x) {
+          return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
         update_data.forEach(function(row) {
             var indicator = row['Indicator'];
             var value = row['Value'];
-            tooltip = tooltip + `<br/><b>${indicator}</b>: ${value}`
+
+            if (indicator.includes("wage gap") || indicator.includes("participation rate")) {
+              tooltip = tooltip + `<br/><b>${indicator}</b>: ${value}%`;
+            } else {
+              value = numberWithCommas(+value);
+              tooltip = tooltip + `<br/><b>${indicator}</b>: ${value}`;
+            }
         });
 
         return tooltip;
@@ -237,7 +248,7 @@ export default {
       d3.selectAll('.country')
           .data(topojson.feature(world, world.objects.countries).features)
           .attr("fill", d => ((typeof(update_data.get(d.id)) == "undefined") ? '#ccc' : color(update_data.get(d.id))))
-          .text(d => `Country: ${d.properties.name} Gender Wage Gap: ${update_data.get(d.id)}`);
+          .text(d => `Country: ${d.properties.name} Gender Wage Gap (%): ${update_data.get(d.id)}`);
     },
     legend({
         color,
