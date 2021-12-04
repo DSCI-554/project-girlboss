@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 data/node_modules
+=======
+.DS_Store
+>>>>>>> vue-app
