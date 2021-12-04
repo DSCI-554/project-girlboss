@@ -3,8 +3,8 @@
     <h2 align="left" id="stem_graduates">Distribution of Women STEM Graduates by Major</h2>
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
-      <p align="left">
-Equality in the workplace and provision of fair pay is paramount to economic development. Women still face significant barriers to access decision-making roles and jobs all across the world, and this access often starts with education. This chart highlights the unfortunate trend that women are often underrepresented in the majors that afford students the highest salaries. For example, women only make up 20-30% of the population of Engineering majors, the highest-earning field shown in the data collected from FiveThirtyEight.         </p>
+      <p align="left" style="font-size: 85%">
+        Equality in the workplace and provision of fair pay is paramount to economic development. Women still face significant barriers to access decision-making roles and jobs all across the world, and this access often starts with education. This chart highlights the unfortunate trend that women are often underrepresented in the majors that afford students the highest salaries. For example, women only make up 20-30% of the population of Engineering majors, the highest-earning field shown in the data collected from FiveThirtyEight.</p>
       </b-col>
     </b-row>
 

@@ -5,9 +5,9 @@
     </h2>
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
-        <p align="left">
-          Gender gaps in the workforce can often begin earlier in life We were
-          able to explore the total student enrollment by education level for
+        <p align="left" style="font-size: 85%">
+          Gender gaps in the workforce can often begin earlier in life like during schooling. We were
+          able to explore this idea by looking at the total student enrollment by education level for
           select countries. We broke out the population by gender to discover
           any disparities at each education level. We discovered that there was
           a lower gender disparity in general except in certain countries such
@@ -15,7 +15,7 @@
           States, primary education equates to elementary school grade 6 (age
           11–12) through grade 12 (age 17–18)
         </p>
-        <p align="left">
+        <p align="left" style="font-size: 85%">
           Please click on the gendered bars for specific enrollment data.
         </p>
       </b-col>

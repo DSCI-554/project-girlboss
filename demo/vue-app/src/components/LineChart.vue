@@ -2,11 +2,13 @@
   <div id="tsdiv">
     <h2 align="left" id="gender_parity">Gender Parity Indices in Tertiary Education</h2>
     <b-row align-h="start">
-      <b-col align-self="start" cols="10">
-      <p align="left">
-        Gender Parity Index (GPI) = Ratio of girls to boys in tertiary education</p>
-             <p align="left">
-        Like in the global student population by education level, we excepted to see a larger gap between female and male enrollment, especially in tertiary education. The GPI also tends to increase by year for most countries indicating a rise in the ratio of girls to boys.</p>
+        <b-col align-self="start" cols="10">
+        <p align="left" style="font-size: 90%">
+            Gender Parity Index (GPI) = Ratio of girls to boys in tertiary education
+        </p>
+        <p align="left" style="font-size: 85%">
+            Like the Global Student Enrollment chart that shows global student population by education level, we expect to see a larger gap between female and male enrollment, especially in tertiary education.
+            The GPI also tends to increase by year for most countries indicating a rise in the ratio of girls to boys.</p>
       </b-col>
     </b-row>
     <select id="d3-dropdown" class="dropdown">

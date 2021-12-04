@@ -3,9 +3,9 @@
     <h2 align="left" id="stem_salaries">Monthly Wages by Gender Over Time (local currency)</h2>
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
-      <p align="left">
-      This chart further breaks down the distribution of female graduates in different disciplines. As you can see, women make up a smaller proportion of Engineering and Computers & Mathematics students, but make up an overwhelming proportion of Health students. This speaks to a greater trend in women’s education and thus employment that bars women from participating equally in STEM disciplines. Also, majors with the larger percent of women are among the lowest median salaries.</p>
-      <p align="left">Please hover and click our the bubbles to get detailed information on each major.</p>
+        <p align="left" style="font-size: 85%">
+      This chart further breaks down the distribution of female graduates in different disciplines. As observed in the chart, women make up a smaller proportion of Engineering and Computers & Mathematics students, but make up an overwhelming proportion of Health students. This speaks to a greater trend in women’s education and thus employment that bars women from participating equally in STEM disciplines. Also, majors with the larger percent of women are among the lowest median salaries.</p>
+      <p align="left" style="font-size: 85%">Please hover and click our the bubbles to get detailed information on each major.</p>
       </b-col>
     </b-row>
 
