@@ -1,11 +1,11 @@
 <template>
   <div id="tsdiv">
-    <h2 align="left" id="stem_salaries">Monthly Wages by Gender Over Time (local currency)</h2>
+    <h2 align="left" id="stem_salaries">STEM Graduates and Median Salaries</h2>
     <b-row align-h="start">
       <b-col align-self="start" cols="10">
         <p align="left" style="font-size: 85%">
-      This chart further breaks down the distribution of female graduates in different disciplines. As observed in the chart, women make up a smaller proportion of Engineering and Computers & Mathematics students, but make up an overwhelming proportion of Health students. This speaks to a greater trend in women’s education and thus employment that bars women from participating equally in STEM disciplines. Also, majors with the larger percent of women are among the lowest median salaries.</p>
-      <p align="left" style="font-size: 85%">Please hover and click our the bubbles to get detailed information on each major.</p>
+      This chart further breaks down the distribution of female graduates in different disciplines. As observed in the chart, women make up a smaller proportion of Engineering and Computers & Mathematics students, but make up an overwhelming proportion of Health students. This speaks to a greater trend in women’s education and thus employment that bars women from participating equally in STEM disciplines. Also, majors with the larger percent of women are among the lowest median salaries. The size of the bubble represents the total enrollment for each major (female and male). This helps to visualize the size of each STEM major along the x-axis (% women). For example, Engineering is a relatively large major yet has a low percentage of women.</p>
+      <p align="left" style="font-size: 85%">Please hover and click the bubbles to get detailed information on each major.</p>
       </b-col>
     </b-row>
 
@@ -31,9 +31,9 @@ export default {
     bubbleChart(data) {
         console.log(data);
 
-    const margin = { top: 20, right: 20, bottom: 50, left: 90 };
+    const margin = { top: 30, right: 200, bottom: 50, left: 90 };
     const height = 550 - margin.top - margin.bottom; // height
-    const width = 900 - margin.left - margin.right; // width
+    const width = 1100 - margin.left - margin.right; // width
 
       const svg = d3
         .select(this.$refs.bchart)
@@ -104,7 +104,8 @@ export default {
                 .classed('selected', true);
             d3.select('#info3')
                 .text('Field: ' + this.__data__.Major_category +
-                    ', Median Salary: $' + formatValue(this.__data__.Median));
+                    ', Median Salary: $' + formatValue(this.__data__.Median)+
+                    ', Total Graduates: ' + formatValue(this.__data__.Total));
         });
 
 
@@ -150,13 +151,44 @@ export default {
 
     // Chart Title
     svg.append("text")
-        .attr('x', (width / 2))
-        .attr('y', -5)
+        .attr('x', (900 / 2))
+        .attr('y', -10)
         .attr('text-anchor', 'middle')
         .style('font-size', '18px')
         .style('font-weight', 'bold')
         .style('color', '#fff')
-        .text('Gender Share by STEM Majors and Median Salaries (United States)');
+        .text('Gender Share by STEM Major Size and Median Salaries (United States)');
+
+            // Chart Title
+    svg.append("text")
+        .attr('x', 900)
+        .attr('y', 25)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '14px')
+        .style('font-weight', 'bold')
+        .style('color', '#fff')
+        .text('Total Enrollment Reference');
+
+            //🎒 explain:
+    const legend = svg.append('g')
+        .attr('fill', 'black')
+        .attr('transform', 'translate(900,220)')
+        .attr('text-anchor', 'middle')
+        .style('font', '12px sans-serif')
+        .selectAll('g')
+        .data([100000, 300000, 600000])
+        .join('g');
+
+    legend.append('circle')
+        .attr('fill', 'none')
+        .attr('stroke', 'black')
+        .attr('cy', d => -z(d))
+        .attr('r', d => z(d));
+
+    legend.append('text')
+        .attr('y', d => - 2 * z(d))
+        .attr('dy', '1.4em')
+        .text(d3.format('.1s'));
 
 
     }, //bubble chart

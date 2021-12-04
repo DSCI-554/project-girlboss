@@ -11,9 +11,9 @@
           select countries. We broke out the population by gender to discover
           any disparities at each education level. We discovered that there was
           a lower gender disparity in general except in certain countries such
-          as Korea. Primary, Secondary, and Tertiary. Compared to the United
-          States, primary education equates to elementary school grade 6 (age
-          11–12) through grade 12 (age 17–18)
+          as Korea. Chart includes Primary, Secondary, and Tertiary education levels. Compared to the United
+          States, primary education equates elementary school and secondary education is grade 6 (age
+          11–12) through grade 12 (age 17–18). Teritiary education is typcially any education acter grade 12 (or high school).
         </p>
         <p align="left" style="font-size: 85%">
           Please click on the gendered bars for specific enrollment data.
