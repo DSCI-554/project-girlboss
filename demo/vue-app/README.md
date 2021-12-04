@@ -1,24 +1,15 @@
-# vue-app
+# Demo Instructions
 
-## Project setup
+### To run the Vue application, run the following commands in the terminal:
 ```
-npm install
+cd vue-app
 ```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
 ```
 npm run build
 ```
-
-### Lints and fixes files
 ```
-npm run lint
+npm install -g serve
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+serve -s dist
+```
