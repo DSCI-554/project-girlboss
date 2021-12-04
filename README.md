@@ -18,47 +18,79 @@ Team members:
 <!-- 🎒 Complete and ensure that all the links work! -->
 
 - [Project proposal](https://docs.google.com/presentation/d/10bKIzyufguNpWEI1ctUmEc4_5Azgg6CX6jQvGCalh-4/edit?usp=sharing)
-- Final presentation: [Transcript](presentation/TRANSCRIPT.md) | [slides](presentation/presentation.pdf)
-- Paper: [Overleaf read-only link]() | [PDF](paper/paper.pdf)
+- Final presentation: [Transcript](presentation/TRANSCRIPT.md) | [slides](presentation/presentation.sozi.pdf)
+- Paper: [Overleaf read-only link](https://www.overleaf.com/read/twcpxmqjtnvf) | [PDF](paper/paper.pdf)
 - [Demo link](demo/vue-app/)
-- Video [Transcript](video/TRANSCRIPT.md) | [YouTube link]()
+- Video [Transcript](video/TRANSCRIPT.md) | [YouTube link](https://youtu.be/fftbNES3kxg)
 
 
 ## Project Summary
+
 Gender discrimination is an issue that has plagued modern economies, and although female participation in the workforce has been climbing, there are still many issues left to be addressed, especially outside of the US and in specific disciplines such as STEM. In this project, we create an interactive infographic that allows users to explore data documenting the gender gap in employment and in education. Visualizations in the infographic showcase information about the average female-to-male earnings ratio, gender wage gap, gender distribution by job sector, and more. The resulting website and infographic can be used by everyone curious about learning more about how this gender gap affects women across the world.
-<!-- 🎒 Add a project summary here in 250 words or less. -->
 
 ## Contributions
 
 <!-- 🎒 Complete for each project member. -->
 
-## Proposal presentation
-- Erin - made Introduction slide, found OECD dataset, contributed to chart ideas and Timeline slide deadlines
--
--
+### Proposal presentation
 
-## Implementation
-- Erin - interactive d3 choropleth map using OECD gender wage gap, employment, and GDP data
-- Erica - interactive responsive time series line chart using monthly wage data, zoomable circle packing chart using employment data
-- Erin, Erica - created Vue app and formatted website with Bootstrap
--
--
+[Erin Szeto](mailto:erinszet@usc.edu)
 
-## Final presentation
--
--
--
+- With help of all team members, created slides
+- Gave presentation in class
 
-## Paper
-- Erin - wrote Introduction and contributed to Abstract, Data, Approach, System, and Conclusion sections
--
--
+### Final presentation
 
-## Demo
-If it's a video, Erin will work on the Youtube
--
--
--
+[Madeleine Thompson](mailto:mjt43250@usc.edu)
+
+- Prepared transcript and slides for final presentation
+- Gave final presentation in class on 12/1/2021
+
+### Paper
+
+[Madeleine Thompson](mailto:mjt43250@usc.edu)
+
+- Contributed to Abstract, Related Work, Data, Approach, System, and Conclusion sections
+- Included screenshots of visualizations used in the demo and cited all relevant references
+
+[Erin Szeto](mailto:erinszet@usc.edu)
+- Wrote Introduction section and contributed to Abstract, Data, Approach, System, and Conclusion sections
+
+[Erica Xia](mailto:ericaxia@usc.edu)
+- Contributed to Related Work, Data, Approach, and System sections
+
+
+### Demo
+
+[Erin Szeto](mailto:erinszet@usc.edu)
+
+- Animated and interactive d3 choropleth map using OECD gender wage gap, employment, and GDP data
+- Created Vue app and formatted website with Bootstrap
+
+[Erica Xia](mailto:ericaxia@usc.edu)
+
+- Interactive responsive time series line chart using monthly wage data
+- Aggregated static time series line chart of female-male earnings ratio
+- Zoomable circle packing chart using employment data
+- Contributed to Vue app development and formatting website with Bootstrap
+
+[Madeleine Thompson](mailto:mjt43250@usc.edu)
+
+- Interactive Mapbox map using median annual income data
+- Contributed to Vue app formatting
+
+[Sarah Pursley](mailto:spursley@usc.edu)
+
+- Interactive bar chart using student enrollment data
+- Line chart of gender parity indices with drop-down selection for country-specific views
+- Interactive bubble chart using college majors and wage data
+- Interactive radial bar chart using college major data
+
+### Video
+
+[Erin Szeto](mailto:erinszet@usc.edu)
+
+- Wrote transcript and recorded video
 
 # Visualizations created in the Demo
 
@@ -68,12 +100,12 @@ If it's a video, Erin will work on the Youtube
 
 | Requirement                            | Label        | Done |
 | -------------------------------------- | ------------ | ---- |
-| responsive d3 chart                    | responsive   |  Erica (line chart)  |
-| interactive d3 chart                   | interactive  |  Erin (chloropleth)    |
-| d3 chart with an animated transition   | animated     |  Sarah (radial bar chart?), Erica (line chart)    |
-| d3 layout                              | layout       |  Erica (circle packing chart)    |
-| d3 map                                 | map          |  Erin (chloropleth)    |
-| Mapbox map                             | mapbox       |  Madi (proportional symbol map?)   |
+| responsive d3 chart                    | responsive   | ✅   |
+| interactive d3 chart                   | interactive  | ✅   |
+| d3 chart with an animated transition   | animated     | ✅   |
+| d3 layout                              | layout       | ✅   |
+| d3 map                                 | map          | ✅   |
+| Mapbox map                             | mapbox       | ✅   |
 
 ## Table of visualizations used by page
 
@@ -81,13 +113,16 @@ If it's a video, Erin will work on the Youtube
 
 | Page name | Chart description | Libraries used | Requirement label |
 | --------- | ----------------- | -------------- | ----------------- |
-| Home page | main map          | d3, topojson   | map               |
-| Employment page | choropleth map on gender wage gap  | d3, topojson | d3 map, d3 chart with animated transition |
-|           |                   |                |                   |
-|           |                   |                |                   |
-|           |                   |                |                   |
-|           |                   |                |                   |
-| Explore page | choropleth map on gender wage gap  | d3, topojson | d3 map, interactive d3 chart |
+| Employment page (Gender Disparity in Wages) | line chart of gender disparity in wages         | d3   | layout               |
+| Employment page (Gender Wage Gap Arond the World) | choropleth map on gender wage gap | d3, topojson | map, animated  |
+| Employemnt page (Employment by Sector) | circle packing chart    | d3   | layout             |
+| Employment page (Median Annual Income of US Women) | map of median annual income of US women | Mapbox | mapbox |
+| Education page (Global Student Enrollment) | bar chart of student enrollment | d3               |  interactive  |
+| Education page (Gender Parity Indices in Tertiary Education) | line chart of education parity indices | d3               |  interactive   |
+| Education page (STEM Graduates and Median Salaries) | bubble chart of college majors & median salaries | d3               |  interactive  |
+| Education page (STEM Distribution of US Women) | radial bar chart of college majors | d3               | interactive, animated |
+| Explore page (Monthly Wages by Gender Over Time) |   line chart of monthly wages by country      |       d3         |       responsive, interactive, animated            |
+| Explore page (Gender Wage Gap Around the World) | choropleth map on gender wage gap  | d3, topojson, d3-simple-slider | map, interactive  |
 
 ## Summary table of visualization forms used
 
@@ -95,10 +130,10 @@ If it's a video, Erin will work on the Youtube
 
 | Type             | Count |
 | ---------------- | ----- |
-| animated choropleth maps | 1     |
-| interactive choropleth maps | 2     |
-|                  |       |
-|                  |       |
-|                  |       |
-|                  |       |
-|                  |       |
+| interactive maps | 3     |
+| interactive line chart                 |   2    |
+| static line chart                 |   1    |
+| circle packing chart                |   1    |
+| interactive bar chart  |  1  |
+| interactive bubble chart  |  1  |
+| interactive radial bar chart  |  1  |
